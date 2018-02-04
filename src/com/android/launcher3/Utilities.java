@@ -931,6 +931,11 @@ public final class Utilities {
         prefs.edit().putString(KEY_LOCKED_TASK_RECENT, apps).apply();
     }
 
+    public static boolean isWorkspaceEditAllowed(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(InvariantDeviceProfile.KEY_WORKSPACE_EDIT, true);
+    }
+
     public static void restart(final Context context) {
         MODEL_EXECUTOR.execute(() -> {
             try {
