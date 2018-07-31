@@ -55,4 +55,7 @@
     <string name="quickspace_now_playing_title">Show now playing</string>
     <string name="quickspace_now_playing_summary">Shows the song you\'re playing on At a Glance.</string>
 
+    <!-- Application name -->
+    <string name="derp_app_name" translatable="false">DerpLauncher</string>
+
 </resources>
