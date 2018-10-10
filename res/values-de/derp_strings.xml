@@ -170,4 +170,8 @@
         <item>rm -rf \/</item>
     </string-array>
 
+    <!-- Hide labels -->
+    <string name="desktop_show_labels">Symbolbeschriftungen auf dem Startbildschirm anzeigen</string>
+    <string name="drawer_show_labels">Symbolbeschriftungen in der App-Übersicht anzeigen</string>
+
 </resources>
