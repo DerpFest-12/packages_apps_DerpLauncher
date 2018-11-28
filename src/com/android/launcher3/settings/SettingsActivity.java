@@ -160,6 +160,7 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
             case Utilities.KEY_HIDE_PISSELBAR:
             case Utilities.DATE_STYLE_FONT:
             case Utilities.DATE_STYLE_TRANSFORM:
+            case Utilities.DATE_STYLE_SPACING:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
                 break;
             default:
@@ -364,6 +365,15 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                     });
                 case Utilities.DATE_STYLE_TRANSFORM:
                     return true;
+                case Utilities.DATE_STYLE_SPACING:
+                    ListPreference dateStyleSpacing =
+                                (ListPreference) findPreference(Utilities.DATE_STYLE_SPACING);
+                    dateStyleSpacing.setSummary(dateStyleSpacing.getEntry());
+                    dateStyleSpacing.setOnPreferenceChangeListener((pref, val) -> {
+                        int index = dateStyleSpacing.findIndexOfValue((String) val);
+                        dateStyleSpacing.setSummary(dateStyleSpacing.getEntries()[index]);
+                        return true;
+                    });
             }
 
             return true;

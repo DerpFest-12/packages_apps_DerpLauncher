@@ -192,4 +192,10 @@
     <string name="date_style_transform_title">Großbuchstaben für Datum anzeigen</string>
     <string name="date_style_transform_summary">Datum / Live-Anzeige in Großbuchstaben umwandeln</string>
 
+    <!-- At a glance font spacing -->
+    <string name="date_style_spacing">Abstand zum Datum</string>
+    <string name="date_style_spacing_normal">Normal</string>
+    <string name="date_style_spacing_barely">Kaum sichtbar</string>
+    <string name="date_style_spacing_ott">Übertrieben</string>
+
 </resources>
