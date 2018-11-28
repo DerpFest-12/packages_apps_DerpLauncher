@@ -193,14 +193,101 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
     private void setTypeface(TextView... views) {
         Typeface tf;
         switch (Utilities.getDateStyleFont(getContext())) {
+            case "systembold":
+                tf = Typeface.create("sans-serif", Typeface.BOLD);
+                break;
+
+            case "systemitalic":
+                tf = Typeface.create("sans-serif", Typeface.ITALIC);
+                break;
+
+            case "system":
+                tf = Typeface.create("sans-serif", Typeface.NORMAL);
+                break;
+
+            case "systemlight":
+                tf = Typeface.create("sans-serif-light", Typeface.NORMAL);
+                break;
+
+            case "abelreg":
+                tf = Typeface.create("abelreg", Typeface.NORMAL);
+                break;
+
+            case "adamcg":
+                tf = Typeface.create("adamcg-pro", Typeface.NORMAL);
+                break;
+
+            case "archivo":
+                tf = Typeface.create("archivonar", Typeface.NORMAL);
+                break;
+
+            case "badscript":
+                tf = Typeface.create("badscript", Typeface.NORMAL);
+                break;
+
+            case "bariol":
+                tf = Typeface.create("bariol-reg", Typeface.NORMAL);
+                break;
             case "system-headline":
                 tf = Typeface.create(getContext().getString(R.string.date_style_headline_font), Typeface.NORMAL);
                 break;
             case "system-body":
                 tf = Typeface.create(getContext().getString(R.string.date_style_body_font), Typeface.NORMAL);
                 break;
+            case "bignoodle":
+                tf = Typeface.create("bignoodle-regular", Typeface.NORMAL);
+                break;
+
+            case "cherryswash":
+                tf = Typeface.create("cherryswash", Typeface.NORMAL);
+                break;
+
+            case "google":
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/GoogleSans-Regular.ttf");
+                break;
+
+            case "ibmplex":
+                tf = Typeface.create("ibmplex-mono", Typeface.NORMAL);
+                break;
+
+            case "kellyslab":
+                tf = Typeface.create("kellyslab", Typeface.NORMAL);
+                break;
+
+            case "pompiere":
+                tf = Typeface.create("pompiere", Typeface.NORMAL);
+                break;
+
+            case "raleway":
+                tf = Typeface.create("raleway-light", Typeface.NORMAL);
+                break;
+
+            case "reemkufi":
+                tf = Typeface.create("reemkufi", Typeface.NORMAL);
+                break;
+
+            case "satisfy":
+                tf = Typeface.create("satisfy", Typeface.NORMAL);
+                break;
+
+            case "seaweedsc":
+                tf = Typeface.create("seaweedsc", Typeface.NORMAL);
+                break;
+
+            case "sedgwick":
+                tf = Typeface.create("sedgwick-ave", Typeface.NORMAL);
+                break;
+
+            case "vibur":
+                tf = Typeface.create("vibur", Typeface.NORMAL);
+                break;
+
+            case "voltaire":
+                tf = Typeface.create("voltaire", Typeface.NORMAL);
+                break;
+
             default:
-                tf = Typeface.create(getContext().getString(R.string.date_style_headline_font), Typeface.NORMAL);
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/GoogleSans-Regular.ttf");
                 break;
         }
         for (TextView view : views) {

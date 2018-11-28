@@ -40,10 +40,54 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string-array name="date_style_font_names" translatable="false">
         <item>@string/date_style_font_system_header</item>
         <item>@string/date_style_font_system_body</item>
+        <item>@string/date_style_font_system</item>
+        <item>@string/date_style_font_systembold</item>
+        <item>@string/date_style_font_systemitalic</item>
+        <item>@string/date_style_font_systemlight</item>
+        <item>@string/date_style_font_abelreg</item>
+        <item>@string/date_style_font_adamcg</item>
+        <item>@string/date_style_font_archivo</item>
+        <item>@string/date_style_font_badscript</item>
+        <item>@string/date_style_font_bariol</item>
+        <item>@string/date_style_font_bignoodle</item>
+        <item>@string/date_style_font_cherryswash</item>
+        <item>@string/date_style_font_google</item>
+        <item>@string/date_style_font_ibmplex</item>
+        <item>@string/date_style_font_kellyslab</item>
+        <item>@string/date_style_font_pompiere</item>
+        <item>@string/date_style_font_raleway</item>
+        <item>@string/date_style_font_reemkufi</item>
+        <item>@string/date_style_font_satify</item>
+        <item>@string/date_style_font_seaweedsc</item>
+        <item>@string/date_style_font_sedgwick</item>
+        <item>@string/date_style_font_vibur</item>
+        <item>@string/date_style_font_voltaire</item>
     </string-array>
      <string-array name="date_style_font_values" translatable="false">
         <item>system-headline</item>
         <item>system-body</item>
+        <item>system</item>
+        <item>systembold</item>
+        <item>systemitalic</item>
+        <item>systemlight</item>
+        <item>abelreg</item>
+        <item>adamcg</item>
+        <item>archivo</item>
+        <item>badscript</item>
+        <item>bariol</item>
+        <item>bignoodle</item>
+        <item>cherryswash</item>
+        <item>google</item>
+        <item>ibmplex</item>
+        <item>kellyslab</item>
+        <item>pompiere</item>
+        <item>raleway</item>
+        <item>reemkufi</item>
+        <item>satisfy</item>
+        <item>seaweedsc</item>
+        <item>sedgwick</item>
+        <item>vibur</item>
+        <item>voltaire</item>
     </string-array>
 
 </resources>
