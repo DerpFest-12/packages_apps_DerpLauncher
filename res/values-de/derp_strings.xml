@@ -183,4 +183,9 @@
     <string name="date_format_daydate_short_name">Wochentag (kurz, mit Zahl)</string>
     <string name="date_format_dayonly_name">Nur Tag</string>
 
+    <!-- At a glance style -->
+    <string name="date_style_font">Schriftart für Datum</string>
+    <string name="date_style_font_system_header">Systemüberschrift</string>
+    <string name="date_style_font_system_body">Systemtext</string>
+
 </resources>

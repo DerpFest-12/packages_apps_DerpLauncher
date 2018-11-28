@@ -137,6 +137,7 @@ public final class Utilities {
     public static final String KEY_SHOW_QUICKSPACE_NOWPLAYING_SHOWDATE = "pref_quickspace_np_showdate";
     public static final String KEY_SHOW_QUICKSPACE_PSONALITY = "pref_quickspace_psonality";
     public static final String DATE_FORMAT_ATAGLANCE = "pref_date_format";
+    public static final String DATE_STYLE_FONT = "pref_date_font";
     public static final String KEY_ALLOW_WALLPAPER_ZOOM = "pref_allow_wallpaper_zoom";
     public static final String KEY_RECENT_OPACITY = "pref_recent_opacity";
     public static final String KEY_HIDE_PISSELBAR = "pref_hide_pisselbar";
@@ -943,6 +944,11 @@ public final class Utilities {
             Log.e(TAG, "Error formatting At A Glance date", t);
             return DateUtils.formatDateTime(context, timeInMillis, DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_MONTH);
         }
+    }
+
+    public static String getDateStyleFont(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getString(DATE_STYLE_FONT, "system-headline");
     }
 
     public static boolean canZoomWallpaper(Context context) {
