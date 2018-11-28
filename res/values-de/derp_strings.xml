@@ -174,4 +174,10 @@
     <string name="desktop_show_labels">Symbolbeschriftungen auf dem Startbildschirm anzeigen</string>
     <string name="drawer_show_labels">Symbolbeschriftungen in der App-Übersicht anzeigen</string>
 
+    <!-- QuickSpace Date format -->
+    <string name="date_format_title">Datumsformat</string>
+    <string name="date_format_long_name">Lang</string>
+    <string name="date_format_normal_name">Normal</string>
+    <string name="date_format_short_name">Kurz</string>
+
 </resources>

@@ -40,6 +40,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
@@ -340,7 +341,16 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                         });
                         return true;
                     });
-                    return true;
+                case Utilities.DATE_FORMAT_ATAGLANCE:
+                    ListPreference atAGlanceDateFormat =
+                                (ListPreference) findPreference(Utilities.DATE_FORMAT_ATAGLANCE);
+                    atAGlanceDateFormat.setSummary(atAGlanceDateFormat.getEntry());
+                    atAGlanceDateFormat.setOnPreferenceChangeListener((pref, val) -> {
+                        int index = atAGlanceDateFormat.findIndexOfValue((String) val);
+                        atAGlanceDateFormat.setSummary(atAGlanceDateFormat.getEntries()[index]);
+//                        AppReloader.get(mContext).reload();
+                        return true;
+                    });
             }
 
             return true;
