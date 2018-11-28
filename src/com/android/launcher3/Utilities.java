@@ -138,6 +138,7 @@ public final class Utilities {
     public static final String KEY_SHOW_QUICKSPACE_PSONALITY = "pref_quickspace_psonality";
     public static final String DATE_FORMAT_ATAGLANCE = "pref_date_format";
     public static final String DATE_STYLE_FONT = "pref_date_font";
+    public static final String DATE_STYLE_TRANSFORM = "pref_date_transform";
     public static final String KEY_ALLOW_WALLPAPER_ZOOM = "pref_allow_wallpaper_zoom";
     public static final String KEY_RECENT_OPACITY = "pref_recent_opacity";
     public static final String KEY_HIDE_PISSELBAR = "pref_hide_pisselbar";
@@ -949,6 +950,11 @@ public final class Utilities {
     public static String getDateStyleFont(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getString(DATE_STYLE_FONT, "system-headline");
+    }
+
+    public static boolean isDateStyleUppercase(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(DATE_STYLE_TRANSFORM, false);
     }
 
     public static boolean canZoomWallpaper(Context context) {

@@ -159,6 +159,7 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
             case Utilities.KEY_SHOW_QUICKSPACE_PSONALITY:
             case Utilities.KEY_HIDE_PISSELBAR:
             case Utilities.DATE_STYLE_FONT:
+            case Utilities.DATE_STYLE_TRANSFORM:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
                 break;
             default:
@@ -361,6 +362,8 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                         dateStyleFont.setSummary(dateStyleFont.getEntries()[index]);
                         return true;
                     });
+                case Utilities.DATE_STYLE_TRANSFORM:
+                    return true;
             }
 
             return true;

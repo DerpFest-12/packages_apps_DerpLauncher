@@ -188,4 +188,8 @@
     <string name="date_style_font_system_header">Systemüberschrift</string>
     <string name="date_style_font_system_body">Systemtext</string>
 
+    <!-- At a glance uppercase -->
+    <string name="date_style_transform_title">Großbuchstaben für Datum anzeigen</string>
+    <string name="date_style_transform_summary">Datum / Live-Anzeige in Großbuchstaben umwandeln</string>
+
 </resources>
