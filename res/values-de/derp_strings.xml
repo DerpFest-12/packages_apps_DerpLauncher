@@ -179,5 +179,8 @@
     <string name="date_format_long_name">Lang</string>
     <string name="date_format_normal_name">Normal</string>
     <string name="date_format_short_name">Kurz</string>
+    <string name="date_format_daydate_long_name">Wochentag (mit Zahl)</string>
+    <string name="date_format_daydate_short_name">Wochentag (kurz, mit Zahl)</string>
+    <string name="date_format_dayonly_name">Nur Tag</string>
 
 </resources>
