@@ -71,6 +71,5 @@
                 android:name="com.android.launcher3.themedicon.option"
                 android:value="${packageName}.grid_control" />
         </activity>
-
     </application>
 </manifest>

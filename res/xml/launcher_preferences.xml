@@ -102,6 +102,10 @@
         <intent android:action="android.settings.ACTION_CONTENT_SUGGESTIONS_SETTINGS" />
     </Preference>
 
+    <Preference
+        android:key="pref_trust_apps"
+        android:title="@string/trust_apps_manager_name" />
+
     <SwitchPreference
         android:key="pref_dt_gesture"
         android:title="@string/pref_dt_gesture_title"
