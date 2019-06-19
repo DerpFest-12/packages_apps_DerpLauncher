@@ -44,7 +44,7 @@
     <string name="abbrev_wday_month_day_no_year" translatable="false">EEEEMMMd</string>
 
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">Hello there!</string>
+    <string name="quick_event_rom_intro_welcome">Welcome to DerpFest!</string>
     <string name="quick_event_rom_intro_learn">Tap here to have fun!</string>
 
     <!-- QuickSpace: QuickEvent: Ambient Play -->
@@ -109,5 +109,15 @@
 
     <!-- Default home page -->
     <string name="set_default_home_page">Set default page</string>
+
+    <string-array translatable="false" name="welcome_message_variants">
+        <item>Thank you for choosing DerpFest</item>
+        <item>Best ROM Ever</item>
+        <item>DerpFest FTW!</item>
+        <item>Have a great day</item>
+        <item>Say hi to us on Telegram</item>
+        <item>#StayDerped</item>
+        <item>We love you 3000</item>
+    </string-array>
 
 </resources>
