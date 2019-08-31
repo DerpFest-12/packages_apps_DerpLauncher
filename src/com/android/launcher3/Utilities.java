@@ -129,6 +129,7 @@ public final class Utilities {
             || Build.VERSION.SDK_INT >= Build.VERSION_CODES.S;
 
     public static final String DESKTOP_SHOW_QUICKSPACE = "pref_show_quickspace";
+    public static final String KEY_SHOW_QUICKSPACE_NOWPLAYING = "pref_quickspace_np";
 
     private static final long WAIT_BEFORE_RESTART = 250;
 
@@ -183,6 +184,10 @@ public final class Utilities {
         ResolveInfo ri = context.getPackageManager().resolveActivity(
                 PackageManagerHelper.getStyleWallpapersIntent(context), 0);
         return ri != null;
+    }
+
+    public static boolean isQuickspaceNowPlaying(Context context) {
+        return getPrefs(context).getBoolean(KEY_SHOW_QUICKSPACE_NOWPLAYING, true);
     }
 
     /**
