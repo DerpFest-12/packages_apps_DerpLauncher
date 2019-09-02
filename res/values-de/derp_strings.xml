@@ -101,4 +101,68 @@
     <!-- Default home page -->
     <string name="set_default_home_page">Standardseite festlegen</string>
 
+    <!-- Quickspace PSA - Custom messages for the glance -->
+    <string name="quickspace_psa_title">Zufällige Nachricht anzeigen</string>
+    <string name="quickspace_psa_summary">Manchmal einige nette Botschaften in der Live-Anzeige einblenden</string>
+
+    <string-array name="quickspace_psa_morning">
+        <item>Guten Morgen!</item>
+        <item>Guten Morgen, Zeit zu Rocken!</item>
+        <item>Was für ein schöner Tag!</item>
+        <item>Hab einen schönen Tag!</item>
+        <item>Wie wäre es mit einem kleinen Nickerchen?</item>
+        <item>Das ist eine Möglichkeit, um aufzuwachen.</item>
+        <item>Du solltest deinen Weckton ändern.</item>
+        <item>Es sieht so aus, als ob es ein schöner Tag ist, oder?</item>
+        <item>Lass uns dieses Brot essen.</item>
+        <item>Überprüfe das Wetter, nur für den Fall.</item>
+        <item>Noch etwas schläfrig?</item>
+        <item>Hast du schon mal rausgeschaut?</item>
+        <item>Lass uns das erledigen.</item>
+    </string-array>
+    <string-array name="quickspace_psa_evening">
+        <item>Gute Nacht!</item>
+        <item>Schlaf gut!</item>
+        <item>Bis morgen!</item>
+        <item>Süße Träume!</item>
+        <item>Bleib nicht zulange auf</item>
+        <item>Hab einen erholsamen Schlaf</item>
+        <item>Gönn dir etwas Schlaf</item>
+        <item>Zeit zum Entspannen</item>
+        <item>Genieße die Nacht!</item>
+        <item>Zeit, den Akku wieder aufzuladen!</item>
+        <item>Morgen könnte ein toller Tag werden</item>
+        <item>Bereite dich auf morgen vor</item>
+    </string-array>
+    <string-array name="quickspace_psa_midnight">
+        <item>Äh… gute Nacht?</item>
+        <item>Es ist schon etwas spät</item>
+        <item>Du solltest deine Schlafenszeit überdenken</item>
+        <item>Bist du zu dieser Zeit produktiver?</item>
+    </string-array>
+    <string-array name="quickspace_psa_random">
+        <item>Ist es an der Zeit, ein neues Update zu flashen?</item>
+        <item>Schon begeistert von Android 12?</item>
+        <item>Oh hey, was ist los?</item>
+        <item>Konzentriere Dich auf Deine Aufgaben</item>
+        <item>Wie viele Bildschirmfotos machst Du so?</item>
+        <item>Möge der Sync mit dir sein...</item>
+        <item>Hab Spaß!</item>
+        <item>Zeit für etwas gute Musik</item>
+        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
+        <item>Wir lieben dich 3000</item>
+        <item>Sag uns \"Hallo\" auf Telegram</item>
+        <item>Tue heute etwas Nettes</item>
+        <item>Besser wird es nicht, oder?</item>
+        <item>Wie läuft es bei Dir so?</item>
+        <item>Alles was du brauchst ist Eiscreme!</item>
+        <item>Vielen Dank für deine Unterstützung</item>
+        <item>Eine der besten Entscheidungen des Buildbots</item>
+        <item>Es ist das, was es ist</item>
+        <item>Was für ein schönes Erlebnis, oder?</item>
+        <item>Flashe immer weiter!</item>
+        <item>Was geht dir durch den Kopf?</item>
+        <item>rm -rf \/</item>
+    </string-array>
+
 </resources>

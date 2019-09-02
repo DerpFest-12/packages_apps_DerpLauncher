@@ -48,6 +48,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
+import android.icu.text.DateFormat;
+import android.icu.text.DisplayContext;
 import android.net.Uri;
 import android.os.Build;
 import android.os.DeadObjectException;
@@ -58,6 +60,7 @@ import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.text.style.TtsSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -130,6 +133,7 @@ public final class Utilities {
     public static final String DESKTOP_SHOW_QUICKSPACE = "pref_show_quickspace";
     public static final String KEY_SHOW_QUICKSPACE_NOWPLAYING = "pref_quickspace_np";
     public static final String KEY_SHOW_QUICKSPACE_NOWPLAYING_SHOWDATE = "pref_quickspace_np_showdate";
+    public static final String KEY_SHOW_QUICKSPACE_PSONALITY = "pref_quickspace_psonality";
     public static final String KEY_ALLOW_WALLPAPER_ZOOM = "pref_allow_wallpaper_zoom";
     public static final String KEY_RECENT_OPACITY = "pref_recent_opacity";
     public static final String KEY_HIDE_PISSELBAR = "pref_hide_pisselbar";
@@ -880,6 +884,21 @@ public final class Utilities {
         }
     }
 
+    public static String formatDateTime(Context context, long timeInMillis) {
+        try {
+            String format = "EEEE, MMM d";
+            String formattedDate;
+            DateFormat dateFormat = DateFormat.getInstanceForSkeleton(format, Locale.getDefault());
+            dateFormat.setContext(DisplayContext.CAPITALIZATION_FOR_STANDALONE);
+            formattedDate = dateFormat.format(timeInMillis);
+            return formattedDate;
+        } catch (Throwable t) {
+            Log.e(TAG, "Error formatting At A Glance date", t);
+            return DateUtils.formatDateTime(context, timeInMillis, DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_MONTH);
+        }
+
+    }
+
     public static boolean isDoubleTapGestureEnabled(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_DT_GESTURE, true);
@@ -893,6 +912,11 @@ public final class Utilities {
     public static boolean showDateInPlaceOfNowPlaying(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_SHOW_QUICKSPACE_NOWPLAYING_SHOWDATE, true);
+    }
+
+    public static boolean isQuickspacePersonalityEnabled(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(KEY_SHOW_QUICKSPACE_PSONALITY, true);
     }
 
     public static boolean canZoomWallpaper(Context context) {

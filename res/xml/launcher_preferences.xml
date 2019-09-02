@@ -56,6 +56,14 @@
         android:defaultValue="true"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="pref_quickspace_psonality"
+        android:dependency="pref_show_quickspace"
+        android:summary="@string/quickspace_psa_summary"
+        android:title="@string/quickspace_psa_title"
+        android:defaultValue="true"
+        android:persistent="true" />
+
     <!--
       LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_ENABLED(613)
       LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_DISABLED(614)
