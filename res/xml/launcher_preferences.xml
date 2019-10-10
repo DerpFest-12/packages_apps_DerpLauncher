@@ -99,4 +99,93 @@
         android:title="Developer Options"
         android:fragment="com.android.launcher3.settings.DeveloperOptionsFragment"/>
 
+    <PreferenceScreen
+        android:key="about"
+        android:title="@string/about"
+        android:summary="@string/about_summary">
+
+            <Preference
+                android:key="about_derp"
+                android:title="@string/about_derp_title"
+                android:summary="@string/about_derp_summary"
+                android:persistent="false" >
+                <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+            </Preference>
+
+            <Preference
+                android:key="about_based_on"
+                android:title="@string/about_based_on_title"
+                android:summary="@string/about_based_on_summary"
+                android:persistent="false">
+                <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="https://android.googlesource.com/platform/packages/apps/Launcher3/" />
+            </Preference>
+
+            <Preference
+                android:key="about_app_version"
+                android:title="@string/about_app_version"
+                android:persistent="false"/>
+
+            <Preference
+                android:key="app_info"
+                android:title="@string/app_info_drop_target_label"
+                android:persistent="false">
+                <intent
+                    android:action="android.settings.APPLICATION_DETAILS_SETTINGS"
+                    android:data="package:com.android.launcher3" />
+            </Preference>
+
+            <PreferenceCategory 
+                android:key="about_thanks_category"
+                android:title="@string/about_thanks_cat" >
+
+                <Preference
+                    android:key="about_credit01"
+                    android:title="Lawnchair Team"
+                    android:persistent="false"
+                    android:selectable="false">
+                </Preference>
+
+                <Preference
+                    android:key="about_credit02"
+                    android:title="OmniROM"
+                    android:persistent="false"
+                    android:selectable="false">
+                </Preference>
+
+                <Preference
+                    android:key="about_credit03"
+                    android:title="Dirty Unicorns"
+                    android:persistent="false"
+                    android:selectable="false">
+                </Preference>
+
+                <Preference
+                    android:key="about_credit04"
+                    android:title="LineageOS"
+                    android:persistent="false"
+                    android:selectable="false">
+                </Preference>
+
+                <Preference
+                    android:key="about_credit05"
+                    android:title="hundeva (Lean Launcher)"
+                    android:persistent="false"
+                    android:selectable="false">
+                </Preference>
+
+                <Preference
+                    android:key="about_credit06"
+                    android:title="Amir Zaidi"
+                    android:persistent="false"
+                    android:selectable="false">
+                </Preference>
+
+            </PreferenceCategory>
+
+    </PreferenceScreen>
+
 </androidx.preference.PreferenceScreen>
