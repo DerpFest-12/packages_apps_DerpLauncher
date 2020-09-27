@@ -105,4 +105,7 @@
     <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
     <string name="trust_apps_info_protected">Protected apps require authentication to be opened from the launcher</string>
 
+    <!-- Default home page -->
+    <string name="set_default_home_page">Set default page</string>
+
 </resources>
