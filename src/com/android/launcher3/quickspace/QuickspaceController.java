@@ -15,28 +15,21 @@
  */
 package com.android.launcher3.quickspace;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.media.AudioManager;
-import android.media.IAudioService;
 import android.media.MediaMetadataRetriever;
 import android.media.RemoteControlClient;
 import android.media.RemoteController;
-import android.media.session.MediaSessionLegacyHelper;
 import android.os.Handler;
-import android.provider.Settings;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.launcher3.R;
 
-import com.android.launcher3.LauncherNotifications;
-import com.android.launcher3.notification.NotificationInfo;
 import com.android.launcher3.notification.NotificationKeyData;
 import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.util.PackageUserKey;
@@ -60,7 +53,6 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     private AudioManager mAudioManager;
     private Metadata mMetadata = new Metadata();
     private RemoteController mRemoteController;
-    private IAudioService mAudioService = null;
     private boolean mClientLost = true;
     private boolean mMediaActive = false;
 
@@ -74,22 +66,18 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     public QuickspaceController(Context context) {
         mContext = context;
         mHandler = new Handler();
+        mEventsController = new QuickEventsController(context);
+        mRemoteController = new RemoteController(context, mRCClientUpdateListener);
+        mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager.registerRemoteController(mRemoteController);
     }
 
     private void addWeatherProvider() {
     }
 
-    private void addEventsController() {
-        mEventsController = new QuickEventsController(mContext);
-    }
-
     public void addListener(OnDataListener listener) {
         mListeners.add(listener);
-        addEventsController();
         addWeatherProvider();
-        mRemoteController = new RemoteController(mContext, mRCClientUpdateListener);
-        mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-        mAudioManager.registerRemoteController(mRemoteController);
         listener.onDataUpdated();
     }
 
