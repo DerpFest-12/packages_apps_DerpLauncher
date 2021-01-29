@@ -156,6 +156,7 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
         switch (key) {
             case Utilities.DESKTOP_SHOW_QUICKSPACE:
             case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
+            case Utilities.KEY_SHOW_QUICKSPACE_PSONALITY:
             case Utilities.KEY_HIDE_PISSELBAR:
             case Utilities.DATE_STYLE_FONT:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
