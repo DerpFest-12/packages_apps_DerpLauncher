@@ -29,6 +29,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:maxLines="1"
+        android:clickable="true"
         android:textColor="?workspaceTextColor"
         android:textSize="@dimen/quickspace_title_size"
         launcher:ambientShadowBlur="3dp"
