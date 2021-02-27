@@ -291,10 +291,11 @@ public class InvariantDeviceProfile {
         mExtraAttrs = closestProfile.extraAttrs;
 
         float iconSizeModifier = (float) Utilities.getIconSizeModifier(context) / 100F;
+        float fontSizeModifier = (float) Utilities.getFontSizeModifier(context) / 100F;
         iconSize = displayOption.iconSize * iconSizeModifier;
         landscapeIconSize = displayOption.landscapeIconSize * iconSizeModifier;
         iconBitmapSize = ResourceUtils.pxFromDp(iconSize, metrics);
-        iconTextSize = displayOption.iconTextSize * iconSizeModifier;
+        iconTextSize = displayOption.iconTextSize * fontSizeModifier;
         fillResIconDpi = getLauncherIconDensity(iconBitmapSize);
 
         minCellHeight = displayOption.minCellHeight;
