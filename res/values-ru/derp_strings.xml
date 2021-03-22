@@ -102,14 +102,12 @@
     </string-array>
     
     <!-- Trust apps -->
-    <string name="trust_apps_manager_name">Скрытые и защищенные приложения</string>
-    <string name="trust_apps_auth_manager">Разблокируйте чтобы управлять скрытыми приложениями</string>
-    <string name="trust_apps_auth_open_app">Авторизуйтесь, чтобы открыть %1$s</string>
+    <string name="trust_apps_manager_name">Скрытые приложения</string>
+    <string name="trust_apps_auth_manager">Разблокируйте для управления скрытыми приложениями</string>
     <string name="trust_apps_loading">Загрузка\u2026</string>
-    <string name="trust_apps_no_lock_error">Настройте экран блокировки, чтобы ограничить доступ к приложению.</string>
+    <string name="trust_apps_no_lock_error">Пожалуйста, настройте защищенный экран блокировки для ограничения доступа к приложениям</string>
     <string name="trust_apps_help">Помощь</string>
-    <string name="trust_apps_info_hidden">Скрытые приложения и их виджеты скрыты в меню приложений</string>
-    <string name="trust_apps_info_protected">Защищенные приложения требуют аутентификации для открытия</string>
+    <string name="trust_apps_info_hidden">Скрытые приложения и их виджеты будут спрятаны с рабочего стола</string>
     
     <!-- Hide labels -->
     <string name="desktop_show_labels">Показывать подписи на рабочем столе</string>

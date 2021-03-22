@@ -1147,12 +1147,6 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
         mAppWidgetHost.setActivityResumed(false);
     }
 
-    public void startActivitySafelyAuth(View v, Intent intent, ItemInfo item) {
-        LineageUtils.showLockScreen(this, getString(R.string.trust_apps_manager_name), () -> {
-            startActivitySafely(v, intent, item);
-        });
-    }
-
     /**
      * {@code LauncherOverlayCallbacks} scroll amount.
      * Indicates transition progress to -1 screen.
