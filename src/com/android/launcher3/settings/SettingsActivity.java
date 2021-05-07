@@ -53,6 +53,7 @@ import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.InvariantDeviceProfile;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherFiles;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
@@ -304,6 +305,17 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                         }
                     });
                     return true;
+
+                case Utilities.FONT_SIZE:
+                    final CustomSeekBarPreference fontSizes = (CustomSeekBarPreference)
+                            findPreference(Utilities.FONT_SIZE);
+                    fontSizes.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                        public boolean onPreferenceChange(Preference preference, Object newValue) {
+                            LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+                            return true;
+                        }
+                    });
+                    return true;
             }
 
             return true;
@@ -385,5 +397,13 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                 }
             });
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        // if we don't press the home button but the back button to close Settings,
+        // then we must force a restart because the home button watcher wouldn't trigger it
+        LauncherAppState.getInstanceNoCreate().checkIfRestartNeeded();
+        super.onDestroy();
     }
 }
