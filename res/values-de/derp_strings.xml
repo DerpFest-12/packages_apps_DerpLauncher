@@ -182,4 +182,7 @@
     <string name="drawer_size_change_allowed_title">Synchronisieren der Alle Apps-Symbole</string>
     <string name="drawer_size_change_allowed_summary">Dynamische Anpassung von Symbol- und Textgrößen an die Größen des Startbildschirms</string>
 
+    <!-- App label - max lines -->
+    <string name="icon_max_lines_title">Maximale Zeilen für Symbolbeschriftungen</string>
+
 </resources>

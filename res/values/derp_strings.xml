@@ -232,4 +232,7 @@
     <string name="drawer_size_change_allowed_title">Sync app drawer icons</string>
     <string name="drawer_size_change_allowed_summary">Enable to dynamically adapt icon and text sizes to homescreen ones</string>
 
+    <!-- App label - max lines -->
+    <string name="icon_max_lines_title">Max lines for app label</string>
+
 </resources>
