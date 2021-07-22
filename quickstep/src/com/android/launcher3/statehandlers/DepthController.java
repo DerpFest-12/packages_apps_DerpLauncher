@@ -156,7 +156,8 @@ public class DepthController implements StateHandler<LauncherState>,
                     // To handle the case where window token is invalid during last setDepth call.
                     IBinder windowToken = mLauncher.getRootView().getWindowToken();
                     if (windowToken != null) {
-                        mWallpaperManager.setWallpaperZoomOut(windowToken, mDepth);
+                        mWallpaperManager.setWallpaperZoomOut(windowToken,
+                            Utilities.canZoomWallpaper(mLauncher) ? mDepth : 1);
                     }
                     onAttached();
                 }
@@ -272,16 +273,18 @@ public class DepthController implements StateHandler<LauncherState>,
         ensureDependencies();
         IBinder windowToken = mLauncher.getRootView().getWindowToken();
         if (windowToken != null) {
-            mWallpaperManager.setWallpaperZoomOut(windowToken, depth);
+            mWallpaperManager.setWallpaperZoomOut(windowToken,
+                    Utilities.canZoomWallpaper(mLauncher) ? mDepth : 1);
         }
 
         if (supportsBlur) {
             // We cannot mark the window as opaque in overview because there will be an app window
             // below the launcher layer, and we need to draw it -- without blurs.
             boolean isOverview = mLauncher.isInState(LauncherState.OVERVIEW);
+            boolean isNormal = mLauncher.isInState(LauncherState.NORMAL);
             boolean opaque = mLauncher.getScrimView().isFullyOpaque() && !isOverview;
 
-            int blur = opaque || isOverview || !mCrossWindowBlursEnabled
+            int blur = opaque || isOverview || isNormal || !mCrossWindowBlursEnabled
                     || mBlurDisabledForAppLaunch ? 0 : (int) (depth * mMaxBlurRadius);
             SurfaceControl.Transaction transaction = new SurfaceControl.Transaction()
                     .setBackgroundBlurRadius(mSurface, blur)
