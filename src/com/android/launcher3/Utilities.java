@@ -74,6 +74,7 @@ import android.view.ViewConfiguration;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
 import androidx.core.os.BuildCompat;
@@ -145,7 +146,7 @@ public final class Utilities {
     public static final String KEY_LOCKED_TASK_RECENT = "pref_locked_task_recent";
     public static final String KEY_WIDGET_LOCAL_COLOR = "pref_widget_local_color";
 
-    private static final long WAIT_BEFORE_RESTART = 250;
+    private static final long WAIT_BEFORE_RESTART = 3000;
 
     /**
      * Set on a motion event dispatched from the nav bar. See {@link MotionEvent#setEdgeFlags(int)}.
@@ -1039,6 +1040,7 @@ public final class Utilities {
     }
 
     public static void restart(final Context context) {
+        Toast.makeText(context, R.string.launcher_restart_toast, Toast.LENGTH_LONG).show();
         MODEL_EXECUTOR.execute(() -> {
             try {
                 Thread.sleep(WAIT_BEFORE_RESTART);

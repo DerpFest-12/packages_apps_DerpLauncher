@@ -233,4 +233,7 @@
     <!-- App label - max lines -->
     <string name="icon_max_lines_title">Max lines for app label</string>
 
+    <!-- Launcher restart toast -->
+    <string name="launcher_restart_toast">For all changes to take effect, a launcher restart is required. We\'ll restart the launcher right now.</string>
+
 </resources>

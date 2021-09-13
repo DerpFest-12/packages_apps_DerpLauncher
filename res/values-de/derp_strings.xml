@@ -183,4 +183,7 @@
     <!-- App label - max lines -->
     <string name="icon_max_lines_title">Maximale Zeilen für Symbolbeschriftungen</string>
 
+    <!-- Launcher restart toast -->
+    <string name="launcher_restart_toast">Damit alle Änderungen wirksam werden, ist ein Neustart des Launchers erforderlich. Der Launcher wird jetzt neu gestartet.</string>
+
 </resources>
