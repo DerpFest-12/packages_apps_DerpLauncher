@@ -57,7 +57,6 @@ public class QuickSpaceView extends FrameLayout implements ValueAnimator.Animato
     private ImageView mWeatherIcon;
     private String mWeatherLabel;
     private TextView mWeatherTemp;
-    private View mSeparator;
     private ViewGroup mQuickspaceContent;
     private ViewGroup mWeatherContent;
 
@@ -111,7 +110,6 @@ public class QuickSpaceView extends FrameLayout implements ValueAnimator.Animato
     private void loadViews() {
         mClockView = findViewById(R.id.clock_view);
         mQuickspaceContent = findViewById(R.id.quickspace_content);
-        mSeparator = findViewById(R.id.separator);
         mWeatherIcon = findViewById(R.id.weather_icon);
         mWeatherContent = findViewById(R.id.weather_content);
         mWeatherTemp = findViewById(R.id.weather_temp);
