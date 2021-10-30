@@ -23,5 +23,6 @@
     <!-- QuickSpace -->
     <dimen name="quickspace_title_size">18dp</dimen>
     <dimen name="quickspace_subtitle_size">14dp</dimen>
+    <dimen name="quickspace_subtitle_icon_size">15dp</dimen>
 
 </resources>
