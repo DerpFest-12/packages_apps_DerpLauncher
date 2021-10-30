@@ -71,7 +71,7 @@
 
     <!-- QuickSpace -->
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-    <uses-permission android:name="org.omnirom.omnijaws.READ_WEATHER" />
+    <!-- uses-permission android:name="org.omnirom.omnijaws.READ_WEATHER" /-->
 
     <application
         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
