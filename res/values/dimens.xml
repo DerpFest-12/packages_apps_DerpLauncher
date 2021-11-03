@@ -39,6 +39,11 @@
     <dimen name="dynamic_grid_hotseat_extra_vertical_size">34dp</dimen>
     <dimen name="dynamic_grid_hotseat_side_padding">0dp</dimen>
 
+    <!-- Hotseat Pissel Bar -->
+    <dimen name="pisselbar_height">64dp</dimen>
+    <dimen name="pisselbar_vertical_padding">8dp</dimen>
+    <dimen name="pisselbar_horizontal_padding">8dp</dimen>
+
     <!-- Scalable Grid -->
     <dimen name="scalable_grid_left_right_margin">22dp</dimen>
     <dimen name="scalable_grid_qsb_bottom_margin">42dp</dimen>
