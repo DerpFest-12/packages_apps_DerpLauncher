@@ -38,6 +38,7 @@
         android:padding="12dp"
         android:paddingStart="20dp"
         android:src="@drawable/searchbox_ic_google"
+        android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
 
     <View
@@ -54,6 +55,7 @@
         android:padding="12dp"
         android:paddingEnd="20dp"
         android:src="@drawable/searchbox_ic_assistant"
+        android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
 
     </LinearLayout>

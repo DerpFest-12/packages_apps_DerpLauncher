@@ -40,6 +40,8 @@
     <attr name="eduHalfSheetBGColor" format="color" />
     <attr name="overviewScrimColor" format="color" />
     <attr name="popupNotificationDotColor" format="color" />
+    <attr name="pisselbarBackgroundColor" format="color" />
+    <attr name="pisselbarForegroundColor" format="color" />
 
     <attr name="folderDotColor" format="color" />
     <attr name="folderFillColor" format="color" />
