@@ -53,8 +53,19 @@
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="12dp"
-        android:paddingEnd="20dp"
         android:src="@drawable/searchbox_ic_assistant"
+        android:tint="?attr/pisselbarForegroundColor"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/pisselbar_btn_lens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="12dp"
+        android:paddingEnd="20dp"
+        android:src="@drawable/searchbox_ic_lens"
         android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
 

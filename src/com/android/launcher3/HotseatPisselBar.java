@@ -17,11 +17,13 @@
 package com.android.launcher3;
 
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -61,5 +63,14 @@ public class HotseatPisselBar extends LinearLayout {
                 Log.e(TAG, "No activity found for ACTION_VOICE_COMMAND");
             }
         });
+
+        ImageView btnLens = findViewById(R.id.pisselbar_btn_lens);
+        Intent lensIntent = Intent.makeMainActivity(new ComponentName("com.google.ar.lens", "com.google.vr.apps.ornament.app.lens.LensLauncherActivity"));
+        lensIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        if (context.getPackageManager().resolveActivity(lensIntent, 0) != null) {
+            btnLens.setOnClickListener(v -> context.startActivity(lensIntent));
+        } else {
+            btnLens.setVisibility(View.GONE);
+        }
     }
 }
