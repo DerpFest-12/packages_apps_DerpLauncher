@@ -216,4 +216,5 @@
     <icon drawable="@drawable/themed_icon_dolby" package="com.motorola.dolby.dolbyui" />
     <icon drawable="@drawable/themed_icon_boost" package="com.rubenmayayo.reddit" />
     <icon drawable="@drawable/themed_icon_firefox" package="org.mozilla.firefox" />
+    <icon drawable="@drawable/themed_icon_classroom" package="com.google.android.apps.classroom" />
 </icons>
