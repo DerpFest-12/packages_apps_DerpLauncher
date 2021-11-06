@@ -20,6 +20,8 @@ import static android.animation.ValueAnimator.areAnimatorsEnabled;
 
 import static com.android.launcher3.anim.AnimatorPlaybackController.callListenerCommandRecursively;
 import static com.android.launcher3.states.StateAnimationConfig.SKIP_ALL_ANIMATIONS;
+import static com.android.launcher3.LauncherState.BACKGROUND_APP;
+import static com.android.launcher3.LauncherState.NORMAL;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -31,6 +33,7 @@ import android.os.Looper;
 import com.android.launcher3.anim.AnimationSuccessListener;
 import com.android.launcher3.anim.AnimatorPlaybackController;
 import com.android.launcher3.anim.PendingAnimation;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.states.StateAnimationConfig;
 import com.android.launcher3.states.StateAnimationConfig.AnimationFlags;
 
@@ -205,6 +208,9 @@ public class StateManager<STATE_TYPE extends BaseState<STATE_TYPE>> {
                 }
                 return;
             }
+        }
+        if (state == BACKGROUND_APP && mState == NORMAL) {
+            LauncherAppState.getInstanceNoCreate().checkIfRestartNeeded();
         }
 
         // Cancel the current animation. This will reset mState to mCurrentStableState, so store it.
