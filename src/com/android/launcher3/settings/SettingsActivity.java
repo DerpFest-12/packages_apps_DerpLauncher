@@ -140,7 +140,16 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) { }
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case Utilities.DESKTOP_SHOW_QUICKSPACE:
+            case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
+                LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+                break;
+            default:
+                break;
+        }
+    }
 
     private boolean startPreference(String fragment, Bundle args, String key) {
         if (Utilities.ATLEAST_P && getSupportFragmentManager().isStateSaved()) {
@@ -290,16 +299,6 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                     updateIsGoogleAppEnabled();
                     return true;
 
-                case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
-                    SwitchPreference quickspaceNowPlaying =
-                        (SwitchPreference) findPreference(Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING);
-                    quickspaceNowPlaying.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-                        public boolean onPreferenceChange(Preference preference, Object newValue) {
-                            LauncherAppState.getInstanceNoCreate().setNeedsRestart();
-                            return true;
-                        }
-                    });
-                    return true;
             }
 
             return true;
