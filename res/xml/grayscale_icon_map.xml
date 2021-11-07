@@ -53,6 +53,7 @@
     <icon drawable="@drawable/themed_icon_podcasts" package="com.google.android.apps.podcasts" />
     <icon drawable="@drawable/themed_icon_youtube_tv" package="com.google.android.apps.youtube.unplugged" />
     <icon drawable="@array/grayscale_clock_icons" package="com.google.android.deskclock" />
+    <icon drawable="@array/grayscale_clock_icons" package="com.android.deskclock" />
     <icon drawable="@drawable/themed_icon_chat" package="com.google.android.apps.dynamite" />
     <icon drawable="@drawable/themed_icon_digital_wellbeing" package="com.google.android.apps.wellbeing" />
     <icon drawable="@drawable/themed_icon_tasks" package="com.google.android.apps.tasks" />
