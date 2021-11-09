@@ -218,4 +218,6 @@
     <icon drawable="@drawable/themed_icon_firefox" package="org.mozilla.firefox" />
     <icon drawable="@drawable/themed_icon_classroom" package="com.google.android.apps.classroom" />
     <icon drawable="@drawable/themed_icon_hoyolab" package="com.mihoyo.hoyolab" />
+    <icon drawable="@drawable/themed_icon_ffbeww" package="com.square_enix.android_googleplay.FFBEWW" />
+    <icon drawable="@drawable/themed_icon_ffbejp" package="com.square_enix.ffbejpn" />
 </icons>
