@@ -220,4 +220,6 @@
     <icon drawable="@drawable/themed_icon_hoyolab" package="com.mihoyo.hoyolab" />
     <icon drawable="@drawable/themed_icon_ffbeww" package="com.square_enix.android_googleplay.FFBEWW" />
     <icon drawable="@drawable/themed_icon_ffbejp" package="com.square_enix.ffbejpn" />
+    <icon drawable="@drawable/themed_icon_substratum" package="projekt.substratum" />
+    <icon drawable="@drawable/themed_icon_substratum_lite" package="projekt.substratum.lite" />
 </icons>
