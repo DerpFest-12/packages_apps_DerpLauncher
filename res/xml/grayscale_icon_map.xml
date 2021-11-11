@@ -222,4 +222,9 @@
     <icon drawable="@drawable/themed_icon_ffbejp" package="com.square_enix.ffbejpn" />
     <icon drawable="@drawable/themed_icon_substratum" package="projekt.substratum" />
     <icon drawable="@drawable/themed_icon_substratum_lite" package="projekt.substratum.lite" />
+    <icon drawable="@drawable/themed_icon_gi" package="com.miHoYo.GenshinImpact" />
+    <icon drawable="@drawable/themed_icon_hi3" package="com.miHoYo.bh3" />
+    <icon drawable="@drawable/themed_icon_hi3gb" package="com.miHoYo.bh3global" />
+    <icon drawable="@drawable/themed_icon_hi3sea" package="com.miHoYo.bh3oversea" />
+    <icon drawable="@drawable/themed_icon_hi3tw" package="com.miHoYo.bh3tw" />
 </icons>
