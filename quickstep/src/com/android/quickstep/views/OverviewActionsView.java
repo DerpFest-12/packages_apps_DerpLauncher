@@ -172,9 +172,12 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
      */
     public void setViewEnabled(boolean isEnabled) {
         findViewById(R.id.action_screenshot).setEnabled(isEnabled);
-        findViewById(R.id.clear_all).setEnabled(isEnabled);
         findViewById(R.id.action_share).setEnabled(isEnabled);
         findViewById(R.id.oav_three_button_space).setEnabled(isEnabled);
+
+        if (isEnabled) {
+            findViewById(R.id.clear_all).setEnabled(isEnabled);
+        }
     }
 
     /**
