@@ -167,6 +167,17 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     }
 
     /**
+     * sets OverviewActionsView's children enabled/disabled.
+     * @param enabled True = enable, False = disable.
+     */
+    public void setViewEnabled(boolean isEnabled) {
+        findViewById(R.id.action_screenshot).setEnabled(isEnabled);
+        findViewById(R.id.clear_all).setEnabled(isEnabled);
+        findViewById(R.id.action_share).setEnabled(isEnabled);
+        findViewById(R.id.oav_three_button_space).setEnabled(isEnabled);
+    }
+
+    /**
      * Updates the proper disabled flag to indicate whether OverviewActionsView should be enabled.
      * Ignores DISABLED_ROTATED flag for determining enabled. Flag is used to enable/disable
      * buttons individually, currently done for select button in subclass.
@@ -182,7 +193,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         }
         //
         boolean isEnabled = (mDisabledFlags & ~DISABLED_ROTATED) == 0;
-        LayoutUtils.setViewEnabled(this, isEnabled);
+        setViewEnabled(isEnabled);
     }
 
     public AlphaProperty getContentAlpha() {
