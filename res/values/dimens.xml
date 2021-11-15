@@ -43,6 +43,8 @@
     <dimen name="pisselbar_height">64dp</dimen>
     <dimen name="pisselbar_vertical_padding">8dp</dimen>
     <dimen name="pisselbar_horizontal_padding">8dp</dimen>
+    <dimen name="pisselbar_icon_padding">12dp</dimen>
+    <dimen name="pisselbar_icon_padding_side">20dp</dimen>
 
     <!-- Scalable Grid -->
     <dimen name="scalable_grid_left_right_margin">22dp</dimen>

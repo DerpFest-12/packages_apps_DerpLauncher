@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -71,6 +72,46 @@ public class HotseatPisselBar extends LinearLayout {
             btnLens.setOnClickListener(v -> context.startActivity(lensIntent));
         } else {
             btnLens.setVisibility(View.GONE);
+        }
+    }
+
+    private void setPaddingStart(View view, int padding) {
+        if (view == null) return;
+
+        view.setPaddingRelative(padding, view.getPaddingTop(),
+                view.getPaddingEnd(), view.getPaddingBottom());
+    }
+
+    private void setPaddingEnd(View view, int padding) {
+        if (view == null) return;
+
+        view.setPaddingRelative(view.getPaddingStart(), view.getPaddingTop(),
+                padding, view.getPaddingBottom());
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+
+        ViewGroup content = findViewById(R.id.pisselbar_content);
+        if (content == null)
+            return;
+
+        int lastIndex = content.getChildCount() - 1;
+        View firstIcon = content.getChildAt(0);
+        View lastIcon = content.getChildAt(lastIndex);
+        View secondLastIcon = content.getChildAt(lastIndex - 1);
+        if (firstIcon == null || lastIcon == null || secondLastIcon == null)
+            return;
+
+        int sidePadding = getResources().getDimensionPixelSize(R.dimen.pisselbar_icon_padding_side);
+        setPaddingStart(firstIcon, sidePadding);
+        if (lastIcon.getVisibility() == View.GONE) {
+            setPaddingEnd(lastIcon, lastIcon.getPaddingStart());
+            setPaddingEnd(secondLastIcon, sidePadding);
+        } else {
+            setPaddingEnd(lastIcon, sidePadding);
+            setPaddingEnd(secondLastIcon, secondLastIcon.getPaddingStart());
         }
     }
 }

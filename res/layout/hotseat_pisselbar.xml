@@ -25,6 +25,7 @@
     android:paddingBottom="@dimen/pisselbar_vertical_padding">
 
     <LinearLayout
+        android:id="@+id/pisselbar_content"
         android:background="@drawable/bg_hotseat_searchbox"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -35,8 +36,7 @@
         android:id="@+id/pisselbar_btn_google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:paddingStart="20dp"
+        android:padding="@dimen/pisselbar_icon_padding"
         android:src="@drawable/searchbox_ic_google"
         android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:padding="12dp"
+        android:padding="@dimen/pisselbar_icon_padding"
         android:src="@drawable/searchbox_ic_assistant"
         android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
@@ -63,8 +63,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:padding="12dp"
-        android:paddingEnd="20dp"
+        android:padding="@dimen/pisselbar_icon_padding"
         android:src="@drawable/searchbox_ic_lens"
         android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
