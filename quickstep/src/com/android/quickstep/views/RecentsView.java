@@ -136,6 +136,7 @@ import com.android.launcher3.util.SplitConfigurationOptions.SplitPositionOption;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.util.TranslateEdgeEffect;
 import com.android.launcher3.util.ViewPool;
+import com.android.launcher3.Utilities;
 import com.android.quickstep.AnimatedFloat;
 import com.android.quickstep.BaseActivityInterface;
 import com.android.quickstep.GestureState;
@@ -3118,6 +3119,8 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
             mLastMeasureSize.set(getWidth(), getHeight());
         }
 
+        repaintEmptyMessage();
+
         if (mShowEmptyMessage && hasValidSize && mEmptyTextLayout == null) {
             int availableWidth = mLastMeasureSize.x - mEmptyMessagePadding - mEmptyMessagePadding;
             mEmptyTextLayout = StaticLayout.Builder.obtain(mEmptyMessage, 0, mEmptyMessage.length(),
@@ -3132,6 +3135,13 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
             mEmptyIcon.setBounds(left, top, left + mEmptyIcon.getIntrinsicWidth(),
                     top + mEmptyIcon.getIntrinsicHeight());
         }
+    }
+
+    private void repaintEmptyMessage() {
+        int recentOpacity = Utilities.getRecentOpacity(getContext());
+        mEmptyMessagePaint.setColor(
+            recentOpacity < 128 ? Color.WHITE :
+            Themes.getAttrColor(getContext(), android.R.attr.textColorPrimary));
     }
 
     @Override

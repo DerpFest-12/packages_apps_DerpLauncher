@@ -21,10 +21,15 @@ import static com.android.launcher3.config.FeatureFlags.ENABLE_OVERVIEW_SHARE;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import androidx.annotation.IntDef;
@@ -36,6 +41,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.util.MultiValueAlpha;
 import com.android.launcher3.util.MultiValueAlpha.AlphaProperty;
+import com.android.launcher3.util.Themes;
 import com.android.quickstep.SysUINavigationMode;
 import com.android.quickstep.SysUINavigationMode.Mode;
 import com.android.quickstep.TaskOverlayFactory.OverlayUICallbacks;
@@ -119,6 +125,12 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
             share.setVisibility(VISIBLE);
             findViewById(R.id.oav_three_button_space).setVisibility(VISIBLE);
         }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        repaintOverviewActions();
     }
 
     /**
@@ -261,6 +273,28 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     private float getModalTrans(float endTranslation) {
         float progress = ACCEL_DEACCEL.getInterpolation(mModalness);
         return Utilities.mapRange(progress, 0, endTranslation);
+    }
+
+    private void repaintOverviewActions() {
+        int[] actions = new int[] {
+            R.id.action_share,
+            R.id.clear_all,
+            R.id.action_screenshot
+        };
+
+        int recentOpacity = Utilities.getRecentOpacity(getContext());
+        int color = recentOpacity < 128 ? Color.WHITE :
+            Themes.getAttrColor(getContext(), android.R.attr.textColorPrimary);
+
+        for (int button : actions) {
+            Button action = findViewById(button);
+            action.setTextColor(color);
+            for (Drawable drawable : action.getCompoundDrawables()) {
+                if (drawable != null) {
+                    drawable.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
+                }
+            }
+        }
     }
 
     /** Get the top margin associated with the action buttons in Overview. */
