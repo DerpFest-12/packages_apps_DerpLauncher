@@ -23,6 +23,8 @@ import android.graphics.Rect;
 import android.os.SystemProperties;
 import android.view.View;
 
+import androidx.core.graphics.ColorUtils;
+
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherState;
@@ -30,6 +32,7 @@ import com.android.launcher3.R;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.util.Themes;
+import com.android.launcher3.Utilities;
 import com.android.quickstep.SysUINavigationMode;
 import com.android.quickstep.util.LayoutUtils;
 import com.android.quickstep.views.RecentsView;
@@ -109,7 +112,9 @@ public class OverviewState extends LauncherState {
 
     @Override
     public int getWorkspaceScrimColor(Launcher launcher) {
-        return Themes.getAttrColor(launcher, R.attr.overviewScrimColor);
+        int opacity = Utilities.getRecentOpacity(launcher.getRootView().getContext());
+        return ColorUtils.setAlphaComponent(
+            Themes.getAttrColor(launcher, R.attr.overviewScrimColor), opacity);
     }
 
     @Override

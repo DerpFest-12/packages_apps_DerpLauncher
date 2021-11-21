@@ -93,6 +93,14 @@
         android:defaultValue="true"
         android:persistent="true"/>
 
+    <androidx.preference.SeekBarPreference
+        android:key="pref_recent_opacity"
+        android:title="@string/recent_apps_opacity_title"
+        android:summary="@string/recent_apps_opacity_summary"
+        android:defaultValue="255"
+        android:min="0"
+        android:max="255" />
+
     <Preference
         android:key="pref_developer_options"
         android:persistent="false"

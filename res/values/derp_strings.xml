@@ -72,4 +72,8 @@
     <string name="about_summary">Info about the launcher</string>
     <string name="about_app_version">Version</string>
 
+    <!-- Recent Apps -->
+    <string name="recent_apps_opacity_title">Recent Apps Opacity</string>
+    <string name="recent_apps_opacity_summary">Background opacity on the recent apps view</string>
+
 </resources>
