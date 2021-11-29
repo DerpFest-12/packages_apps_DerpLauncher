@@ -308,4 +308,5 @@
     <icon drawable="@drawable/themed_icon_wikipedia" package="org.wikipedia" />
     <icon drawable="@drawable/themed_icon_xiaomi_wear" package="com.xiaomi.wearable" />
     <icon drawable="@drawable/themed_icon_yandex_music" package="ru.yandex.music" />
+    <icon drawable="@drawable/themed_icon_xmp_mod_player" package="org.helllabs.android.xmp" />
 </icons>
