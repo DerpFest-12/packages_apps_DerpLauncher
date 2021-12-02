@@ -227,4 +227,7 @@
     <icon drawable="@drawable/themed_icon_hi3gb" package="com.miHoYo.bh3global" />
     <icon drawable="@drawable/themed_icon_hi3sea" package="com.miHoYo.bh3oversea" />
     <icon drawable="@drawable/themed_icon_hi3tw" package="com.miHoYo.bh3tw" />
+    <icon drawable="@drawable/themed_icon_tachiyomi" package="eu.kanade.tachiyomi" />
+    <icon drawable="@drawable/themed_icon_bluearchive" package="com.nexon.bluearchive" />
+    <icon drawable="@drawable/themed_icon_bluearchiveJP" package="com.YostarJP.BlueArchive" />
 </icons>
