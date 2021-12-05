@@ -148,6 +148,7 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
         switch (key) {
             case Utilities.DESKTOP_SHOW_QUICKSPACE:
             case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
+            case Utilities.KEY_HIDE_PISSELBAR:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
                 break;
             default:

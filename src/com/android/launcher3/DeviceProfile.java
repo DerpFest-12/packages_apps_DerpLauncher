@@ -333,7 +333,7 @@ public class DeviceProfile {
         hotseatBarBottomPaddingPx = (isTallDevice ? 0
                 : res.getDimensionPixelSize(R.dimen.dynamic_grid_hotseat_bottom_non_tall_padding))
                 + res.getDimensionPixelSize(R.dimen.dynamic_grid_hotseat_bottom_padding)
-                + res.getDimensionPixelSize(R.dimen.pisselbar_height);
+                + (Utilities.hidePisselBar(context) ? 0 : res.getDimensionPixelSize(R.dimen.pisselbar_height));
         hotseatBarSidePaddingEndPx =
                 res.getDimensionPixelSize(R.dimen.dynamic_grid_hotseat_side_padding);
         // Add a bit of space between nav bar and hotseat in vertical bar layout.

@@ -76,6 +76,10 @@
     <string name="recent_apps_opacity_title">Recent Apps Opacity</string>
     <string name="recent_apps_opacity_summary">Background opacity on the recent apps view</string>
 
+    <!-- Pisselbar -->
+    <string name="disable_pisselbar_title">Hide Pisselbar</string>
+    <string name="disable_pisselbar_summary">Hide Pixel-like search bar from the homescreen</string>
+
     <!-- Icon size -->
     <string name="icon_size_title">Icon size</string>
 

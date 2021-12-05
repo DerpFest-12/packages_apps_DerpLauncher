@@ -92,9 +92,13 @@ public class HotseatPisselBar extends LinearLayout {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-
+        boolean hidePisselBar = Utilities.hidePisselBar(getContext());
         ViewGroup content = findViewById(R.id.pisselbar_content);
         if (content == null)
+            return;
+
+        content.setVisibility(hidePisselBar ? View.GONE : View.VISIBLE);
+        if (hidePisselBar)
             return;
 
         int lastIndex = content.getChildCount() - 1;

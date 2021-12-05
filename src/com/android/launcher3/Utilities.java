@@ -131,6 +131,7 @@ public final class Utilities {
     public static final String KEY_SHOW_QUICKSPACE_NOWPLAYING = "pref_quickspace_np";
     public static final String KEY_ALLOW_WALLPAPER_ZOOM = "pref_allow_wallpaper_zoom";
     public static final String KEY_RECENT_OPACITY = "pref_recent_opacity";
+    public static final String KEY_HIDE_PISSELBAR = "pref_hide_pisselbar";
 
     private static final long WAIT_BEFORE_RESTART = 250;
 
@@ -903,6 +904,11 @@ public final class Utilities {
     public static int getFontSizeModifier(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getInt(FONT_SIZE, 100);
+    }
+
+    public static boolean hidePisselBar(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(KEY_HIDE_PISSELBAR, false);
     }
 
     public static void restart(final Context context) {
