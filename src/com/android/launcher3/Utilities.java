@@ -933,7 +933,7 @@ public final class Utilities {
 
     public static boolean isWorkspaceEditAllowed(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
-        return prefs.getBoolean(InvariantDeviceProfile.KEY_WORKSPACE_EDIT, true);
+        return prefs.getBoolean(InvariantDeviceProfile.KEY_WORKSPACE_LOCK, false);
     }
 
     public static void restart(final Context context) {
