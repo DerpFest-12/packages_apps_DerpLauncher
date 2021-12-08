@@ -73,8 +73,7 @@
     <string name="about_app_version">Version</string>
 
     <!-- Recent Apps -->
-    <string name="recent_apps_opacity_title">Recent Apps Opacity</string>
-    <string name="recent_apps_opacity_summary">Background opacity on the recent apps view</string>
+    <string name="recent_apps_opacity_title">Recent Apps opacity</string>
 
     <!-- Pisselbar -->
     <string name="disable_pisselbar_title">Hide Pisselbar</string>

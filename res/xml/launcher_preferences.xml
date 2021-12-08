@@ -101,13 +101,14 @@
         android:defaultValue="true"
         android:persistent="true"/>
 
-    <androidx.preference.SeekBarPreference
+    <com.android.launcher3.settings.preferences.CustomSeekBarPreference
         android:key="pref_recent_opacity"
         android:title="@string/recent_apps_opacity_title"
-        android:summary="@string/recent_apps_opacity_summary"
-        android:defaultValue="255"
-        android:min="0"
-        android:max="255" />
+        android:persistent="true"
+        settings:min="0"
+        android:max="255"
+        android:defaultValue="250"
+        settings:interval="5" />
 
     <com.android.launcher3.settings.preferences.CustomSeekBarPreference
          android:key="pref_custom_icon_size"
