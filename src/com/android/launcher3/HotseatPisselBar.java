@@ -20,6 +20,9 @@ import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +37,9 @@ import com.android.launcher3.qsb.QsbContainerView;
 
 public class HotseatPisselBar extends LinearLayout {
     private static final String TAG = "HotseatPisselBar";
+    private static final String GOOGLE_PACKAGE = "com.google.android.googlequicksearchbox";
+    private static final String GOOGLE_LENS_CLASS = "com.google.android.apps.lens.MainActivity";
+    private static final Uri GOOGLE_LENS_URI = Uri.parse("google://lens");
 
     public HotseatPisselBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -75,13 +81,7 @@ public class HotseatPisselBar extends LinearLayout {
         });
 
         ImageView btnLens = findViewById(R.id.pisselbar_btn_lens);
-        Intent lensIntent = Intent.makeMainActivity(new ComponentName("com.google.ar.lens", "com.google.vr.apps.ornament.app.lens.LensLauncherActivity"));
-        lensIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        if (context.getPackageManager().resolveActivity(lensIntent, 0) != null) {
-            btnLens.setOnClickListener(v -> context.startActivity(lensIntent));
-        } else {
-            btnLens.setVisibility(View.GONE);
-        }
+        btnLens.setOnClickListener(v -> launchLens(context));
     }
 
     private void setPaddingStart(View view, int padding) {
@@ -96,6 +96,25 @@ public class HotseatPisselBar extends LinearLayout {
 
         view.setPaddingRelative(view.getPaddingStart(), view.getPaddingTop(),
                 padding, view.getPaddingBottom());
+    }
+
+    public static void launchLens(Context context) {
+        Bundle params = new Bundle();
+        params.putString("caller_package", GOOGLE_PACKAGE);
+        params.putLong("start_activity_time_nanos", SystemClock.elapsedRealtimeNanos());
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        intent.setPackage(GOOGLE_PACKAGE);
+        intent.setComponent(new ComponentName(GOOGLE_PACKAGE, GOOGLE_LENS_CLASS));
+        intent.setData(GOOGLE_LENS_URI);
+        intent.putExtra("lens_activity_params", params);
+
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "No activity found for GOOGLE_LENS_CLASS");
+        }
     }
 
     @Override
