@@ -41,6 +41,15 @@ public class HotseatPisselBar extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.hotseat_pisselbar, this, true);
 
+        boolean hidePisselBar = Utilities.hidePisselBar(getContext());
+        ViewGroup content = findViewById(R.id.pisselbar_content);
+        if (content == null)
+            return;
+
+        content.setVisibility(hidePisselBar ? View.GONE : View.VISIBLE);
+        if (hidePisselBar)
+            return;
+
         setOnClickListener(v -> {
             Intent intent = new Intent("android.search.action.GLOBAL_SEARCH");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -92,13 +101,8 @@ public class HotseatPisselBar extends LinearLayout {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        boolean hidePisselBar = Utilities.hidePisselBar(getContext());
         ViewGroup content = findViewById(R.id.pisselbar_content);
         if (content == null)
-            return;
-
-        content.setVisibility(hidePisselBar ? View.GONE : View.VISIBLE);
-        if (hidePisselBar)
             return;
 
         int lastIndex = content.getChildCount() - 1;
