@@ -154,6 +154,7 @@ import com.android.launcher3.popup.PopupContainerWithArrow;
 import com.android.launcher3.popup.PopupDataProvider;
 import com.android.launcher3.popup.SystemShortcut;
 import com.android.launcher3.quickspace.QuickSpaceView;
+import com.android.launcher3.quickspace.SmartSpaceData;
 import com.android.launcher3.statemanager.StateManager;
 import com.android.launcher3.statemanager.StateManager.StateHandler;
 import com.android.launcher3.statemanager.StatefulActivity;
@@ -487,6 +488,7 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
 
         // Listen for broadcasts
         registerReceiver(mScreenOffReceiver, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+        registerReceiver(mSmartSpaceUpdatedReceiver, new IntentFilter(SmartSpaceData.ACTION_REFRESH));
 
         getSystemUiController().updateUiState(SystemUiController.UI_STATE_BASE_WINDOW,
                 Themes.getAttrBoolean(this, R.attr.isWorkspaceDarkText));
@@ -1422,6 +1424,15 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
         }
     };
 
+    private final BroadcastReceiver mSmartSpaceUpdatedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (mQuickSpace != null && mQuickSpace.isAttachedToWindow()) {
+                mQuickSpace.onDataUpdated();
+            }
+        }
+    };
+
     private void updateNotificationDots(Predicate<PackageUserKey> updatedDots) {
         mWorkspace.updateNotificationDots(updatedDots);
         mAppsView.getAppsStore().updateNotificationDots(updatedDots);
@@ -1647,6 +1658,7 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
         super.onDestroy();
         ACTIVITY_TRACKER.onActivityDestroyed(this);
 
+        unregisterReceiver(mSmartSpaceUpdatedReceiver);
         unregisterReceiver(mScreenOffReceiver);
         mWorkspace.removeFolderListeners();
         PluginManagerWrapper.INSTANCE.get(this).removePluginListener(this);
