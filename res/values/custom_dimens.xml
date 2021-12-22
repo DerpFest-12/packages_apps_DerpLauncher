@@ -21,8 +21,10 @@
 <resources>
 
     <!-- QuickSpace -->
-    <dimen name="quickspace_title_size">18dp</dimen>
-    <dimen name="quickspace_subtitle_size">14dp</dimen>
-    <dimen name="quickspace_subtitle_icon_size">15dp</dimen>
+    <dimen name="quickspace_title_size">18sp</dimen>
+    <dimen name="quickspace_primary_subtitle_size">16sp</dimen>
+    <dimen name="quickspace_primary_subtitle_icon_size">17dp</dimen>
+    <dimen name="quickspace_event_subtitle_size">14sp</dimen>
+    <dimen name="quickspace_event_subtitle_icon_size">15dp</dimen>
 
 </resources>

@@ -49,8 +49,8 @@
 
         <ImageView
             android:id="@+id/quick_event_icon_sub"
-            android:layout_width="@dimen/quickspace_subtitle_icon_size"
-            android:layout_height="@dimen/quickspace_subtitle_icon_size"
+            android:layout_width="@dimen/quickspace_event_subtitle_icon_size"
+            android:layout_height="@dimen/quickspace_event_subtitle_icon_size"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="6dp"
             android:layout_weight="0.0" />
@@ -70,7 +70,7 @@
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
             android:textColor="?workspaceTextColor"
-            android:textSize="@dimen/quickspace_subtitle_size"
+            android:textSize="@dimen/quickspace_event_subtitle_size"
             launcher:ambientShadowBlur="3dp"
             launcher:ambientShadowColor="?workspaceAmbientShadowColor"
             launcher:keyShadowBlur="2dp"
@@ -103,8 +103,8 @@
 
             <ImageView
                 android:id="@+id/quick_event_weather_icon"
-                android:layout_width="@dimen/quickspace_subtitle_icon_size"
-                android:layout_height="@dimen/quickspace_subtitle_icon_size"
+                android:layout_width="@dimen/quickspace_event_subtitle_icon_size"
+                android:layout_height="@dimen/quickspace_event_subtitle_icon_size"
                 android:layout_gravity="center"
                 android:layout_marginRight="4dp"
                 android:scaleType="fitXY" />
@@ -116,7 +116,7 @@
                 android:layout_gravity="center"
                 android:drawablePadding="6dp"
                 android:textColor="?workspaceTextColor"
-                android:textSize="@dimen/quickspace_subtitle_size"
+                android:textSize="@dimen/quickspace_event_subtitle_size"
                 launcher:ambientShadowBlur="3dp"
                 launcher:ambientShadowColor="?workspaceAmbientShadowColor"
                 launcher:keyShadowBlur="2dp"
