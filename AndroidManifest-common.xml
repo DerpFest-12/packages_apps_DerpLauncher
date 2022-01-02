@@ -106,13 +106,6 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.launcher3.quickspace.receivers.SmartSpaceReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.launcher3.UPDATE_SMARTSPACE" />
-            </intent-filter>
-        </receiver>
-
         <service
             android:name="com.android.launcher3.notification.NotificationListener"
             android:label="@string/notification_dots_service_title"

@@ -37,7 +37,6 @@ import com.android.launcher3.LauncherNotifications;
 import com.android.launcher3.notification.NotificationInfo;
 import com.android.launcher3.notification.NotificationKeyData;
 import com.android.launcher3.notification.NotificationListener;
-import com.android.launcher3.quickspace.SmartSpaceData;
 import com.android.launcher3.util.PackageUserKey;
 
 import java.util.ArrayList;
@@ -102,15 +101,15 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     }
 
     public boolean isWeatherAvailable() {
-        return SmartSpaceData.hasWeatherData(mContext);
+        return false;
     }
 
     public Icon getWeatherIcon() {
-        return SmartSpaceData.getWeatherIcon(mContext);
+        return Icon.createWithResource(mContext, R.drawable.ic_warning);
     }
 
     public String getWeatherTemp() {
-        return SmartSpaceData.getWeatherText(mContext);
+        return "";
     }
 
     private void playbackStateUpdate(int state) {
