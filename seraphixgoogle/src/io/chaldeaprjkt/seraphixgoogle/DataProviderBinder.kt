@@ -15,21 +15,6 @@
  */
 package io.chaldeaprjkt.seraphixgoogle
 
-import android.appwidget.AppWidgetHost
-import android.appwidget.AppWidgetHostView
-import android.appwidget.AppWidgetProviderInfo
-import android.content.Context
-
-class EphemeralWidgetHostGoogle(context: Context, hostId: Int) : AppWidgetHost(context, hostId) {
-    private var listener: DataProviderListener? = null
-
-    override fun onCreateView(
-        context: Context?,
-        appWidgetId: Int,
-        appWidget: AppWidgetProviderInfo?
-    ): AppWidgetHostView = EphemeralWidgetHostViewGoogle(context).setOnUpdateAppWidget(listener)
-
-    fun setOnDataUpdated(listener: DataProviderListener?) {
-        this.listener = listener
-    }
+interface DataProviderBinder {
+    fun onBound(newId: Int)
 }

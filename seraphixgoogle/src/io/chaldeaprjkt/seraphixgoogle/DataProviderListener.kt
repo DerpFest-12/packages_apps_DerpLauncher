@@ -15,6 +15,6 @@
  */
 package io.chaldeaprjkt.seraphixgoogle
 
-interface SeraphixBindAction {
-    fun useId(newId: Int)
+interface DataProviderListener {
+    fun onDataUpdated(chip: Card)
 }

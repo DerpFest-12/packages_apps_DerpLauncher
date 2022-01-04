@@ -30,6 +30,7 @@ import android.media.session.MediaSessionLegacyHelper;
 import android.os.Handler;
 import android.provider.Settings;
 import android.service.notification.StatusBarNotification;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.launcher3.R;
@@ -105,7 +106,7 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     }
 
     public boolean isWeatherAvailable() {
-        return !weatherText.isEmpty() && weatherIcon != null;
+        return !TextUtils.isEmpty(weatherText) && weatherIcon != null;
     }
 
     public Icon getWeatherIcon() {

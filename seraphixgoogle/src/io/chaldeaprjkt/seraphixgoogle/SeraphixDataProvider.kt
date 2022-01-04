@@ -37,7 +37,12 @@ class SeraphixDataProvider(
     private var widgetId = hostWidgetId
     private var isWidgetBound = false
 
-    fun bind(onBounded: SeraphixBindAction? = null) {
+    fun setOnDataUpdated(listener: DataProviderListener? = null): SeraphixDataProvider {
+        widgetHost.setOnDataUpdated(listener)
+        return this
+    }
+
+    fun bind(onBounded: DataProviderBinder? = null) {
         if (!context.isPackageEnabled(QSB_PACKAGE)) {
             Log.i(TAG, "No $QSB_PACKAGE installed/enabled")
             return
@@ -55,7 +60,7 @@ class SeraphixDataProvider(
         }
 
         if (isWidgetBound) {
-            onBounded?.useId(widgetId)
+            onBounded?.onBound(widgetId)
             widgetHostView = widgetHost.createView(context, widgetId, providerInfo)
                     as EphemeralWidgetHostViewGoogle
             widgetHost.startListening()
@@ -73,8 +78,5 @@ class SeraphixDataProvider(
         const val SMARTSPACE_PROVIDER =
             "com.google.android.apps.gsa.staticplugins.smartspace.widget.SmartspaceWidgetProvider"
         const val QSB_PACKAGE = "com.google.android.googlequicksearchbox"
-        const val WEATHER_UPDATE = "io.chaldeaprjkt.seraphix.action.WEATHER_UPDATE"
-        const val EXTRA_WEATHER_TEXT = "weather_text"
-        const val EXTRA_WEATHER_ICON = "weather_icon"
     }
 }

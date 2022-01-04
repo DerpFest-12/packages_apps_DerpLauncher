@@ -17,8 +17,6 @@ package io.chaldeaprjkt.seraphixgoogle
 
 import android.appwidget.AppWidgetHostView
 import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.widget.ImageView
 import android.widget.RemoteViews
@@ -26,8 +24,8 @@ import android.widget.TextView
 import io.chaldeaprjkt.seraphixgoogle.SeraphixCompanion.allChildren
 
 class EphemeralWidgetHostViewGoogle(context: Context?) : AppWidgetHostView(context) {
-    private var weatherText = ""
-    private var weatherIcon: Bitmap? = null
+    private val weatherCard = Card()
+    private var listener: DataProviderListener? = null
 
     override fun updateAppWidget(remoteViews: RemoteViews?) {
         super.updateAppWidget(remoteViews)
@@ -37,16 +35,8 @@ class EphemeralWidgetHostViewGoogle(context: Context?) : AppWidgetHostView(conte
                 is TextView -> grabWeatherText(it)
             }
         }
-        sendContent()
-    }
 
-    private fun sendContent() {
-        Intent(SeraphixDataProvider.WEATHER_UPDATE).apply {
-            putExtra(SeraphixDataProvider.EXTRA_WEATHER_TEXT, weatherText)
-            putExtra(SeraphixDataProvider.EXTRA_WEATHER_ICON, weatherIcon)
-            setPackage(context.packageName)
-            context.sendBroadcast(this)
-        }
+        listener?.onDataUpdated(weatherCard)
     }
 
     private fun grabWeatherText(view: TextView) {
@@ -55,7 +45,7 @@ class EphemeralWidgetHostViewGoogle(context: Context?) : AppWidgetHostView(conte
         val strId = view.resources.getResourceEntryName(view.id)
         if (strId == VID_WEATHER_TEXT) {
             view.text.takeIf { it.isNotEmpty() }?.let {
-                weatherText = it.toString()
+                weatherCard.text = it.toString()
             }
         }
     }
@@ -66,9 +56,14 @@ class EphemeralWidgetHostViewGoogle(context: Context?) : AppWidgetHostView(conte
         val strId = view.resources.getResourceEntryName(view.id)
         if (strId == VID_WEATHER_ICON) {
             (view.drawable as? BitmapDrawable)?.bitmap?.let {
-                weatherIcon = it
+                weatherCard.image = it
             }
         }
+    }
+
+    fun setOnUpdateAppWidget(listener: DataProviderListener? = null): EphemeralWidgetHostViewGoogle {
+        this.listener = listener
+        return this
     }
 
     companion object {
