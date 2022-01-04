@@ -120,6 +120,7 @@ android_library {
         "androidx.slice_slice-view",
         "androidx.cardview_cardview",
         "com.google.android.material_material",
+        "chaldea.seraphixgoogle",
         "iconloader_base",
         "libGoogleFeed",
         "colorkt",
@@ -263,4 +264,3 @@ android_library {
         baseline_filename: "lint-baseline-go-res-lib.xml",
     },
 }
-
