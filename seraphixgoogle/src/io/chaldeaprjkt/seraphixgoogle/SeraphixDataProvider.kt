@@ -43,6 +43,7 @@ class SeraphixDataProvider(
     }
 
     fun bind(onBounded: DataProviderBinder? = null) {
+        if (isWidgetBound) return
         if (!context.isPackageEnabled(QSB_PACKAGE)) {
             Log.i(TAG, "No $QSB_PACKAGE installed/enabled")
             return
@@ -71,6 +72,7 @@ class SeraphixDataProvider(
         if (!isWidgetBound) return
         widgetHost.stopListening()
         widgetHost.deleteHost()
+        isWidgetBound = false
     }
 
     companion object {

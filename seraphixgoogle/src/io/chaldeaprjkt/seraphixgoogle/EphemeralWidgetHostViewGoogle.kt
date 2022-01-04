@@ -17,48 +17,29 @@ package io.chaldeaprjkt.seraphixgoogle
 
 import android.appwidget.AppWidgetHostView
 import android.content.Context
-import android.graphics.drawable.BitmapDrawable
 import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
 import io.chaldeaprjkt.seraphixgoogle.SeraphixCompanion.allChildren
+import io.chaldeaprjkt.seraphixgoogle.SeraphixCompanion.bitmap
+import io.chaldeaprjkt.seraphixgoogle.SeraphixCompanion.string
+import io.chaldeaprjkt.seraphixgoogle.SeraphixCompanion.takeByName
 
 class EphemeralWidgetHostViewGoogle(context: Context?) : AppWidgetHostView(context) {
-    private val weatherCard = Card()
     private var listener: DataProviderListener? = null
 
     override fun updateAppWidget(remoteViews: RemoteViews?) {
         super.updateAppWidget(remoteViews)
+        val weather = Card()
         allChildren().forEach {
             when (it) {
-                is ImageView -> grabWeatherIcon(it)
-                is TextView -> grabWeatherText(it)
+                is ImageView -> it.takeByName<ImageView>(VID_WEATHER_ICON)
+                    ?.let { x -> weather.image = x.bitmap }
+                is TextView -> it.takeByName<TextView>(VID_WEATHER_TEXT)
+                    ?.let { x -> weather.text = x.string }
             }
         }
-
-        listener?.onDataUpdated(weatherCard)
-    }
-
-    private fun grabWeatherText(view: TextView) {
-        if (view.id == -1) return
-
-        val strId = view.resources.getResourceEntryName(view.id)
-        if (strId == VID_WEATHER_TEXT) {
-            view.text.takeIf { it.isNotEmpty() }?.let {
-                weatherCard.text = it.toString()
-            }
-        }
-    }
-
-    private fun grabWeatherIcon(view: ImageView) {
-        if (view.id == -1) return
-
-        val strId = view.resources.getResourceEntryName(view.id)
-        if (strId == VID_WEATHER_ICON) {
-            (view.drawable as? BitmapDrawable)?.bitmap?.let {
-                weatherCard.image = it
-            }
-        }
+        listener?.onDataUpdated(weather)
     }
 
     fun setOnUpdateAppWidget(listener: DataProviderListener? = null): EphemeralWidgetHostViewGoogle {
