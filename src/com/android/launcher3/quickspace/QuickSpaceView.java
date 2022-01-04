@@ -19,10 +19,12 @@ import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.LauncherApps;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -60,6 +62,8 @@ import com.android.launcher3.quickspace.QuickspaceController.OnDataListener;
 import com.android.launcher3.quickspace.receivers.QuickSpaceActionReceiver;
 import com.android.launcher3.quickspace.views.DateTextView;
 
+import io.chaldeaprjkt.seraphixgoogle.SeraphixDataProvider;
+
 public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListener, Runnable, OnDataListener {
 
     private static final String TAG = "Launcher3:QuickSpaceView";
@@ -88,6 +92,7 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
 
     private QuickSpaceActionReceiver mActionReceiver;
     public QuickspaceController mController;
+    private SeraphixDataProvider mSeraphixDataProvider;
 
     public QuickSpaceView(Context context, AttributeSet set) {
         super(context, set);
@@ -97,6 +102,10 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
         mColorStateList = ColorStateList.valueOf(Themes.getAttrColor(getContext(), R.attr.workspaceTextColor));
         mQuickspaceBackgroundRes = R.drawable.bg_quickspace;
         setClipChildren(false);
+        mSeraphixDataProvider = new SeraphixDataProvider(getContext(), 1022,
+            Utilities.getSeraphixHolderId(getContext()));
+        getContext().registerReceiver(mGSAWeatherReceiver, new IntentFilter(SeraphixDataProvider.WEATHER_UPDATE));
+        getViewTreeObserver().addOnGlobalLayoutListener(this::onGlobalLayout);
     }
 
     @Override
@@ -226,6 +235,16 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
         }
     }
 
+    private void onGlobalLayout() {
+        if (isAttachedToWindow()) {
+            mSeraphixDataProvider.bind((newId) -> {
+                Utilities.setSeraphixHolderId(getContext(), newId);
+            });
+        } else {
+            mSeraphixDataProvider.unbind();
+        }
+    }
+
     public boolean isPackageEnabled(String pkgName, Context context) {
         try {
             return context.getPackageManager().getApplicationInfo(pkgName, 0).enabled;
@@ -275,5 +294,16 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
     public void setPadding(int n, int n2, int n3, int n4) {
         super.setPadding(0, 0, 0, 0);
     }
+
+    private final BroadcastReceiver mGSAWeatherReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (mController == null) return;
+
+            String text = intent.getStringExtra(SeraphixDataProvider.EXTRA_WEATHER_TEXT);
+            Bitmap icon = intent.getParcelableExtra(SeraphixDataProvider.EXTRA_WEATHER_ICON);
+            mController.updateWeatherData(text, icon);
+        }
+    };
 
 }

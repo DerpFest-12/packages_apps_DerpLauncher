@@ -906,6 +906,16 @@ public final class Utilities {
         return prefs.getInt(FONT_SIZE, 100);
     }
 
+    public static int getSeraphixHolderId(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getInt("seraphix_holder_id", -1);
+    }
+
+    public static void setSeraphixHolderId(Context context, int newId) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        prefs.edit().putInt("seraphix_holder_id", newId).apply();
+    }
+
     public static boolean hidePisselBar(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_HIDE_PISSELBAR, false);
