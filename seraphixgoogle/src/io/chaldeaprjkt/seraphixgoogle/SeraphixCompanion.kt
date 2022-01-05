@@ -48,7 +48,7 @@ object SeraphixCompanion {
 
     fun ViewGroup.allChildren() = ArrayList<View>().also { allChildren(it) }
 
-    val ImageView.bitmap: Bitmap get() = (drawable as BitmapDrawable).bitmap
+    val ImageView.bitmap: Bitmap? get() = (drawable as BitmapDrawable?)?.bitmap
 
     val TextView.string: String get() = text.toString()
 
