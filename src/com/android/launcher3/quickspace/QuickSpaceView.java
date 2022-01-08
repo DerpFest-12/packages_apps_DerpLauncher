@@ -236,6 +236,7 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
     }
 
     private void onGlobalLayout() {
+        getViewTreeObserver().removeOnGlobalLayoutListener(this::onGlobalLayout);
         if (isAttachedToWindow()) {
             mSeraphixDataProvider.bind((id) -> Utilities.setSeraphixHolderId(getContext(), id));
         } else {
