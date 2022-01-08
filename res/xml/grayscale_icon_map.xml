@@ -24,6 +24,7 @@
     <icon drawable="@drawable/themed_icon_photos" package="com.google.android.apps.photos" />
     <icon drawable="@drawable/themed_icon_photos" package="com.android.gallery3d" />
     <icon drawable="@drawable/themed_icon_photos" package="com.android.gallery" />
+    <icon drawable="@drawable/themed_icon_photos" package="com.oneplus.gallery" />
     <icon drawable="@drawable/themed_icon_sheets" package="com.google.android.apps.docs.editors.sheets" />
     <icon drawable="@drawable/themed_icon_camera" package="com.google.android.GoogleCamera" />
     <icon drawable="@drawable/themed_icon_camera" package="com.oneplus.camera" />
