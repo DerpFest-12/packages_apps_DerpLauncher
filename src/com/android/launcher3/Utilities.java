@@ -132,6 +132,7 @@ public final class Utilities {
     public static final String KEY_ALLOW_WALLPAPER_ZOOM = "pref_allow_wallpaper_zoom";
     public static final String KEY_RECENT_OPACITY = "pref_recent_opacity";
     public static final String KEY_HIDE_PISSELBAR = "pref_hide_pisselbar";
+    public static final String KEY_LOCKED_TASK_RECENT = "pref_locked_task_recent";
 
     private static final long WAIT_BEFORE_RESTART = 250;
 
@@ -919,6 +920,15 @@ public final class Utilities {
     public static boolean hidePisselBar(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_HIDE_PISSELBAR, false);
+    }
+
+    public static String getRecentsLockedTask(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getString(KEY_LOCKED_TASK_RECENT, "");
+    }
+    public static void setRecentsLockedTask(Context context, String apps) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        prefs.edit().putString(KEY_LOCKED_TASK_RECENT, apps).apply();
     }
 
     public static void restart(final Context context) {

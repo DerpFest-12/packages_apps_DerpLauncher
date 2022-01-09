@@ -386,4 +386,30 @@ public interface TaskShortcutFactory {
             dismissTaskMenuView(mActivity);
         }
     }
+
+    TaskShortcutFactory LOCK_UNLOCK_APP = (activity, view) ->
+        new LockUnlockSystemShortcut(activity, view, view.isTaskLocked());
+
+    class LockUnlockSystemShortcut extends SystemShortcut {
+        private static final String TAG = "LockUnlockSystemShortcut";
+        private final TaskView mTaskView;
+        private final BaseDraggingActivity mActivity;
+        private boolean mIsLocked = false;
+
+        public LockUnlockSystemShortcut(BaseDraggingActivity activity, TaskView tv, boolean isLocked) {
+            super(isLocked ? R.drawable.ic_unlocked : R.drawable.ic_locked,
+                  isLocked ? R.string.recent_task_option_unlock_app : R.string.recent_task_option_lock_app,
+                  activity,
+                  tv.getItemInfo());
+            mTaskView = tv;
+            mActivity = activity;
+            mIsLocked = isLocked;
+        }
+
+        @Override
+        public void onClick(View view) {
+            mTaskView.lockTask(!mIsLocked);
+            dismissTaskMenuView(mActivity);
+        }
+    }
 }

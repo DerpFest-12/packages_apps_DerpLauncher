@@ -171,8 +171,10 @@ public abstract class TaskViewTouchController<T extends BaseDraggingActivity>
                             // and down to open if it's the current page.
                             mAllowGoingUp = true;
                             if (i == mRecentsView.getCurrentPage()) {
+                                boolean isTaskLocked = view.isTaskLocked();
+                                mAllowGoingUp = !isTaskLocked;
                                 mAllowGoingDown = true;
-                                directionsToDetectScroll = DIRECTION_BOTH;
+                                directionsToDetectScroll = isTaskLocked ? ~upDirection /*down*/ : DIRECTION_BOTH;
                             } else {
                                 mAllowGoingDown = false;
                                 directionsToDetectScroll = upDirection;
@@ -277,8 +279,8 @@ public abstract class TaskViewTouchController<T extends BaseDraggingActivity>
     public boolean onDrag(float displacement) {
         PagedOrientationHandler orientationHandler = mRecentsView.getPagedOrientationHandler();
         float totalDisplacement = displacement + mDisplacementShift;
-        boolean isGoingUp = totalDisplacement == 0 ? mCurrentAnimationIsGoingUp :
-                orientationHandler.isGoingUp(totalDisplacement, mIsRtl);
+        boolean isGoingUp = mAllowGoingUp && (totalDisplacement == 0 ? mCurrentAnimationIsGoingUp :
+                orientationHandler.isGoingUp(totalDisplacement, mIsRtl));
         if (isGoingUp != mCurrentAnimationIsGoingUp) {
             reInitAnimationController(isGoingUp);
             mFlingBlockCheck.blockFling();

@@ -27,6 +27,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
+import android.text.TextUtils;
 
 import androidx.annotation.VisibleForTesting;
 
@@ -34,6 +35,7 @@ import com.android.launcher3.icons.IconProvider;
 import com.android.launcher3.icons.IconProvider.IconChangeListener;
 import com.android.launcher3.util.Executors.SimpleThreadFactory;
 import com.android.launcher3.util.MainThreadInitializedObject;
+import com.android.launcher3.Utilities;
 import com.android.systemui.shared.recents.model.Task;
 import com.android.systemui.shared.recents.model.ThumbnailData;
 import com.android.systemui.shared.system.ActivityManagerWrapper;
@@ -41,6 +43,7 @@ import com.android.systemui.shared.system.KeyguardManagerCompat;
 import com.android.systemui.shared.system.TaskStackChangeListener;
 import com.android.systemui.shared.system.TaskStackChangeListeners;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -66,6 +69,7 @@ public class RecentsModel extends TaskStackChangeListener implements IconChangeL
     private final RecentTasksList mTaskList;
     private final TaskIconCache mIconCache;
     private final TaskThumbnailCache mThumbnailCache;
+    private final List<String> mLockedTaskList = new ArrayList<>();
 
     private RecentsModel(Context context) {
         mContext = context;
@@ -78,6 +82,11 @@ public class RecentsModel extends TaskStackChangeListener implements IconChangeL
 
         TaskStackChangeListeners.getInstance().registerTaskStackListener(this);
         iconProvider.registerIconChangeListener(this, MAIN_EXECUTOR.getHandler());
+
+        String savedLockedTask = Utilities.getRecentsLockedTask(context);
+        if (!TextUtils.isEmpty(savedLockedTask)) {
+            mLockedTaskList.addAll(Arrays.asList(savedLockedTask.split(",")));
+        }
     }
 
     public TaskIconCache getIconCache() {
@@ -129,6 +138,14 @@ public class RecentsModel extends TaskStackChangeListener implements IconChangeL
             }
             callback.accept(true);
         });
+    }
+
+    public List<String> getLockedTaskList() {
+        return mLockedTaskList;
+    }
+
+    public void saveLockedTaskList() {
+        Utilities.setRecentsLockedTask(mContext, String.join(",", mLockedTaskList));
     }
 
     @Override

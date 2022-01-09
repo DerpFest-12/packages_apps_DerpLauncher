@@ -61,7 +61,9 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
+import android.app.ActivityManager.RecentTaskInfo;
 import android.content.Context;
 import android.content.LocusId;
 import android.content.res.Configuration;
@@ -1177,6 +1179,7 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
 
     private void removeTasksViewsAndClearAllButton() {
         for (int i = getTaskViewCount() - 1; i >= 0; i--) {
+            if (getTaskViewAt(i).isTaskLocked()) continue;
             removeView(getTaskViewAt(i));
         }
     }
@@ -2502,6 +2505,7 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
 
         int count = getTaskViewCount();
         for (int i = 0; i < count; i++) {
+            if (getTaskViewAt(i).isTaskLocked()) continue;
             addDismissedTaskAnimations(getTaskViewAt(i), duration, anim);
         }
 
@@ -2511,7 +2515,7 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
                 // Remove all the task views now
                 finishRecentsAnimation(true /* toRecents */, false /* shouldPip */, () -> {
                     UI_HELPER_EXECUTOR.getHandler().postDelayed(
-                            ActivityManagerWrapper.getInstance()::removeAllRecentTasks,
+                            this::removeAllRecentTasksNoLock,
                             REMOVE_TASK_WAIT_FOR_APP_STOP_MS);
                     removeTasksViewsAndClearAllButton();
                     startHome();
@@ -2520,6 +2524,22 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
             mPendingAnimation = null;
         });
         return anim;
+    }
+
+    private void removeAllRecentTasksNoLock() {
+        ActivityManagerWrapper wrapper = ActivityManagerWrapper.getInstance();
+        List<RecentTaskInfo> tasks = wrapper.getRecentTasks(Integer.MAX_VALUE, 0);
+        if (tasks == null) return;
+        for (RecentTaskInfo task : tasks) {
+            if (task == null) continue;
+            if (task.realActivity != null) {
+                String packageName = task.realActivity.getPackageName();
+                if (packageName != null && mModel.getLockedTaskList().contains(packageName)) {
+                    continue;
+                }
+            }
+            wrapper.removeTask(task.taskId);
+        }
     }
 
     private boolean snapToPageRelative(int pageCount, int delta, boolean cycle) {

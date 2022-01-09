@@ -30,6 +30,9 @@
     <string name="recent_task_option_kill_app">Close app</string>
     <string name="recents_app_killed">App closed</string>
 
+    <string name="recent_task_option_lock_app">Lock</string>
+    <string name="recent_task_option_unlock_app">Unlock</string>
+
     <!-- Recents: The empty recents string. [CHAR LIMIT=NONE] -->
     <string name="recents_empty_message">No recent items</string>
 

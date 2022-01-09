@@ -66,6 +66,7 @@ import android.view.ViewOutlineProvider;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.IntDef;
@@ -341,12 +342,14 @@ public class TaskView extends FrameLayout implements Reusable {
     private Task mTask;
     private TaskThumbnailView mSnapshotView;
     private IconView mIconView;
+    private ImageButton mLockedTaskIndicator;
     private final DigitalWellBeingToast mDigitalWellBeingToast;
     private float mFullscreenProgress;
     private float mGridProgress;
     private float mFullscreenScale = 1;
     private final FullscreenDrawParams mCurrentFullscreenParams;
     private final StatefulActivity mActivity;
+    private RecentsModel mModel;
 
     // Various causes of changing primary translation, which we aggregate to setTranslationX/Y().
     private float mDismissTranslationX;
@@ -409,6 +412,7 @@ public class TaskView extends FrameLayout implements Reusable {
         mOutlineProvider = new TaskOutlineProvider(getContext(), mCurrentFullscreenParams,
                 mActivity.getDeviceProfile().overviewTaskThumbnailTopMarginPx);
         setOutlineProvider(mOutlineProvider);
+        mModel = RecentsModel.INSTANCE.get(getContext());
     }
 
     /**
@@ -433,6 +437,32 @@ public class TaskView extends FrameLayout implements Reusable {
         mSnapshotView = findViewById(R.id.snapshot);
         mIconView = findViewById(R.id.icon);
         mIconTouchDelegate = new TransformingTouchDelegate(mIconView);
+        mLockedTaskIndicator = findViewById(R.id.task_lock_indicator);
+        mLockedTaskIndicator.setOnClickListener((v) -> lockTask(false));
+    }
+
+    public boolean isTaskLocked() {
+        String pkg = mTask.key.getPackageName();
+        return mModel.getLockedTaskList().contains(pkg);
+    }
+
+    public void lockTask(boolean lock) {
+        String pkg = mTask.key.getPackageName();
+        boolean isLocked = mModel.getLockedTaskList().contains(pkg);
+
+        if (lock && !isLocked) {
+            mModel.getLockedTaskList().add(pkg);
+        } else if (!lock && isLocked) {
+            mModel.getLockedTaskList().remove(pkg);
+        }
+
+        updateLockTaskButtonIcon();
+        mModel.saveLockedTaskList();
+    }
+
+    private void updateLockTaskButtonIcon() {
+        boolean isLocked = mModel.getLockedTaskList().contains(mTask.key.getPackageName());
+        mLockedTaskIndicator.setVisibility(isLocked ? View.VISIBLE : View.GONE);
     }
 
     /**
@@ -683,9 +713,8 @@ public class TaskView extends FrameLayout implements Reusable {
         if (visible) {
             // These calls are no-ops if the data is already loaded, try and load the high
             // resolution thumbnail if the state permits
-            RecentsModel model = RecentsModel.INSTANCE.get(getContext());
-            TaskThumbnailCache thumbnailCache = model.getThumbnailCache();
-            TaskIconCache iconCache = model.getIconCache();
+            TaskThumbnailCache thumbnailCache = mModel.getThumbnailCache();
+            TaskIconCache iconCache = mModel.getIconCache();
 
             if (needsUpdate(changes, FLAG_UPDATE_THUMBNAIL)) {
                 mThumbnailLoadRequest = thumbnailCache.updateThumbnailInBackground(
@@ -711,6 +740,7 @@ public class TaskView extends FrameLayout implements Reusable {
                 setIcon(null);
             }
         }
+        updateLockTaskButtonIcon();
     }
 
     private boolean needsUpdate(@TaskDataChanges int dataChange, @TaskDataChanges int flag) {
@@ -768,6 +798,7 @@ public class TaskView extends FrameLayout implements Reusable {
         int taskIconMargin = deviceProfile.overviewTaskMarginPx;
         int taskIconHeight = deviceProfile.overviewTaskIconSizePx;
         LayoutParams iconParams = (LayoutParams) mIconView.getLayoutParams();
+        LayoutParams mLockedTaskIndicatorParams = (LayoutParams) mLockedTaskIndicator.getLayoutParams();
         switch (orientationHandler.getRotation()) {
             case ROTATION_90:
                 iconParams.gravity = (isRtl ? START : END) | CENTER_VERTICAL;
@@ -800,6 +831,8 @@ public class TaskView extends FrameLayout implements Reusable {
         mIconView.setRotation(orientationHandler.getDegreesRotated());
         snapshotParams.topMargin = deviceProfile.overviewTaskThumbnailTopMarginPx;
         mSnapshotView.setLayoutParams(snapshotParams);
+        mLockedTaskIndicatorParams.topMargin = iconParams.topMargin;
+        mLockedTaskIndicator.setLayoutParams(mLockedTaskIndicatorParams);
         getThumbnail().getTaskOverlay().updateOrientationState(orientationState);
     }
 
