@@ -28,6 +28,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -241,6 +243,7 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
         @Override
         public void onViewCreated(View view, Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
+            setHasOptionsMenu(true);
             View listView = getListView();
             final int bottomPadding = listView.getPaddingBottom();
             listView.setOnApplyWindowInsetsListener((v, insets) -> {
@@ -370,6 +373,23 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                 }
             }
             updateIsGoogleAppEnabled();
+        }
+
+        @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            inflater.inflate(R.menu.menu_settings, menu);
+            super.onCreateOptionsMenu(menu,inflater);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == R.id.menu_action_restart) {
+                Utilities.restart(getContext());
+                return true;
+            }
+
+            return false;
         }
 
         private PreferenceHighlighter createHighlighter() {

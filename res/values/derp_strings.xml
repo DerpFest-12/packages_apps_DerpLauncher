@@ -85,4 +85,7 @@
     <!-- Font size -->
     <string name="font_size_title">Font size</string>
 
+    <!-- Launcher settings menu -->
+    <string name="settings_menu_restart">Restart launcher</string>
+
 </resources>
