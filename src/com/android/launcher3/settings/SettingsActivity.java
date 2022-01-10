@@ -387,6 +387,11 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
             if (id == R.id.menu_action_restart) {
                 Utilities.restart(getContext());
                 return true;
+            } else if (id == R.id.menu_action_devopt) {
+                ((SettingsActivity) getActivity()).startPreference(
+                    DeveloperOptionsFragment.class.getName(), new Bundle(),
+                        getClass().getSimpleName());
+                return true;
             }
 
             return false;

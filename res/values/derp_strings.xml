@@ -87,5 +87,5 @@
 
     <!-- Launcher settings menu -->
     <string name="settings_menu_restart">Restart launcher</string>
-
+    <string name="settings_menu_devopt">Developer Options</string>
 </resources>

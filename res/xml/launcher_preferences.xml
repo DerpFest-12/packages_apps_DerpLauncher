@@ -130,12 +130,6 @@
          settings:interval="5"
          android:defaultValue="100" />
 
-    <Preference
-        android:key="pref_developer_options"
-        android:persistent="false"
-        android:title="Developer Options"
-        android:fragment="com.android.launcher3.settings.DeveloperOptionsFragment"/>
-
     <PreferenceScreen
         android:key="about"
         android:title="@string/about"
