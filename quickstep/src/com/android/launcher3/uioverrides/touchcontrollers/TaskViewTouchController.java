@@ -171,14 +171,16 @@ public abstract class TaskViewTouchController<T extends BaseDraggingActivity>
                             // and down to open if it's the current page.
                             mAllowGoingUp = true;
                             if (i == mRecentsView.getCurrentPage()) {
-                                boolean isTaskLocked = view.isTaskLocked();
-                                mAllowGoingUp = !isTaskLocked;
                                 mAllowGoingDown = true;
-                                directionsToDetectScroll = isTaskLocked ? ~upDirection /*down*/ : DIRECTION_BOTH;
+                                directionsToDetectScroll = DIRECTION_BOTH;
                             } else {
                                 mAllowGoingDown = false;
                                 directionsToDetectScroll = upDirection;
                             }
+                        }
+                        if (view.isTaskLocked()) {
+                            mAllowGoingUp = false;
+                            directionsToDetectScroll = directionsToDetectScroll == upDirection ? 0 : ~upDirection;
                         }
                         break;
                     }
