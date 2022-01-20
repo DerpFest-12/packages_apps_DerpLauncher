@@ -70,6 +70,8 @@ public class ImageActionUtils {
     private static final String SUB_FOLDER = "Overview";
     private static final String BASE_NAME = "overview_image_";
     private static final String TAG = "ImageActionUtils";
+    private static final String GSA_PACKAGE = "com.google.android.googlequicksearchbox";
+    private static final String GSA_COMPONENT_LENS = "com.google.android.apps.search.lens.LensShareEntryPointActivity";
 
     /**
      * Saves screenshot to location determine by SystemUiProxy
@@ -146,6 +148,22 @@ public class ImageActionUtils {
         UI_HELPER_EXECUTOR.execute(() -> persistBitmapAndStartActivity(context,
                 bitmapSupplier.get(), crop, intent, ImageActionUtils::getShareIntentForImageUri,
                 tag, sharedElement));
+    }
+
+    /**
+     * Launch the activity to scan image with Lens.
+     */
+    @UiThread
+    public static void startLensActivity(Context context, Supplier<Bitmap> bitmapSupplier,
+            Rect crop, Intent intent, String tag) {
+        if (bitmapSupplier.get() == null) {
+            Log.e(tag, "No snapshot available, not starting Lens.");
+            return;
+        }
+
+        UI_HELPER_EXECUTOR.execute(() -> persistBitmapAndStartActivity(context,
+                bitmapSupplier.get(), crop, intent, ImageActionUtils::getLensForImageUri,
+                tag));
     }
 
     /**
@@ -250,6 +268,30 @@ public class ImageActionUtils {
             return Bitmap.createBitmap(picture, crop.width(), crop.height(),
                     Bitmap.Config.ARGB_8888);
         }
+    }
+
+    /**
+     * Gets the intent used to scan the image with Lens.
+     */
+    @WorkerThread
+    private static Intent[] getLensForImageUri(Uri uri, Intent intent) {
+        if (intent == null) intent = new Intent();
+
+        ComponentName lensComponent = new ComponentName(GSA_PACKAGE, GSA_COMPONENT_LENS);
+        ClipData clipdata = new ClipData(new ClipDescription("content",
+                new String[]{"image/png"}),
+                new ClipData.Item(uri));
+
+        intent.setAction(Intent.ACTION_SEND)
+                .setComponent(lensComponent)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+                .addFlags(FLAG_GRANT_READ_URI_PERMISSION)
+                .setType("image/png")
+                .putExtra(Intent.EXTRA_STREAM, uri)
+                .setClipData(clipdata);
+
+        return new Intent[]{ intent };
     }
 
     /**

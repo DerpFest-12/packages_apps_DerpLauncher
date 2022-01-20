@@ -121,6 +121,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         View share = findViewById(R.id.action_share);
         share.setOnClickListener(this);
         findViewById(R.id.action_screenshot).setOnClickListener(this);
+        findViewById(R.id.action_lens).setOnClickListener(this);
         if (ENABLE_OVERVIEW_SHARE.get()) {
             share.setVisibility(VISIBLE);
             findViewById(R.id.oav_three_button_space).setVisibility(VISIBLE);
@@ -152,6 +153,8 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
             mCallbacks.onShare();
         } else if (id == R.id.action_screenshot) {
             mCallbacks.onScreenshot();
+        } else if (id == R.id.action_lens) {
+            mCallbacks.onLens();
         }
     }
 
@@ -186,6 +189,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         findViewById(R.id.action_screenshot).setEnabled(isEnabled);
         findViewById(R.id.action_share).setEnabled(isEnabled);
         findViewById(R.id.oav_three_button_space).setEnabled(isEnabled);
+        findViewById(R.id.action_lens).setEnabled(isEnabled);
 
         if (isEnabled) {
             findViewById(R.id.clear_all).setEnabled(isEnabled);
@@ -279,7 +283,8 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         int[] actions = new int[] {
             R.id.action_share,
             R.id.clear_all,
-            R.id.action_screenshot
+            R.id.action_screenshot,
+            R.id.action_lens
         };
 
         int recentOpacity = Utilities.getRecentOpacity(getContext());

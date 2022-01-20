@@ -104,6 +104,14 @@ public class ImageActionsApi {
     }
 
     /**
+     * Pass the image this api was constructed with, to the Lens app.
+     */
+    @UiThread
+    public void startLensActivity(Rect crop) {
+        ImageActionUtils.startLensActivity(mContext, mBitmapSupplier, crop, null, TAG);
+    }
+
+    /**
      * @param screenshot       to be saved to the media store.
      * @param screenshotBounds the location of where the bitmap was laid out on the screen in
      *                         screen coordinates.
