@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2021 DerpFest
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<resources>
+
+    <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
+    <string name="title_show_google_app">Wischen, um die Google App aufzurufen</string>
+    <!-- Settings message explaining when the -1 screen is available on an LTR device. [CHAR LIMIT=100] -->
+    <string name="msg_minus_one_on_left">Wische auf dem Startbildschirm nach links, um die Google App zu öffnen</string>
+    <!-- Settings message explaining when the -1 screen is available on an RTL device. [CHAR LIMIT=100] -->
+    <string name="msg_minus_one_on_right">Wische auf dem Startbildschirm nach rechts, um die Google App zu öffnen</string>
+
+    <!-- Suggestions -->
+    <string name="suggestion_pref_screen_title">Vorschläge</string>
+    <string name="suggestion_pref_screen_desc">Für Vorschläge in allen Apps und auf dem Startbildschirm</string>
+
+    <!-- Gestures -->
+    <string name="pref_dt_gesture_title">Double tap gesture</string>
+    <string name="pref_dt_gesture_summary">Double tap on empty space for power-off</string>
+
+    <!-- QuickSpace -->
+    <string name="show_quickspace_title">Live-Anzeige</string>
+    <string name="show_quickspace_summary">Oben auf dem Startbildschirm anzeigen</string>
+
+    <!-- QuickSpace: QuickEvent: Device Intro Event -->
+    <string name="quick_event_rom_intro_welcome">Hallo!</string>
+    <string name="quick_event_rom_intro_learn">Tippe hier, um Spaß zu haben!</string>
+
+    <!-- QuickSpace: QuickEvent: Ambient Play -->
+    <string name="quick_event_ambient_now_playing">Now Playing</string>
+    <string name="quick_event_ambient_song_artist">%1$s by %2$s</string>
+
+    <!-- Quickspace Now Playing -->
+    <string name="quickspace_now_playing_title">Now Playing anzeigen</string>
+    <string name="quickspace_now_playing_summary">Zeigt in der Live-Anzeige den Musiktitel an, den Sie gerade spielen</string>
+
+    <!-- Wallpaper zoom -->
+    <string name="enable_wallpaper_zoom_title">Zoom-Effekt des Hintergrundbildes aktivieren</string>
+    <string name="enable_wallpaper_zoom_summary">Vergrößern oder Verkleinern des Hintergrundbildes bei Verwendung in allen Apps oder kürzlich geöffneten Apps</string>
+
+    <!-- About info -->
+    <string name="about_derp_summary">von DerpFest</string>
+    <string name="about_based_on_title">Basierend auf AOSP Launcher3</string>
+    <string name="about_based_on_summary">vom Android Open Source Project</string>
+    <string name="about_thanks_cat">Besonderer Dank</string>
+    <string name="about">Über</string>
+    <string name="about_summary">Infos über den Launcher</string>
+    <string name="about_app_version">Version</string>
+
+    <!-- Recent Apps -->
+    <string name="recent_apps_opacity_title">Deckkraft der kürzlich geöffneten Apps</string>
+
+    <!-- Pisselbar -->
+    <string name="disable_pisselbar_title">Pisselbar ausblenden</string>
+    <string name="disable_pisselbar_summary">Blenden Sie die Pixel-artige Suchleiste auf dem Startbildschirm aus</string>
+
+    <!-- Icon size -->
+    <string name="icon_size_title">Symbolgröße</string>
+
+    <!-- Font size -->
+    <string name="font_size_title">Schriftgröße</string>
+
+    <!-- Launcher settings menu -->
+    <string name="settings_menu_restart">Launcher neu starten</string>
+    <string name="settings_menu_devopt">Entwickleroptionen</string>
+
+    <!-- Edit workspace -->
+    <string name="settings_lock_layout_title">Layout sperren</string>
+    <string name="settings_lock_layout_summary_on">Symbole und Widgets können nicht auf dem Startbildschirm hinzugefügt, entfernt und verschoben werden</string>
+    <string name="settings_lock_layout_summary_off">Symbole und Widgets können auf dem Startbildschirm hinzugefügt, entfernt und verschoben werden</string>
+    <string name="settings_edit_widgets_error">Es ist nicht möglich, Widgets zum Startbildschirm hinzuzufügen</string>
+
+</resources>
