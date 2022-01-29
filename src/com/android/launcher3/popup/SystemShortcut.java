@@ -198,10 +198,13 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
         }
     }
 
-    public static final Factory<BaseDraggingActivity> UNINSTALL = (activity, itemInfo) ->
-            PackageManagerHelper.isSystemApp(activity,
+    public static final Factory<BaseDraggingActivity> UNINSTALL = (activity, itemInfo) -> {
+        if (itemInfo.getTargetComponent() == null) return null;
+
+        return PackageManagerHelper.isSystemApp(activity,
                  itemInfo.getTargetComponent().getPackageName())
                     ? null : new UnInstall(activity, itemInfo);
+    };
 
 
     public static class UnInstall extends SystemShortcut {
@@ -213,6 +216,7 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
 
         @Override
         public void onClick(View view) {
+            if (mItemInfo.getTargetComponent() == null) return;
             String packageName = mItemInfo.getTargetComponent().getPackageName();
             Intent intent = new PackageManagerHelper(
                     view.getContext()).getUninstallIntent(packageName);
