@@ -16,6 +16,7 @@
 
 <androidx.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:launcher="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.launcher3">
 
@@ -111,7 +112,7 @@
         <ListPreference
             android:key="pref_date_format"
             android:title="@string/date_format_title"
-            android:summary="%s"
+            app:useSimpleSummaryProvider="true"
             android:entries="@array/date_format_names"
             android:entryValues="@array/date_format_values"
             android:persistent="true"
@@ -125,7 +126,7 @@
             android:defaultValue="system-headline"
             android:key="pref_date_font"
             android:persistent="true"
-            android:summary="%s"
+            app:useSimpleSummaryProvider="true"
             android:title="@string/date_style_font" />
 
         <SwitchPreference
@@ -143,7 +144,7 @@
             android:key="pref_date_spacing"
             android:defaultValue="normal"
             android:persistent="true"
-            android:summary="%s"
+            app:useSimpleSummaryProvider="true"
             android:title="@string/date_style_spacing" />
 
     </PreferenceCategory>
