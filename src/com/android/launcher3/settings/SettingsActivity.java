@@ -235,9 +235,19 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
 
             PreferenceScreen screen = getPreferenceScreen();
             for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
-                Preference preference = screen.getPreference(i);
-                if (!initPreference(preference)) {
-                    screen.removePreference(preference);
+                final Preference preference = screen.getPreference(i);
+                if (preference instanceof PreferenceCategory) {
+                    final PreferenceCategory category = (PreferenceCategory) preference;
+                    for (int j = category.getPreferenceCount() - 1; j >= 0; j--) {
+                        final Preference p = category.getPreference(j);
+                        if (!initPreference(p)) {
+                            category.removePreference(p);
+                        }
+                    }
+                } else {
+                    if (!initPreference(preference)) {
+                        screen.removePreference(preference);
+                    }
                 }
             }
 

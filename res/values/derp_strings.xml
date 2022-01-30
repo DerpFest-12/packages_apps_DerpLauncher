@@ -19,6 +19,11 @@
 
 <resources>
 
+    <string name="home_category">Home</string>
+    <string name="quickspace_category">QuickSpace</string>
+    <string name="icon_category">Icons</string>
+    <string name="misc_category">Misc</string>
+
     <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
     <string name="title_show_google_app">Swipe to access Google app</string>
     <!-- Settings message explaining when the -1 screen is available on an LTR device. [CHAR LIMIT=100] -->

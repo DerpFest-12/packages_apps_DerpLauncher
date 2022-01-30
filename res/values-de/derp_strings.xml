@@ -19,6 +19,11 @@
 
 <resources>
 
+    <string name="home_category">Startbildschirm</string>
+    <string name="quickspace_category">Live-Anzeige</string>
+    <string name="icon_category">Symbole</string>
+    <string name="misc_category">Verschiedenes</string>
+
     <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
     <string name="title_show_google_app">Wischen, um die Google App aufzurufen</string>
     <!-- Settings message explaining when the -1 screen is available on an LTR device. [CHAR LIMIT=100] -->
