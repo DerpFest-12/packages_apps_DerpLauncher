@@ -27,8 +27,6 @@ import android.annotation.TargetApi;
 import android.appwidget.AppWidgetHostView;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -63,7 +61,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener {
+public class InvariantDeviceProfile {
 
     public static final String TAG = "IDP";
     // We do not need any synchronization for this variable as its only written on UI thread.
@@ -81,8 +79,6 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
     private static final float ICON_SIZE_DEFINED_IN_APP_DP = 48;
 
     public static final String KEY_WORKSPACE_LOCK = "pref_workspace_lock";
-    public static final String KEY_SHOW_DESKTOP_LABELS = "pref_desktop_show_labels";
-    public static final String KEY_SHOW_DRAWER_LABELS = "pref_drawer_show_labels";
 
     // Constants that affects the interpolation curve between statically defined device profile
     // buckets.
@@ -156,8 +152,6 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
     public Point defaultWallpaperSize;
     public Rect defaultWidgetPadding;
 
-    private Context mContext;
-
     private final ArrayList<OnIDPChangeListener> mChangeListeners = new ArrayList<>();
 
     @VisibleForTesting
@@ -193,16 +187,12 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
 
     @TargetApi(23)
     private InvariantDeviceProfile(Context context) {
-        mContext = context;
-
-        SharedPreferences prefs = Utilities.getPrefs(context);
-        prefs.registerOnSharedPreferenceChangeListener(this);
         String gridName = getCurrentGridName(context);
         String newGridName = initGrid(context, gridName);
         if (!newGridName.equals(gridName)) {
-            prefs.edit().putString(KEY_IDP_GRID_NAME, newGridName).apply();
+            Utilities.getPrefs(context).edit().putString(KEY_IDP_GRID_NAME, newGridName).apply();
         }
-        prefs.edit()
+        Utilities.getPrefs(context).edit()
                 .putInt(KEY_MIGRATION_SRC_HOTSEAT_COUNT, numDatabaseHotseatIcons)
                 .putString(KEY_MIGRATION_SRC_WORKSPACE_SIZE, getPointString(numColumns, numRows))
                 .apply();
@@ -256,13 +246,6 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
         result.borderSpacing = defaultDisplayOption.borderSpacing;
 
         initGrid(context, myInfo, result, false);
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (KEY_SHOW_DESKTOP_LABELS.equals(key) || KEY_SHOW_DRAWER_LABELS.equals(key)) {
-            onConfigChanged(mContext);
-        }
     }
 
     public static String getCurrentGridName(Context context) {

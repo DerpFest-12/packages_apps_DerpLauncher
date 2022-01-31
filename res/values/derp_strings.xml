@@ -199,10 +199,6 @@
         <item>rm -rf \/</item>
     </string-array>
 
-    <!-- Hide labels -->
-    <string name="desktop_show_labels">Show icon labels on desktop</string>
-    <string name="drawer_show_labels">Show icon labels in drawer</string>
-
     <!-- QuickSpace Date format -->
     <string name="date_format_title">Date format</string>
     <string name="date_format_long_name">Long</string>
