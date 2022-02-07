@@ -41,8 +41,10 @@
     <attr name="overviewScrimColor" format="color" />
     <attr name="popupNotificationDotColor" format="color" />
     <attr name="pisselbarBackgroundColor" format="color" />
-    <attr name="pisselbarForegroundColor" format="color" />
-
+    <attr name="pisselbarPrimaryIconColor" format="color" />
+    <attr name="pisselbarSecondaryIconColor" format="color" />
+    <attr name="pisselbarTertiaryIconColor" format="color" />
+    <attr name="pisselbarQuaternaryIconColor" format="color" />
     <attr name="folderDotColor" format="color" />
     <attr name="folderFillColor" format="color" />
     <attr name="folderIconRadius" format="float" />

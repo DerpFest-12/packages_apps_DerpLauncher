@@ -37,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/pisselbar_icon_padding"
+        android:paddingStart="@dimen/pisselbar_icon_padding_side"
         android:src="@drawable/searchbox_ic_google"
-        android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
 
     <View
@@ -54,7 +54,6 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/pisselbar_icon_padding"
         android:src="@drawable/searchbox_ic_assistant"
-        android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
 
     <ImageView
@@ -64,8 +63,8 @@
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/pisselbar_icon_padding"
+        android:paddingEnd="@dimen/pisselbar_icon_padding_side"
         android:src="@drawable/searchbox_ic_lens"
-        android:tint="?attr/pisselbarForegroundColor"
         tools:ignore="RtlSymmetry" />
 
     </LinearLayout>

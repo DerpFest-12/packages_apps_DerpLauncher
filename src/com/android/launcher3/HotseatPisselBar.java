@@ -16,15 +16,19 @@
 
 package com.android.launcher3;
 
+import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,20 +38,30 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.android.launcher3.qsb.QsbContainerView;
+import com.android.launcher3.util.Themes;
 
-public class HotseatPisselBar extends LinearLayout {
+public class HotseatPisselBar extends LinearLayout implements OnSharedPreferenceChangeListener {
     private static final String TAG = "HotseatPisselBar";
-    private static final String GOOGLE_PACKAGE = "com.google.android.googlequicksearchbox";
-    private static final String GOOGLE_LENS_CLASS = "com.google.android.apps.lens.MainActivity";
-    private static final Uri GOOGLE_LENS_URI = Uri.parse("google://lens");
+    private static final String GSA_PACKAGE = "com.google.android.googlequicksearchbox";
+    private static final String LENS_CLASS = "com.google.android.apps.lens.MainActivity";
+    private static final Uri LENS_URI = Uri.parse("google://lens");
 
     public HotseatPisselBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setupViews(context);
+        SharedPreferences prefs = Utilities.getPrefs(context);
+        prefs.registerOnSharedPreferenceChangeListener(this);
+    }
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.hotseat_pisselbar, this, true);
+    private void setupViews(Context context) {
+        ContextThemeWrapper themedContext = new ContextThemeWrapper(context,
+            Themes.isThemedIconEnabled(context) ? R.style.PisselBarTheme_ThemedIcon
+                : R.style.PisselBarTheme);
 
-        boolean hidePisselBar = Utilities.hidePisselBar(getContext());
+        LayoutInflater.from(context).cloneInContext(themedContext)
+            .inflate(R.layout.hotseat_pisselbar, this, true);
+
+        boolean hidePisselBar = Utilities.hidePisselBar(context);
         ViewGroup content = findViewById(R.id.pisselbar_content);
         if (content == null)
             return;
@@ -56,89 +70,63 @@ public class HotseatPisselBar extends LinearLayout {
         if (hidePisselBar)
             return;
 
-        setOnClickListener(v -> {
-            Intent intent = new Intent("android.search.action.GLOBAL_SEARCH");
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.setPackage(QsbContainerView.getSearchWidgetPackageName(context));
-
-            try {
-                context.startActivity(intent);
-            } catch (ActivityNotFoundException e) {
-                Log.e(TAG, "No activity found for android.search.action.GLOBAL_SEARCH");
-            }
-        });
+        setOnClickListener(v -> launchSearch());
 
         ImageView btnAssist = findViewById(R.id.pisselbar_btn_assistant);
-        btnAssist.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VOICE_COMMAND);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.setPackage(QsbContainerView.getSearchWidgetPackageName(context));
-            try {
-                context.startActivity(intent);
-            } catch (ActivityNotFoundException e) {
-                Log.e(TAG, "No activity found for ACTION_VOICE_COMMAND");
-            }
-        });
+        btnAssist.setOnClickListener(v -> launchAssistant());
 
         ImageView btnLens = findViewById(R.id.pisselbar_btn_lens);
-        btnLens.setOnClickListener(v -> launchLens(context));
+        btnLens.setOnClickListener(v -> launchLens());
     }
 
-    private void setPaddingStart(View view, int padding) {
-        if (view == null) return;
+    private void launchSearch() {
+        Intent intent = new Intent(SearchManager.INTENT_ACTION_GLOBAL_SEARCH);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setPackage(GSA_PACKAGE);
 
-        view.setPaddingRelative(padding, view.getPaddingTop(),
-                view.getPaddingEnd(), view.getPaddingBottom());
+        try {
+            getContext().startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "No activity found for GLOBAL_SEARCH");
+        }
     }
 
-    private void setPaddingEnd(View view, int padding) {
-        if (view == null) return;
-
-        view.setPaddingRelative(view.getPaddingStart(), view.getPaddingTop(),
-                padding, view.getPaddingBottom());
-    }
-
-    public static void launchLens(Context context) {
+    private void launchLens() {
         Bundle params = new Bundle();
-        params.putString("caller_package", GOOGLE_PACKAGE);
+        params.putString("caller_package", GSA_PACKAGE);
         params.putLong("start_activity_time_nanos", SystemClock.elapsedRealtimeNanos());
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        intent.setPackage(GOOGLE_PACKAGE);
-        intent.setComponent(new ComponentName(GOOGLE_PACKAGE, GOOGLE_LENS_CLASS));
-        intent.setData(GOOGLE_LENS_URI);
+        intent.setPackage(GSA_PACKAGE);
+        intent.setComponent(new ComponentName(GSA_PACKAGE, LENS_CLASS));
+        intent.setData(LENS_URI);
         intent.putExtra("lens_activity_params", params);
 
         try {
-            context.startActivity(intent);
+            getContext().startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            Log.e(TAG, "No activity found for GOOGLE_LENS_CLASS");
+            Log.e(TAG, "No activity found for LENS_CLASS");
+        }
+    }
+
+    private void launchAssistant() {
+        Intent intent = new Intent(Intent.ACTION_VOICE_COMMAND);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setPackage(GSA_PACKAGE);
+
+        try {
+            getContext().startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "No activity found for ACTION_VOICE_COMMAND");
         }
     }
 
     @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-        ViewGroup content = findViewById(R.id.pisselbar_content);
-        if (content == null)
-            return;
-
-        int lastIndex = content.getChildCount() - 1;
-        View firstIcon = content.getChildAt(0);
-        View lastIcon = content.getChildAt(lastIndex);
-        View secondLastIcon = content.getChildAt(lastIndex - 1);
-        if (firstIcon == null || lastIcon == null || secondLastIcon == null)
-            return;
-
-        int sidePadding = getResources().getDimensionPixelSize(R.dimen.pisselbar_icon_padding_side);
-        setPaddingStart(firstIcon, sidePadding);
-        if (lastIcon.getVisibility() == View.GONE) {
-            setPaddingEnd(lastIcon, lastIcon.getPaddingStart());
-            setPaddingEnd(secondLastIcon, sidePadding);
-        } else {
-            setPaddingEnd(lastIcon, sidePadding);
-            setPaddingEnd(secondLastIcon, secondLastIcon.getPaddingStart());
+    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+        if (Themes.KEY_THEMED_ICONS.equals(key)) {
+            removeAllViewsInLayout();
+            setupViews(getContext());
         }
     }
 }

@@ -92,4 +92,12 @@
     <style name="HomeSettings.ExpandedToolbarTitle" parent="HomeSettings.CollapsedToolbarTitle">
         <item name="android:textSize">36sp</item>
     </style>
+
+    <style name="PisselBarTheme.ThemedIcon" parent="@style/PisselBarTheme">
+        <item name="pisselbarBackgroundColor">@android:color/system_accent1_100</item>
+        <item name="pisselbarPrimaryIconColor">@android:color/system_neutral2_700</item>
+        <item name="pisselbarSecondaryIconColor">@android:color/system_neutral1_800</item>
+        <item name="pisselbarTertiaryIconColor">@android:color/system_neutral1_500</item>
+        <item name="pisselbarQuaternaryIconColor">@android:color/system_accent3_500</item>
+    </style>
 </resources>
