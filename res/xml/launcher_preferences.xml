@@ -71,6 +71,13 @@
             android:persistent="false"
             android:widgetLayout="@layout/notification_pref_warning" />
 
+        <SwitchPreference
+            android:key="pref_widget_local_color"
+            android:title="@string/widget_local_color_title"
+            android:summary="@string/widget_local_color_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

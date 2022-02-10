@@ -138,6 +138,7 @@ public final class Utilities {
     public static final String KEY_RECENT_OPACITY = "pref_recent_opacity";
     public static final String KEY_HIDE_PISSELBAR = "pref_hide_pisselbar";
     public static final String KEY_LOCKED_TASK_RECENT = "pref_locked_task_recent";
+    public static final String KEY_WIDGET_LOCAL_COLOR = "pref_widget_local_color";
 
     private static final long WAIT_BEFORE_RESTART = 250;
 
@@ -966,6 +967,11 @@ public final class Utilities {
     public static boolean isWorkspaceLocked(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(InvariantDeviceProfile.KEY_WORKSPACE_LOCK, false);
+    }
+
+    public static boolean useWidgetLocalColors(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(KEY_WIDGET_LOCAL_COLOR, true);
     }
 
     public static void restart(final Context context) {

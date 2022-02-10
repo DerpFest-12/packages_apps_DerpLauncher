@@ -59,6 +59,7 @@ public class ThemedLocalColorExtractor extends LocalColorExtractor implements
 
     private final WallpaperManager wallpaperManager;
     private Listener listener;
+    private SparseIntArray mSystemColorScheme = new SparseIntArray(5 * 13);
 
     // For calculating and returning bounds
     private final float[] tempFloatArray = new float[4];
@@ -171,6 +172,9 @@ public class ThemedLocalColorExtractor extends LocalColorExtractor implements
 
     @Override
     public SparseIntArray generateColorsOverride(WallpaperColors colors) {
+        boolean useLocalColors = Utilities.useWidgetLocalColors(mContext);
+        if (!useLocalColors) return getSystemWideColorScheme();
+
         SparseIntArray colorRes = new SparseIntArray(5 * 13);
         double luminance = (double) Settings.Secure.getLong(mContext.getContentResolver(), "monet_engine_white_luminance_user", (long) CieXyzAbs.DEFAULT_SDR_WHITE_LUMINANCE);
         Zcam.ViewingConditions cond = new Zcam.ViewingConditions(
@@ -194,6 +198,33 @@ public class ThemedLocalColorExtractor extends LocalColorExtractor implements
         addColorsToArray(colorScheme.getNeutral2(), NEUTRAL2_RES, colorRes);
 
         return colorRes;
+    }
+
+    private SparseIntArray getSystemWideColorScheme() {
+        if (mSystemColorScheme.get(3) == ACCENT1_RES.get(3) &&
+            mSystemColorScheme.get(7) == ACCENT1_RES.get(7)) {
+            // looks similar, use cached one instead.
+            return mSystemColorScheme;
+        }
+
+        SparseIntArray colors = new SparseIntArray(5 * 13);
+        SparseIntArray[] swatches = new SparseIntArray[]{
+            ACCENT1_RES,
+            ACCENT2_RES,
+            ACCENT3_RES,
+            NEUTRAL1_RES,
+            NEUTRAL2_RES,
+        };
+
+        for (SparseIntArray swatch: swatches) {
+            for (int i = 0; i < swatch.size(); i++) {
+                int value = swatch.get(i, -1);
+                colors.put(value, value);
+            }
+        }
+
+        mSystemColorScheme = colors;
+        return colors;
     }
 
     @Override

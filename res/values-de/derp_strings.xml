@@ -174,4 +174,8 @@
     <string name="desktop_show_labels">Symbolbeschriftungen auf dem Startbildschirm anzeigen</string>
     <string name="drawer_show_labels">Symbolbeschriftungen in der App-Übersicht anzeigen</string>
 
+    <!-- Widget local color -->
+    <string name="widget_local_color_title">Lokale Farbe für Widgets aktivieren</string>
+    <string name="widget_local_color_summary">Extrahiert die Farbe aus der Umgebung für Widgets und Popups</string>
+
 </resources>

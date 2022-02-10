@@ -224,4 +224,8 @@
     <string name="desktop_show_labels">Show icon labels on desktop</string>
     <string name="drawer_show_labels">Show icon labels in drawer</string>
 
+    <!-- Widget local color -->
+    <string name="widget_local_color_title">Enable widget local color</string>
+    <string name="widget_local_color_summary">Extract color from nearby area for widgets and popups</string>
+
 </resources>

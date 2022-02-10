@@ -157,6 +157,7 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
             case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
             case Utilities.KEY_SHOW_QUICKSPACE_PSONALITY:
             case Utilities.KEY_HIDE_PISSELBAR:
+            case Utilities.KEY_WIDGET_LOCAL_COLOR:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
                 break;
             default:
