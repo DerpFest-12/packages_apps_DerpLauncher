@@ -20,7 +20,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
@@ -32,7 +31,6 @@ import java.util.Locale;
 
 public class DateTextView extends DoubleShadowTextView {
 
-    private DateFormat mDateFormat;
     private final BroadcastReceiver mTimeChangeReceiver;
     private boolean mIsVisible = false;
 
@@ -51,15 +49,9 @@ public class DateTextView extends DoubleShadowTextView {
     }
 
     public void reloadDateFormat(boolean forcedChange) {
-        String format;
-        if (mDateFormat == null || forcedChange) {
-            (mDateFormat = DateFormat.getInstanceForSkeleton(getContext()
-                    .getString(R.string.abbrev_wday_month_day_no_year), Locale.getDefault()))
-                    .setContext(DisplayContext.CAPITALIZATION_FOR_STANDALONE);
-        }
-        format = mDateFormat.format(System.currentTimeMillis());
-        setText(format);
-        setContentDescription(format);
+        String formatted = Utilities.formatDateTime(getContext(), System.currentTimeMillis());
+        setText(formatted);
+        setContentDescription(formatted);
     }
 
     private void registerReceiver() {

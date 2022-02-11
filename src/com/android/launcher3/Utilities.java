@@ -887,7 +887,7 @@ public final class Utilities {
 
     public static String formatDateTime(Context context, long timeInMillis) {
         try {
-            String format = "EEEE, MMM d";
+            String format = context.getString(R.string.abbrev_wday_month_day_no_year);
             String formattedDate;
             DateFormat dateFormat = DateFormat.getInstanceForSkeleton(format, Locale.getDefault());
             dateFormat.setContext(DisplayContext.CAPITALIZATION_FOR_STANDALONE);
@@ -897,7 +897,6 @@ public final class Utilities {
             Log.e(TAG, "Error formatting At A Glance date", t);
             return DateUtils.formatDateTime(context, timeInMillis, DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_MONTH);
         }
-
     }
 
     public static boolean isDoubleTapGestureEnabled(Context context) {
