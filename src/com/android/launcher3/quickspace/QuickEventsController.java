@@ -111,7 +111,8 @@ public class QuickEventsController {
         if (mIsFirstTimeDone) return;
         mIsQuickEvent = true;
         mEventTitle = mContext.getResources().getString(R.string.quick_event_rom_intro_welcome);
-        mEventTitleSub = mContext.getResources().getStringArray(R.array.welcome_message_variants)[getLuckyNumber(0,6)];
+        String[] intros = mContext.getResources().getStringArray(R.array.welcome_message_variants);
+        mEventTitleSub = intros[getLuckyNumber(intros.length - 1)];
         mEventSubIcon = R.drawable.ic_quickspace_derp;
 
         mEventTitleSubAction = new OnClickListener() {
