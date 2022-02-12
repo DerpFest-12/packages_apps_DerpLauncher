@@ -33,6 +33,7 @@ public class DateTextView extends DoubleShadowTextView {
 
     private final BroadcastReceiver mTimeChangeReceiver;
     private boolean mIsVisible = false;
+    private boolean mIsEventMode = false;
 
     public DateTextView(final Context context) {
         this(context, null);
@@ -43,15 +44,20 @@ public class DateTextView extends DoubleShadowTextView {
         mTimeChangeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                reloadDateFormat(!Intent.ACTION_TIME_TICK.equals(intent.getAction()));
+                reloadDateFormat();
             }
         };
     }
 
-    public void reloadDateFormat(boolean forcedChange) {
+    public void reloadDateFormat() {
+        if (mIsEventMode) return;
         String formatted = Utilities.formatDateTime(getContext(), System.currentTimeMillis());
         setText(formatted);
         setContentDescription(formatted);
+    }
+
+    public void setEventMode(boolean isEventMode) {
+        mIsEventMode = isEventMode;
     }
 
     private void registerReceiver() {
@@ -71,7 +77,7 @@ public class DateTextView extends DoubleShadowTextView {
         if (!mIsVisible && isVisible) {
             mIsVisible = true;
             registerReceiver();
-            reloadDateFormat(true);
+            reloadDateFormat();
         } else if (mIsVisible && !isVisible) {
             unregisterReceiver();
             mIsVisible = false;

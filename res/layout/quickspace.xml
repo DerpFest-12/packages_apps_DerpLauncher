@@ -14,24 +14,28 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:launcher="http://schemas.android.com/apk/res-auto"
-    android:id="@id/quickspace_content"
+    android:id="@+id/quickspace_content"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="start|center_vertical"
     android:orientation="vertical">
 
-    <com.android.launcher3.quickspace.views.DoubleShadowTextView
-        android:id="@+id/quick_event_title"
+    <com.android.launcher3.quickspace.views.DateTextView
+        android:id="@+id/quickspace_title"
         style="@style/QuickSpaceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|center_vertical"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:maxLines="1"
+        android:layout_gravity="center_vertical"
         android:clickable="true"
+        android:gravity="start|center_vertical"
+        android:maxLines="1"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
         android:textColor="?workspaceTextColor"
         android:textSize="@dimen/quickspace_title_size"
+        android:ellipsize="end"
         launcher:ambientShadowBlur="3dp"
         launcher:ambientShadowColor="?workspaceAmbientShadowColor"
         launcher:keyShadowBlur="2dp"
@@ -39,7 +43,7 @@
         launcher:keyShadowOffsetY="0.5dip" />
 
     <LinearLayout
-        android:id="@+id/subtitle_line"
+        android:id="@+id/quickspace_subtitle_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start|center_vertical"
@@ -48,58 +52,64 @@
         android:layout_marginTop="4dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/quick_event_icon_sub"
-            android:layout_width="@dimen/quickspace_event_subtitle_icon_size"
-            android:layout_height="@dimen/quickspace_event_subtitle_icon_size"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="6dp"
-            android:layout_weight="0.0" />
-
-        <com.android.launcher3.quickspace.views.DoubleShadowTextView
-            android:id="@+id/quick_event_title_sub"
-            style="@style/QuickSpaceSubText"
+        <LinearLayout
+            android:id="@+id/quick_event_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginEnd="@dimen/quickspace_subtitle_spacing"
             android:layout_weight="1.0"
-            android:drawablePadding="6dp"
-            android:includeFontPadding="false"
-            android:singleLine="true"
-            android:scrollHorizontally="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:textColor="?workspaceTextColor"
-            android:textSize="@dimen/quickspace_event_subtitle_size"
-            launcher:ambientShadowBlur="3dp"
-            launcher:ambientShadowColor="?workspaceAmbientShadowColor"
-            launcher:keyShadowBlur="2dp"
-            launcher:keyShadowColor="?workspaceKeyShadowColor"
-            launcher:keyShadowOffsetY="0.5dip" />
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/quick_event_icon"
+                android:layout_width="@dimen/quickspace_subtitle_icon_size"
+                android:layout_height="@dimen/quickspace_subtitle_icon_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/quickspace_subtitle_spacing"
+                android:layout_weight="0.0" />
+
+            <com.android.launcher3.quickspace.views.DoubleShadowTextView
+                android:id="@+id/quick_event_text"
+                style="@style/QuickSpaceSubText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColor="?workspaceTextColor"
+                android:textSize="@dimen/quickspace_subtitle_size"
+                android:ellipsize="marquee"
+                launcher:ambientShadowBlur="3dp"
+                launcher:ambientShadowColor="?workspaceAmbientShadowColor"
+                launcher:keyShadowBlur="2dp"
+                launcher:keyShadowColor="?workspaceKeyShadowColor"
+                launcher:keyShadowOffsetY="0.5dip" />
+
+        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/quick_event_weather_content"
+            android:id="@+id/quick_event_weather_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="6dp"
+            android:layout_gravity="start|center_vertical"
             android:layout_weight="0.0"
-            android:background="@drawable/bg_quickspace"
             android:clickable="true"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="6dp"
-            android:paddingRight="6dp"
-            android:paddingTop="6dp">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/quick_event_weather_icon"
-                android:layout_width="@dimen/quickspace_event_subtitle_icon_size"
-                android:layout_height="@dimen/quickspace_event_subtitle_icon_size"
+                android:layout_width="@dimen/quickspace_subtitle_icon_size"
+                android:layout_height="@dimen/quickspace_subtitle_icon_size"
                 android:layout_gravity="center"
-                android:layout_marginRight="4dp"
+                android:layout_marginEnd="@dimen/quickspace_subtitle_spacing"
                 android:scaleType="fitXY" />
 
             <com.android.launcher3.quickspace.views.DoubleShadowTextView
@@ -108,9 +118,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:drawablePadding="6dp"
                 android:textColor="?workspaceTextColor"
-                android:textSize="@dimen/quickspace_event_subtitle_size"
+                android:textSize="@dimen/quickspace_subtitle_size"
                 launcher:ambientShadowBlur="3dp"
                 launcher:ambientShadowColor="?workspaceAmbientShadowColor"
                 launcher:keyShadowBlur="2dp"

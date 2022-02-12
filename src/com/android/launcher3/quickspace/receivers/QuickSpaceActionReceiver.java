@@ -70,19 +70,17 @@ public class QuickSpaceActionReceiver {
         try {
             Launcher.getLauncher(mContext).startActivitySafely(view, addFlags, null);
         } catch (ActivityNotFoundException ex) {
-            mLauncherApps.startAppDetailsActivity(new ComponentName("com.google.android.googlequicksearchbox", ""), Process.myUserHandle(), null, null);
         }
     }
 
     private void openGoogleWeather(View view) {
         Intent intent = new Intent("android.intent.action.VIEW");
         intent.setData(Uri.parse("dynact://velour/weather/ProxyActivity"));
-        intent.setComponent(new ComponentName("com.google.android.googlequicksearchbox", "com.google.android.apps.gsa.velour.DynamicActivityTrampoline"));
+        intent.setComponent(new ComponentName("com.google.android.googlequicksearchbox",
+            "com.google.android.apps.gsa.velour.DynamicActivityTrampoline"));
         try {
             Launcher.getLauncher(mContext).startActivitySafely(view, intent, null);
         } catch (ActivityNotFoundException ex) {
-            mLauncherApps.startAppDetailsActivity(new ComponentName("com.google.android.googlequicksearchbox",
-                    "com.google.android.apps.gsa.velour.DynamicActivityTrampoline"), Process.myUserHandle(), null, null);
         }
     }
 

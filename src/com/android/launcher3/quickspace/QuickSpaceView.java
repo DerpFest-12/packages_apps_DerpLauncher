@@ -15,19 +15,9 @@
  */
 package com.android.launcher3.quickspace;
 
-import android.animation.LayoutTransition;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.pm.LauncherApps;
-import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
-import android.graphics.Typeface;
-import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -36,8 +26,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.android.launcher3.BubbleTextView;
-import com.android.launcher3.model.data.ItemInfo;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.util.Themes;
@@ -50,44 +38,36 @@ import io.chaldeaprjkt.seraphixgoogle.Card;
 import io.chaldeaprjkt.seraphixgoogle.DataProviderListener;
 import io.chaldeaprjkt.seraphixgoogle.SeraphixDataProvider;
 
-public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListener, Runnable, OnDataListener {
+public class QuickSpaceView extends FrameLayout implements OnDataListener {
 
     private static final String TAG = "Launcher3:QuickSpaceView";
     private static final boolean DEBUG = false;
 
-    public final ColorStateList mColorStateList;
-    public BubbleTextView mBubbleTextView;
-    public final int mQuickspaceBackgroundRes;
+    private final ColorStateList mColorStateList;
 
-    public DateTextView mClockView;
-    public ViewGroup mQuickspaceContent;
-    public ImageView mEventSubIcon;
-    public TextView mEventTitleSub;
-    public ViewGroup mWeatherContentSub;
-    public ImageView mWeatherIconSub;
-    public TextView mWeatherTempSub;
-    public TextView mEventTitle;
-    public ViewGroup mWeatherContent;
-    public ImageView mWeatherIcon;
-    public TextView mWeatherTemp;
+    private DateTextView mTitle;
+    private ViewGroup mEventContainer;
+    private ImageView mEventIcon;
+    private TextView mEventText;
+    private ViewGroup mWeatherContainer;
+    private ImageView mWeatherIcon;
+    private TextView mWeatherTemp;
 
-    public boolean mIsQuickEvent;
-    public boolean mFinishedInflate;
-    public boolean mWeatherAvailable;
+    private boolean mIsQuickEvent;
+    private boolean mFinishedInflate;
+    private boolean mWeatherAvailable;
 
     private QuickSpaceActionReceiver mActionReceiver;
-    public QuickspaceController mController;
+    private QuickspaceController mController;
     private SeraphixDataProvider mSeraphixDataProvider;
 
     public QuickSpaceView(Context context, AttributeSet set) {
         super(context, set);
         mActionReceiver = new QuickSpaceActionReceiver(context);
         mController = new QuickspaceController(context);
-        mColorStateList = ColorStateList.valueOf(Themes.getAttrColor(getContext(), R.attr.workspaceTextColor));
-        mQuickspaceBackgroundRes = R.drawable.bg_quickspace;
+        mColorStateList = ColorStateList.valueOf(Themes.getAttrColor(context, R.attr.workspaceTextColor));
         setClipChildren(false);
-        mSeraphixDataProvider = new SeraphixDataProvider(getContext(), 1022,
-            Utilities.getSeraphixHolderId(getContext()));
+        mSeraphixDataProvider = new SeraphixDataProvider(context, 1022, Utilities.getSeraphixHolderId(context));
         mSeraphixDataProvider.setOnDataUpdated(mDataProviderListener);
         getViewTreeObserver().addOnGlobalLayoutListener(this::onGlobalLayout);
     }
@@ -97,96 +77,56 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
         mController.getEventController().initQuickEvents();
         if (mIsQuickEvent != mController.isQuickEvent()) {
             mIsQuickEvent = mController.isQuickEvent();
-            prepareLayout();
+            loadViews();
         }
         mWeatherAvailable = mController.isWeatherAvailable() &&
                 mController.getEventController().isDeviceIntroCompleted();
-        getQuickSpaceView();
-        if (mIsQuickEvent) {
-            loadEventSpace();
-        } else {
-            loadPrimarySpace();
-        }
+        loadWeather();
+        loadEvent();
     }
 
-    private final void loadEventSpace() {
-        setBackgroundResource(mQuickspaceBackgroundRes);
-        mEventTitle.setText(mController.getEventController().getTitle());
-        mEventTitle.setEllipsize(TruncateAt.END);
-        mEventTitle.setOnClickListener(Utilities.showDateInPlaceOfNowPlaying(getContext()) ?
-            mActionReceiver.getCalendarAction() : mController.getEventController().getAction());
-        mEventTitleSub.setText(mController.getEventController().getActionTitle());
-        mEventTitleSub.setEllipsize(TruncateAt.MARQUEE);
-        mEventTitleSub.setMarqueeRepeatLimit(3);
-        mEventTitleSub.setSelected(true);
-        mEventTitleSub.setOnClickListener(mController.getEventController().getAction());
-        mEventSubIcon.setImageTintList(mColorStateList);
-        mEventSubIcon.setImageResource(mController.getEventController().getActionIcon());
-        bindWeather(mWeatherContentSub, mWeatherTempSub, mWeatherIconSub);
-    }
+    private void loadEvent() {
+        mTitle.setEventMode(mIsQuickEvent);
+        mEventContainer.setVisibility(mIsQuickEvent ? View.VISIBLE : View.GONE);
+        mEventContainer.setOnClickListener(mIsQuickEvent ? null : mController.getEventController().getAction());
 
-    private final void loadPrimarySpace() {
-        LayoutTransition transition = mQuickspaceContent.getLayoutTransition();
-        mQuickspaceContent.setLayoutTransition(transition == null ? new LayoutTransition() : null);
-        setBackgroundResource(0);
-        bindWeather(mWeatherContent, mWeatherTemp, mWeatherIcon);
-        bindClock(false);
-    }
-
-    private final void bindClock(boolean forced) {
-        mClockView.setVisibility(View.VISIBLE);
-        mClockView.setOnClickListener(mActionReceiver.getCalendarAction());
-        if (forced) {
-            mClockView.reloadDateFormat(true);
-        }
-    }
-
-    private final void bindWeather(View container, TextView title, ImageView icon) {
-        if (mWeatherAvailable) {
-            boolean hasGoogleApp = isPackageEnabled("com.google.android.googlequicksearchbox", getContext());
-            container.setVisibility(View.VISIBLE);
-            container.setOnClickListener(hasGoogleApp ? mActionReceiver.getWeatherAction() : null);
-            title.setText(mController.getWeatherTemp());
-            icon.setImageIcon(mController.getWeatherIcon());
+        if (!mIsQuickEvent) {
+            mTitle.onVisibilityAggregated(true);
             return;
         }
-        container.setVisibility(View.GONE);
+
+        mTitle.setText(mController.getEventController().getTitle());
+        mTitle.setOnClickListener(Utilities.showDateInPlaceOfNowPlaying(getContext()) ?
+            mActionReceiver.getCalendarAction() : mController.getEventController().getAction());
+
+        mEventContainer.setOnClickListener(mController.getEventController().getAction());
+        mEventText.setText(mController.getEventController().getActionTitle());
+        mEventText.setMarqueeRepeatLimit(-1);
+        mEventText.setSelected(true);
+        mEventIcon.setImageTintList(mColorStateList);
+        mEventIcon.setImageResource(mController.getEventController().getActionIcon());
     }
 
-    private final void loadViews() {
-        mEventTitle = (TextView) findViewById(R.id.quick_event_title);
-        mEventTitleSub = (TextView) findViewById(R.id.quick_event_title_sub);
-        mEventSubIcon = (ImageView) findViewById(R.id.quick_event_icon_sub);
-        mWeatherIcon = (ImageView) findViewById(R.id.weather_icon);
-        mWeatherIconSub = (ImageView) findViewById(R.id.quick_event_weather_icon);
-        mQuickspaceContent = (ViewGroup) findViewById(R.id.quickspace_content);
-        mWeatherContent = (ViewGroup) findViewById(R.id.weather_content);
-        mWeatherContentSub = (ViewGroup) findViewById(R.id.quick_event_weather_content);
-        mWeatherTemp = (TextView) findViewById(R.id.weather_temp);
-        mWeatherTempSub = (TextView) findViewById(R.id.quick_event_weather_temp);
-        mClockView = (DateTextView) findViewById(R.id.clock_view);
-    }
+    private void loadWeather() {
+        mWeatherContainer.setVisibility(mWeatherAvailable ? View.VISIBLE : View.GONE);
 
-    private void prepareLayout() {
-        int indexOfChild = indexOfChild(mQuickspaceContent);
-        removeView(mQuickspaceContent);
-        addView(LayoutInflater.from(getContext()).inflate(mIsQuickEvent ?
-                R.layout.quickspace_event :
-                R.layout.quickspace_primary, this, false), indexOfChild);
-        loadViews();
-    }
-
-    private void getQuickSpaceView() {
-        if (!(mQuickspaceContent.getVisibility() == View.VISIBLE)) {
-        	mQuickspaceContent.setVisibility(View.VISIBLE);
-            mQuickspaceContent.setAlpha(0.0f);
-            mQuickspaceContent.animate().setDuration(200).alpha(1.0f);
+        if (mWeatherAvailable) {
+            mWeatherContainer.setOnClickListener(mActionReceiver.getWeatherAction());
+            mWeatherTemp.setText(mController.getWeatherTemp());
+            mWeatherIcon.setImageIcon(mController.getWeatherIcon());
         }
     }
 
-    @Override
-    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-        invalidate();
+    private void loadViews() {
+        mTitle = (DateTextView) findViewById(R.id.quickspace_title);
+
+        mEventContainer = (ViewGroup) findViewById(R.id.quick_event_container);
+        mEventIcon = (ImageView) findViewById(R.id.quick_event_icon);
+        mEventText = (TextView) findViewById(R.id.quick_event_text);
+
+        mWeatherContainer = (ViewGroup) findViewById(R.id.quick_event_weather_container);
+        mWeatherIcon = (ImageView) findViewById(R.id.quick_event_weather_icon);
+        mWeatherTemp = (TextView) findViewById(R.id.quick_event_weather_temp);
     }
 
     @Override
@@ -214,37 +154,16 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
         }
     }
 
-    public boolean isPackageEnabled(String pkgName, Context context) {
-        try {
-            return context.getPackageManager().getApplicationInfo(pkgName, 0).enabled;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-
     @Override
     public void onFinishInflate() {
         super.onFinishInflate();
         loadViews();
         mFinishedInflate = true;
-        mBubbleTextView = findViewById(R.id.dummyBubbleTextView);
-        mBubbleTextView.setTag(new ItemInfo() {
-            @Override
-            public ComponentName getTargetComponent() {
-                return new ComponentName(getContext(), "");
-            }
-        });
-        mBubbleTextView.setContentDescription("");
         if (isAttachedToWindow()) {
             if (mController != null) {
                 mController.addListener(this);
             }
         }
-    }
-
-    @Override
-    public void onLayout(boolean b, int n, int n2, int n3, int n4) {
-        super.onLayout(b, n, n2, n3, n4);
     }
 
     public void onPause() {
@@ -253,13 +172,6 @@ public class QuickSpaceView extends FrameLayout implements AnimatorUpdateListene
 
     public void onResume() {
         mController.onResume();
-    }
-
-    public void run() {
-    }
-
-    public void setPadding(int n, int n2, int n3, int n4) {
-        super.setPadding(0, 0, 0, 0);
     }
 
     private final DataProviderListener mDataProviderListener = new DataProviderListener() {
