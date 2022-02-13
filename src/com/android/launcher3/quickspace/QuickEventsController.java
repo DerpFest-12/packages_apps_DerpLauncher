@@ -20,13 +20,10 @@ import android.content.Context;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.provider.Settings;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.android.launcher3.Launcher;
-import com.android.launcher3.LauncherFiles;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 
@@ -35,7 +32,6 @@ import java.util.Random;
 
 public class QuickEventsController {
 
-    private static final String SETTING_DEVICE_INTRO_COMPLETED = "device_introduction_completed";
     private Context mContext;
 
     private String mEventTitle;
@@ -48,8 +44,8 @@ public class QuickEventsController {
     private boolean mRegistered = false;
 
     // Device Intro
-    private boolean mIsFirstTimeDone = false;
-    private SharedPreferences mPreferences;
+    private long mInitTimestamp = 0;
+    private int mIntroTimeout = 0;
 
     // PSA + Personality
     private String[] mPSAMorningStr;
@@ -76,8 +72,8 @@ public class QuickEventsController {
     }
 
     public void initQuickEvents() {
-        mPreferences = mContext.getSharedPreferences(LauncherFiles.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
-        mIsFirstTimeDone = mPreferences.getBoolean(SETTING_DEVICE_INTRO_COMPLETED, false);
+        mInitTimestamp = Utilities.getInitTimestamp(mContext);
+        mIntroTimeout = mContext.getResources().getInteger(R.integer.config_quickSpaceIntroTimeout);
         registerPSAListener();
         updateQuickEvents();
     }
@@ -106,9 +102,8 @@ public class QuickEventsController {
     }
 
     private void deviceIntroEvent() {
-        if (!mRunning) return;
+        if (!mRunning || isDeviceIntroCompleted()) return;
 
-        if (mIsFirstTimeDone) return;
         mIsQuickEvent = true;
         mEventTitle = mContext.getResources().getString(R.string.quick_event_rom_intro_welcome);
         String[] intros = mContext.getResources().getStringArray(R.array.welcome_message_variants);
@@ -118,18 +113,9 @@ public class QuickEventsController {
         mEventTitleSubAction = new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.getSharedPreferences(LauncherFiles.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-                        .edit()
-                        .putBoolean(SETTING_DEVICE_INTRO_COMPLETED, true)
-                        .commit();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-                try {
-                    Launcher.getLauncher(mContext).startActivitySafely(view, intent, null);
-                } catch (ActivityNotFoundException ex) {
-                }
-                mIsQuickEvent = false;
+                long forceComplete = Utilities.getInitTimestamp(mContext) - (mIntroTimeout * 60000);
+                Utilities.setInitTimestamp(mContext, forceComplete);
+                initQuickEvents();
             }
         };
     }
@@ -145,9 +131,7 @@ public class QuickEventsController {
     }
 
     public void initNowPlayingEvent() {
-        if (!mRunning) return;
-
-        if (!mIsFirstTimeDone) return;
+        if (!mRunning || !isDeviceIntroCompleted()) return;
 
         if (!Utilities.isQuickspaceNowPlaying(mContext)) return;
 
@@ -186,7 +170,7 @@ public class QuickEventsController {
     }
 
     public void psonalityEvent() {
-        if (!mIsFirstTimeDone || mEventNowPlaying) return;
+        if (!isDeviceIntroCompleted() || mEventNowPlaying) return;
 
         if (!Utilities.isQuickspacePersonalityEnabled(mContext)) return;
 
@@ -245,7 +229,7 @@ public class QuickEventsController {
     }
 
     public boolean isDeviceIntroCompleted() {
-        return mIsFirstTimeDone;
+        return ((System.currentTimeMillis() - mInitTimestamp) / 60000) > mIntroTimeout;
     }
 
     public String getTitle() {

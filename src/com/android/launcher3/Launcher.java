@@ -508,6 +508,10 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
         mUserChangedCallbackCloseable = UserCache.INSTANCE.get(this).addUserChangeListener(
                 () -> getStateManager().goToState(NORMAL));
 
+        if (Utilities.getInitTimestamp(this) == 0) {
+            Utilities.setInitTimestamp(this, System.currentTimeMillis());
+        }
+
         if (Utilities.ATLEAST_R) {
             getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         }
