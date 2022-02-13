@@ -37,6 +37,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
+import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
@@ -45,6 +47,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
@@ -70,6 +73,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
+import android.widget.ImageView;
 
 import androidx.core.graphics.ColorUtils;
 import androidx.core.os.BuildCompat;
@@ -897,6 +901,51 @@ public final class Utilities {
             Log.e(TAG, "Error formatting At A Glance date", t);
             return DateUtils.formatDateTime(context, timeInMillis, DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_MONTH);
         }
+    }
+
+    public static Bitmap addShadowToBitmap(Bitmap bmp, float rad, int alpha) {
+        int size = dpToPx(rad) + bmp.getWidth();
+        Paint blurPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+        blurPaint.setMaskFilter(new BlurMaskFilter(dpToPx(rad), BlurMaskFilter.Blur.NORMAL));
+        Paint drawPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+
+        int[] offset = new int[2];
+        Bitmap shadow = bmp.extractAlpha(blurPaint, offset);
+        Bitmap result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas();
+        canvas.setBitmap(result);
+
+        drawPaint.setAlpha(alpha);
+        canvas.drawBitmap(shadow, offset[0], offset[1], drawPaint);
+        canvas.drawBitmap(shadow, offset[0], offset[1], drawPaint);
+
+        drawPaint.setAlpha(255);
+        canvas.drawBitmap(bmp, 0, 0, drawPaint);
+        canvas.setBitmap(null);
+        return result;
+    }
+
+    public static ImageView addShadowToImageView(ImageView view, float rad, int alpha) {
+        Drawable drawable = view.getDrawable();
+        if (drawable == null) return view;
+        Bitmap src;
+        if (drawable instanceof BitmapDrawable) {
+            src = ((BitmapDrawable) drawable).getBitmap();
+        } else {
+            src = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(src);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+        }
+
+        Bitmap shadowedBitmap = addShadowToBitmap(src, rad, alpha);
+        if (view.getImageTintList() != null) {
+            // disable tint as it can affect generated shadow
+            view.setImageTintList(null);
+        }
+        view.setImageBitmap(shadowedBitmap);
+        return view;
     }
 
     public static boolean isDoubleTapGestureEnabled(Context context) {

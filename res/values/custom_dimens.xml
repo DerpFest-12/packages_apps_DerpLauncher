@@ -23,7 +23,7 @@
     <!-- QuickSpace -->
     <dimen name="quickspace_title_size">19sp</dimen>
     <dimen name="quickspace_subtitle_size">15sp</dimen>
-    <dimen name="quickspace_subtitle_icon_size">16dp</dimen>
+    <dimen name="quickspace_subtitle_icon_size">19dp</dimen> <!-- size + shadow radius -->
     <dimen name="quickspace_subtitle_spacing">8dp</dimen>
 
 </resources>

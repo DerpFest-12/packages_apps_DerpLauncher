@@ -17,6 +17,7 @@ package com.android.launcher3.quickspace;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,6 @@ import androidx.annotation.NonNull;
 
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
-import com.android.launcher3.util.Themes;
 
 import com.android.launcher3.quickspace.QuickspaceController.OnDataListener;
 import com.android.launcher3.quickspace.receivers.QuickSpaceActionReceiver;
@@ -42,8 +42,6 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
 
     private static final String TAG = "Launcher3:QuickSpaceView";
     private static final boolean DEBUG = false;
-
-    private final ColorStateList mColorStateList;
 
     private DateTextView mTitle;
     private ViewGroup mEventContainer;
@@ -65,7 +63,6 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
         super(context, set);
         mActionReceiver = new QuickSpaceActionReceiver(context);
         mController = new QuickspaceController(context);
-        mColorStateList = ColorStateList.valueOf(Themes.getAttrColor(context, R.attr.workspaceTextColor));
         setClipChildren(false);
         mSeraphixDataProvider = new SeraphixDataProvider(context, 1022, Utilities.getSeraphixHolderId(context));
         mSeraphixDataProvider.setOnDataUpdated(mDataProviderListener);
@@ -103,8 +100,9 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
         mEventText.setText(mController.getEventController().getActionTitle());
         mEventText.setMarqueeRepeatLimit(-1);
         mEventText.setSelected(true);
-        mEventIcon.setImageTintList(mColorStateList);
+        mEventIcon.setImageTintList(ColorStateList.valueOf(Color.WHITE));
         mEventIcon.setImageResource(mController.getEventController().getActionIcon());
+        Utilities.addShadowToImageView(mEventIcon, 3f, 125);
     }
 
     private void loadWeather() {
@@ -114,6 +112,7 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
             mWeatherContainer.setOnClickListener(mActionReceiver.getWeatherAction());
             mWeatherTemp.setText(mController.getWeatherTemp());
             mWeatherIcon.setImageIcon(mController.getWeatherIcon());
+            Utilities.addShadowToImageView(mWeatherIcon, 3f, 125);
         }
     }
 
