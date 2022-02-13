@@ -178,4 +178,8 @@
     <string name="widget_local_color_title">Lokale Farbe für Widgets aktivieren</string>
     <string name="widget_local_color_summary">Extrahiert die Farbe aus der Umgebung für Widgets und Popups</string>
 
+    <!-- Drawer sizes -->
+    <string name="drawer_size_change_allowed_title">Synchronisieren der Alle Apps-Symbole</string>
+    <string name="drawer_size_change_allowed_summary">Dynamische Anpassung von Symbol- und Textgrößen an die Größen des Startbildschirms</string>
+
 </resources>

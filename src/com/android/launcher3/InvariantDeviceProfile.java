@@ -83,6 +83,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
     public static final String KEY_WORKSPACE_LOCK = "pref_workspace_lock";
     public static final String KEY_SHOW_DESKTOP_LABELS = "pref_desktop_show_labels";
     public static final String KEY_SHOW_DRAWER_LABELS = "pref_drawer_show_labels";
+    public static final String KEY_DRAWER_SYNC_SIZE = "pref_drawer_sync_size";
 
     // Constants that affects the interpolation curve between statically defined device profile
     // buckets.
@@ -260,8 +261,12 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (KEY_SHOW_DESKTOP_LABELS.equals(key) || KEY_SHOW_DRAWER_LABELS.equals(key)) {
-            onConfigChanged(mContext);
+        switch (key) {
+            case KEY_SHOW_DESKTOP_LABELS:
+            case KEY_SHOW_DRAWER_LABELS:
+            case KEY_DRAWER_SYNC_SIZE:
+                onConfigChanged(mContext);
+                break;
         }
     }
 
@@ -329,12 +334,13 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
         numDatabaseAllAppsColumns = isSplitDisplay
                 ? closestProfile.numDatabaseAllAppsColumns : closestProfile.numAllAppsColumns;
 
+        boolean isAppDrawerSynced = Utilities.isDrawerSizeSyncAllowed(context);
         if (Utilities.isGridOptionsEnabled(context)) {
+            allAppsIconSize = displayOption.allAppsIconSize * (isAppDrawerSynced ? iconSizeModifier : 1F);
+            allAppsIconTextSize = displayOption.allAppsIconTextSize * (isAppDrawerSynced ? fontSizeModifier : 1F);
+        } else {
             allAppsIconSize = displayOption.allAppsIconSize;
             allAppsIconTextSize = displayOption.allAppsIconTextSize;
-        } else {
-            allAppsIconSize = iconSize;
-            allAppsIconTextSize = iconTextSize;
         }
 
         if (devicePaddingId != 0) {

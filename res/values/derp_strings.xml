@@ -228,4 +228,8 @@
     <string name="widget_local_color_title">Enable widget local color</string>
     <string name="widget_local_color_summary">Extract color from nearby area for widgets and popups</string>
 
+    <!-- Drawer sizes -->
+    <string name="drawer_size_change_allowed_title">Sync app drawer icons</string>
+    <string name="drawer_size_change_allowed_summary">Enable to dynamically adapt icon and text sizes to homescreen ones</string>
+
 </resources>

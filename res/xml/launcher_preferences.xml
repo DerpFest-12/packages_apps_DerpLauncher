@@ -141,6 +141,13 @@
             settings:interval="5"
             android:defaultValue="100" />
 
+        <SwitchPreference
+            android:key="pref_drawer_sync_size"
+            android:title="@string/drawer_size_change_allowed_title"
+            android:summary="@string/drawer_size_change_allowed_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
         <!--
           LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_ENABLED(613)
           LAUNCHER_ADD_NEW_APPS_TO_HOME_SCREEN_DISABLED(614)
