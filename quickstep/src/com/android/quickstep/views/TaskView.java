@@ -1017,12 +1017,6 @@ public class TaskView extends FrameLayout implements Reusable {
     }
 
     private void applyScale() {
-        /* This is now only for grid mode on tablets. Unconditionally calling this breaks
-         * our overview scrolling animation. Block this method, otherwise we have to
-         * introduce a multivalue scale fusion class to handle this. */
-        if (!mActivity.getDeviceProfile().isTablet || !FeatureFlags.ENABLE_OVERVIEW_GRID.get())
-            return;
-
         float scale = 1;
         float fullScreenProgress = FULLSCREEN_INTERPOLATOR.getInterpolation(mFullscreenProgress);
         scale *= Utilities.mapRange(fullScreenProgress, 1f, mFullscreenScale);
