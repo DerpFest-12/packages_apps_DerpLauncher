@@ -102,7 +102,7 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
         mEventText.setSelected(true);
         mEventIcon.setImageTintList(ColorStateList.valueOf(Color.WHITE));
         mEventIcon.setImageResource(mController.getEventController().getActionIcon());
-        Utilities.addShadowToImageView(mEventIcon, 3f, 125);
+        Utilities.addShadowToImageView(mEventIcon, 5f, 64);
     }
 
     private void loadWeather() {
@@ -112,7 +112,7 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
             mWeatherContainer.setOnClickListener(mActionReceiver.getWeatherAction());
             mWeatherTemp.setText(mController.getWeatherTemp());
             mWeatherIcon.setImageIcon(mController.getWeatherIcon());
-            Utilities.addShadowToImageView(mWeatherIcon, 3f, 125);
+            Utilities.addShadowToImageView(mWeatherIcon, 5f, 64);
         }
     }
 
