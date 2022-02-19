@@ -20,15 +20,15 @@
 <resources>
 
     <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
-    <string name="title_show_google_app">Swipe to access Google app</string>
+    <string name="title_show_google_app">Приложение Google</string>
     <!-- Settings message explaining when the -1 screen is available on an LTR device. [CHAR LIMIT=100] -->
-    <string name="msg_minus_one_on_left">From Home screen, swipe left to open Google app</string>
+    <string name="msg_minus_one_on_left">Свайп влево открывает ленту Google</string>
     <!-- Settings message explaining when the -1 screen is available on an RTL device. [CHAR LIMIT=100] -->
-    <string name="msg_minus_one_on_right">From Home screen, swipe right to open Google app</string>
+    <string name="msg_minus_one_on_right">Свайп вправо открывает ленту Google</string>
 
     <!-- Suggestions -->
     <string name="suggestion_pref_screen_title">Предложения</string>
-    <string name="suggestion_pref_screen_desc">Для всех предложений приложений и главного экрана</string>
+    <string name="suggestion_pref_screen_desc">Для всех приложений &amp; и предложений на домашнем экране</string>
 
     <!-- Gestures -->
     <string name="pref_dt_gesture_title">Жест двойного касания</string>
@@ -47,8 +47,10 @@
     <string name="quick_event_ambient_song_artist">%1$s от %2$s</string>
 
     <!-- Quickspace Now Playing -->
-    <string name="quickspace_now_playing_title">Показать что сейчас играет</string>
-    <string name="quickspace_now_playing_summary">отображать трек, который вы слушаете в разлеле самого главного</string>
+    <string name="quickspace_now_playing_title">Показывать что сейчас играет</string>
+    <string name="quickspace_now_playing_summary">Ото бражать трек который сейчас играет в At a Glance. ВНИМАНИЕ: Работает не со всеми медиаплеерами!</string>
+    <string name="quickspace_now_playing_showdate_title">...показывать вместо этого дату</string>
+    <string name="quickspace_now_playing_showdate_summary">Показывать дату в первой строке вместо \"Сейчас играет\"</string>
 
     <!-- Wallpaper zoom -->
     <string name="enable_wallpaper_zoom_title">Включить масштабирование обоев</string>
@@ -85,5 +87,128 @@
     <string name="settings_lock_layout_summary_on">Иконки и виджеты нельзя добавлять, удалять и перемещать на рабочий стол</string>
     <string name="settings_lock_layout_summary_off">Иконки и виджеты можно добавлять, удалять и перемещать на рабочий стол.</string>
     <string name="settings_edit_widgets_error">Невозможно добавить виджеты на главный экран</string>
+
+    <!-- Default home page -->
+    <string name="set_default_home_page">Сделать стартовой</string>
+
+    <string-array name="welcome_message_variants">
+        <item>Спасибо что выбрали DerpFest</item>
+        <item>Самый лучший РОМ!</item>
+        <item>DerpFest FTW!</item>
+        <item>Хорошего дня</item>
+        <item>Скажи нам привет в Telegram</item>
+        <item>#StayDerped</item>
+        <item>Любим вас 3000</item>
+    </string-array>
+    
+    <!-- Trust apps -->
+    <string name="trust_apps_manager_name">Скрытые и защищенные приложения</string>
+    <string name="trust_apps_auth_manager">Разблокируйте чтобы управлять скрытыми приложениями</string>
+    <string name="trust_apps_auth_open_app">Авторизуйтесь, чтобы открыть %1$s</string>
+    <string name="trust_apps_loading">Загрузка\u2026</string>
+    <string name="trust_apps_no_lock_error">Настройте экран блокировки, чтобы ограничить доступ к приложению.</string>
+    <string name="trust_apps_help">Помощь</string>
+    <string name="trust_apps_info_hidden">Скрытые приложения и их виджеты скрыты в меню приложений</string>
+    <string name="trust_apps_info_protected">Защищенные приложения требуют аутентификации для открытия</string>
+    
+    <!-- Hide labels -->
+    <string name="desktop_show_labels">Показывать подписи на рабочем столе</string>
+    <string name="drawer_show_labels">Показывать подписи в меню приложений</string>
+
+
+    <!-- Quickspace PSA - Custom messages for the glance -->
+    <string name="quickspace_psa_title">Показывать случайное сообщение</string>
+    <string name="quickspace_psa_summary">Иногда показывать приятные сообщения в At a Glance</string>
+
+    <string-array name="quickspace_psa_morning">
+        <item>Доброе утро!</item>
+        <item>Доброе утро, игрок!</item>
+        <item>Какой прекрасный день!</item>
+        <item>Хорошего дня!</item>
+        <item>Как насчет небольшого 5-минутного сна?</item>
+        <item>Это один из способов проснуться</item>
+        <item>Вам следует изменить звук будильника</item>
+        <item>Похоже, это прекрасный день, не так ли?</item>
+        <item>Не забудьте личного Ивана</item>
+        <item>На всякий случай проверьте погоду.</item>
+        <item>Чувствую себя немного сонным</item>
+        <item>Вы уже выглянули наружу?</item>
+        <item>Давайте сделаем это</item>
+    </string-array>
+    <string-array name="quickspace_psa_evening">
+        <item>Доброй ночи!</item>
+        <item>Спокойной ночи!</item>
+        <item>До завтра!</item>
+        <item>Сладких снов!</item>
+        <item>Не ложись спать слишком поздно</item>
+        <item>Хорошего сна</item>
+        <item>Поспи</item>
+        <item>Время расслабиться </item>
+        <item>Наслаждайся ночью!</item>
+        <item>Время зарядить аккумуляторы!</item>
+        <item>Завтра может быть отличный день</item>
+        <item>Готовь свои кости к завтрашнему дню</item>
+    </string-array>
+    <string-array name="quickspace_psa_midnight">
+        <item>Эм... спокойной ночи?</item>
+        <item>Сейчас немного поздно</item>
+        <item>Вы должны исправить свой график сна</item>
+        <item>Вы более продуктивны в это время?</item>
+    </string-array>
+    <string-array name="quickspace_psa_random">
+        <item>Так бывает иногда</item>
+        <item>Не пора ли уже прошить другой ROM?</item>
+        <item>Наслаждаетесь Android 12?</item>
+        <item>В восторге от Android 13?</item>
+        <item>Эй, как дела?</item>
+        <item>Время похвастаться моей #настройкой</item>
+        <item>Сосредоточьтесь на своих задачах</item>
+        <item>Вы проверили все твики?</item>
+        <item>Сколько скриншотов вы делаете?</item>
+        <item>Распространяйте любовь, а не хаос</item>
+        <item>А ты уже прошил DerpFest!?</item>
+        <item>Я хотел бы использовать VoLTE</item>
+        <item>Повеселись!</item>
+        <item>Давай погриндим, геймер!</item>
+        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C ГОЛОВА</item>
+        <item>Вам нужен DerpFest Premium, чтобы увидеть это</item>
+        <item>Обугленная статуя совы</item>
+        <item>404 сосать!</item>
+        <item>Кушайте овощи и отправляйте логи</item>
+        <item>О нет, система была уничтожена</item>
+        <item>Я пришел сделать объявление</item>
+        <item>Что значит спиздил?</item>
+        <item>Много вариантов!</item>
+        <item>Я не твоя кнопка F1</item>
+        <item>Не игнорь меня!</item>
+        <item>Сделал домашку? ツ</item>
+        <item>Будьте дома, Будьте в безопасности</item>
+        <item>Сделай что-нибудь приятное сегодня</item>
+        <item>Есть симптомы COVID?  Пройди тест!</item>
+        <item>Это лучший ROM, не так ли?</item>
+        <item>Как дела?</item>
+        <item>Добро пожаловать в реальность!</item>
+        <item>Отличная работа!  Вы заработали бонусную функцию</item>
+        <item>Хватит, перестань стучать по мне!</item>
+        <item>Только для профи</item>
+        <item>Ты то, что ты шьешь, не будь картошкой</item>
+        <item>Как правильно выбирать вишенку  ?</item>
+        <item>Спасибо за вашу поддержку</item>
+        <item>Вы, ребята, действительно даете нам тизеры о добавлении платных функций в ROM, которые раньше можно было использовать бесплатно?</item>
+        <item>Один из лучших вариантов билдбота</item>
+        <item>Если вам нравится приложение, пожалуйста, поддержите его, купив</item>
+        <item>Какой прекрасный опыт, не так ли?</item>
+        <item>Какой багованный опыт, не так ли?</item>
+        <item>отлично</item>
+        <item>ツ</item>
+        <item>#StayDerped \m/</item>
+        <item>DerpFest FTW \m/</item>
+        <item>О чем ты думаешь?</item>
+        <item>Нашел ошибку? Не забудь про логи!</item>
+        <item>Шей DerpFest!</item>
+        <item>#StayDerped</item>
+        <item>Чарли Уоттс мертв, а ты жив</item>
+        <item>rm -rf \/</item>
+    </string-array>
 
 </resources>
