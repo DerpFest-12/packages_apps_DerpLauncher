@@ -115,7 +115,7 @@
     <!-- Default home page -->
     <string name="set_default_home_page">Set default page</string>
 
-    <string-array translatable="false" name="welcome_message_variants">
+    <string-array name="welcome_message_variants">
         <item>Thank you for choosing DerpFest</item>
         <item>Best ROM Ever</item>
         <item>DerpFest FTW!</item>
