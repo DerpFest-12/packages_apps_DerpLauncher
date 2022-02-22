@@ -345,8 +345,11 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
 
                 case KEY_TRUST_APPS:
                     preference.setOnPreferenceClickListener(p -> {
-                        Intent intent = new Intent(getActivity(), TrustAppsActivity.class);
-                        startActivity(intent);
+                        LineageUtils.showLockScreen(getActivity(),
+                                getString(R.string.trust_apps_manager_name), () -> {
+                            Intent intent = new Intent(getActivity(), TrustAppsActivity.class);
+                            startActivity(intent);
+                        });
                         return true;
                     });
                     return true;
