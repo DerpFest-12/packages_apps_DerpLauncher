@@ -2056,6 +2056,9 @@
         drawable="@drawable/themed_icon_lawnchair"
         package="app.lawnchair" />
     <icon
+        drawable="@drawable/themed_icon_tvtime"
+        package="com.tozelabs.tvshowtime" />
+    <icon
         drawable="@drawable/themed_icon_lawnchair"
         package="ch.deletescape.lawnchair.plah" />
     <icon
