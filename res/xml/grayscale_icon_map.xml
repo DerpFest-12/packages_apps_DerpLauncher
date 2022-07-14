@@ -67,6 +67,15 @@
         drawable="@drawable/themed_icon_bir"
         package="az.kapitalbank.mbanking" />
     <icon
+        drawable="@drawable/mbank"
+        package="cz.mbank" />
+    <icon
+        drawable="@drawable/mbank"
+        package="pl.mbank" />
+    <icon
+        drawable="@drawable/mbank"
+        package="sk.mbank" />
+    <icon
         drawable="@drawable/themed_icon_bitwarden"
         package="com.x8bit.bitwarden" />
     <icon
@@ -341,18 +350,31 @@
         package="eu.ctwoon.lewdfi" />
     <icon
         drawable="@drawable/themed_icon_linkedin"
-        package="com.linkedin.android" />b <icon
+        package="com.linkedin.android" /> 
+    <icon
         drawable="@drawable/themed_icon_lsposed"
         package="org.lsposed.manager" />
     <icon
         drawable="@drawable/themed_icon_magisk"
         package="com.topjohnwu.magisk" />
     <icon
+        drawable="@drawable/themed_icon_magisk"
+        package="com.thehitman7.cygisk" />
+    <icon
         drawable="@drawable/themed_icon_maps"
         package="com.google.android.apps.maps" />
     <icon
         drawable="@drawable/themed_icon_matlog"
         package="com.pluscubed.matlog" />
+    <icon
+        drawable="@drawable/themed_icon_matlog"
+        package="com.pluscubed.matlog.debug" />
+    <icon
+        drawable="@drawable/themed_icon_matlog"
+        package="com.pluscubed.matloglibre" />
+    <icon
+        drawable="@drawable/themed_icon_matlog"
+        package="org.omnirom.logcat" />
     <icon
         drawable="@drawable/themed_icon_maxim"
         package="com.taxsee.taxsee" />
@@ -464,6 +486,9 @@
     <icon
         drawable="@drawable/themed_icon_picpay"
         package="com.picpay" />
+    <icon
+        drawable="@drawable/themed_icon_picpay"
+        package="com.picpay.business" />
     <icon
         drawable="@drawable/themed_icon_pillars"
         package="com.pillars.pillars" />
@@ -624,6 +649,9 @@
         drawable="@drawable/themed_icon_telegram_x"
         package="org.thunderdog.challegram" />
     <icon
+        drawable="@drawable/themed_icon_telegram_x"
+        package="org.thunderdog.challegramtwo" />
+    <icon
         drawable="@drawable/themed_icon_termux"
         package="com.termux" />
     <icon
@@ -659,6 +687,9 @@
     <icon
         drawable="@drawable/themed_icon_twitter"
         package="com.twitter.android" />
+    <icon
+        drawable="@drawable/themed_icon_twitter"
+        package="com.twitter.android.lite" />
     <icon
         drawable="@drawable/themed_icon_uber"
         package="com.ubercab" />
@@ -713,6 +744,21 @@
     <icon
         drawable="@drawable/themed_icon_shopee"
         package="com.shopee.ph" />
+    <icon
+        drawable="@drawable/themed_icon_shopee"
+        package="com.shopee.br" />
+    <icon
+        drawable="@drawable/themed_icon_shopee"
+        package="com.shopee.my" />
+    <icon
+        drawable="@drawable/themed_icon_shopee"
+        package="com.shopee.th" />
+    <icon
+        drawable="@drawable/themed_icon_shopee"
+        package="com.shopee.tw" />
+    <icon
+        drawable="@drawable/themed_icon_shopee"
+        package="com.shopee.vn" />
     <icon
         drawable="@drawable/themed_icon_tor_browser"
         package="org.torproject.torbrowser" />
@@ -969,6 +1015,9 @@
         drawable="@drawable/themed_icon_twitch"
         package="tv.twitch.android.app" />
     <icon
+        drawable="@drawable/themed_icon_twitch"
+        package="tv.twitch.bttvandroid.app" />
+    <icon
         drawable="@drawable/themed_icon_ubereats"
         package="com.ubercab.eats" />
     <icon
@@ -1002,8 +1051,17 @@
         drawable="@drawable/themed_icon_mixplorer"
         package="com.mixplorer.silver" />
     <icon
+        drawable="@drawable/themed_icon_mixplorer"
+        package="com.mixplorer.beta" />
+    <icon
         drawable="@drawable/themed_icon_firefox"
         package="org.mozilla.firefox" />
+    <icon
+        drawable="@drawable/themed_icon_firefox"
+        package="org.mozilla.fenix" />
+    <icon
+        drawable="@drawable/themed_icon_firefox"
+        package="org.mozilla.focus" />
     <icon
         drawable="@drawable/themed_icon_boost"
         package="com.rubenmayayo.reddit" />
@@ -1059,6 +1117,12 @@
         drawable="@drawable/themed_icon_genshin_impact"
         package="com.miHoYo.GenshinImpact" />
     <icon
+        drawable="@drawable/themed_icon_genshin_impact"
+        package="com.miHoYo.Yuanshen" />
+    <icon
+        drawable="@drawable/themed_icon_genshin_impact"
+        package="com.miHoYo.ys.bilibili" />
+    <icon
         drawable="@drawable/themed_icon_kaspi_kz"
         package="kz.kaspi.mobile" />
     <icon
@@ -1073,6 +1137,9 @@
     <icon
         drawable="@drawable/themed_icon_opera"
         package="com.opera.browser" />
+    <icon
+        drawable="@drawable/themed_icon_opera"
+        package="com.opera.touch" />
     <icon
         drawable="@drawable/themed_icon_opera_beta"
         package="com.opera.browser.beta" />
@@ -1557,6 +1624,9 @@
         drawable="@drawable/themed_icon_rabobank"
         package="nl.rabomobiel" />
     <icon
+        drawable="@drawable/themed_icon_rabo_wallet"
+        package="nl.rabowallet" />
+    <icon
         drawable="@drawable/themed_icon_samsung_music"
         package="com.sec.android.app.music" />
     <icon
@@ -1581,6 +1651,9 @@
         drawable="@drawable/themed_icon_xda"
         package="com.xda.labs.play" />
     <icon
+        drawable="@drawable/themed_icon_xda"
+        package="com.xda.labs" />
+    <icon
         drawable="@drawable/themed_icon_yandex_mail"
         package="ru.yandex.mail" />
     <icon
@@ -1598,6 +1671,9 @@
     <icon
         drawable="@drawable/themed_icon_kiwi_browser"
         package="com.kiwibrowser.browser" />
+    <icon
+        drawable="@drawable/themed_icon_kiwi_browser"
+        package="com.kiwibrowser.browser.dev" />
     <icon
         drawable="@drawable/themed_icon_discord_themer"
         package="com.aliucord.themer" />
@@ -1980,6 +2056,9 @@
         drawable="@drawable/themed_icon_lawnchair"
         package="app.lawnchair" />
     <icon
+        drawable="@drawable/themed_icon_tvtime"
+        package="com.tozelabs.tvshowtime" />
+    <icon
         drawable="@drawable/themed_icon_lawnchair"
         package="ch.deletescape.lawnchair.plah" />
     <icon
@@ -2054,9 +2133,6 @@
     <icon
         drawable="@drawable/themed_icon_geometricweather"
         package="wangdaye.com.geometricweather" />
-    <icon
-        drawable="@drawable/themed_icon_tvtime"
-        package="com.tozelabs.tvshowtime" />
     <icon
         drawable="@drawable/themed_icon_meituan"
         package="com.sankuai.meituan" />
@@ -2331,6 +2407,9 @@
         drawable="@drawable/themed_icon_pokemon_go"
         package="com.nianticlabs.pokemongo" />
     <icon
+        drawable="@drawable/themed_icon_pokemon_unite"
+        package="jp.pokemon.pokemonunite" />
+    <icon
         drawable="@drawable/themed_icon_apex_legends"
         package="com.ea.gp.apexlegendsmobilefps" />
     <icon
@@ -2351,4 +2430,589 @@
     <icon
         drawable="@drawable/themed_icon_tinkoff"
         package="ru.tinkoff.sme" />
+    <icon
+        drawable="@drawable/themed_icon_imdb"
+        package="com.imdb.mobile" />
+    <icon
+        drawable="@drawable/themed_icon_proton_vpn"
+        package="ch.protonvpn.android" />
+    <icon
+        drawable="@drawable/themed_icon_among_us"
+        package="com.innersloth.spacemafia" />
+    <icon
+        drawable="@drawable/themed_icon_amdroid"
+        package="com.amdroidalarmclock.amdroid" />
+    <icon
+        drawable="@drawable/themed_icon_app_manager"
+        package="io.github.muntashirakon.AppManager" />
+    <icon
+        drawable="@drawable/themed_icon_a12_extentions"
+        package="dev.kdrag0n.android12ext" />
+    <icon
+        drawable="@drawable/themed_icon_app_inspector"
+        package="com.ubqsoft.sec01" />
+    <icon
+        drawable="@drawable/themed_icon_babbel"
+        package="com.babbel.mobile.android.en" />
+    <icon
+        drawable="@drawable/themed_icon_bank_jago"
+        package="com.jago.digitalbanking" />
+    <icon
+        drawable="@drawable/themed_icon_bank_jago"
+        package="com.bca" />
+    <icon
+        drawable="@drawable/themed_icon_bni_mobile_banking"
+        package="src.com.bni" />
+    <icon
+        drawable="@drawable/themed_icon_bose_music"
+        package="com.bose.bosemusic" />
+    <icon
+        drawable="@drawable/themed_icon_browsec"
+        package="com.browsec.vpn.proxy" />
+    <icon
+        drawable="@drawable/themed_icon_bukalapak"
+        package="com.bukalapak.android" />
+    <icon
+        drawable="@drawable/themed_icon_bundle_breaking_news"
+        package="com.dwarfplanet.bundle" />
+    <icon 
+        drawable="@drawable/themed_icon_burger_king"
+        package="burgerking.id.android" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.bk.ch" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.burgerking.kingfinder" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.burgerking.turk" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.burgerkingcz" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.burgerkingpl" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.burgerkingqatar.android" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.dom.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.emn8.mobilem8.nativeapp.bk" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.expremio.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.frakton.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.nosmk.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.proacit.burgerkingcolombia" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.skylinedynamics.bk" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.smt.BurgerKing" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.spoonstream.bklebanon" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.tapston.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="com.tillster.bk_kw_mobile" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="in.burgerking.android" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="it.burgerking.android" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="jp.co.burgerkingjapan" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="kr.co.burgerkinghybrid" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="led.android.burgerkingisrael" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="ni.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="ru.burgerking" />
+    <icon
+        drawable="@drawable/themed_icon_burger_king"
+        package="se.burgerking.ordersapp" />
+    <icon
+        drawable="@drawable/themed_icon_cell_mapper"
+        package="ellmapper.net.cellmapper" />
+    <icon
+        drawable="@drawable/themed_icon_blokada"
+        package="org.blokada.alarm.dnschanger" />
+    <icon
+        drawable="@drawable/themed_icon_coinbase"
+        package="com.coinbase.android" />
+    <icon
+        drawable="@drawable/themed_icon_corona_warn_app"
+        package="de.rki.coronawarnapp" />
+    <icon
+        drawable="@drawable/themed_icon_scanner_for_coronacheck"
+        package="nl.rijksoverheid.ctr.verifier" />
+    <icon
+        drawable="@drawable/themed_icon_coronacheck"
+        package="nl.rijksoverheid.ctr.holder" />
+    <icon
+        drawable="@drawable/themed_icon_covpass"
+        package="de.rki.covpass.app" />
+    <icon
+        drawable="@drawable/themed_icon_cpu_z"
+        package="com.cpuid.cpu_z" />
+    <icon
+        drawable="@drawable/themed_icon_dana_digital_wallet"
+        package="id.dana" />
+    <icon
+        drawable="@drawable/themed_icon_db_navigator"
+        package="de.hafas.android.db" />
+    <icon
+        drawable="@drawable/themed_icon_degiro_online_trading"
+        package="nl.degiro.trader" />
+    <icon
+        drawable="@drawable/themed_icon_designer_tools"
+        package="com.scheffsblend.designertools" />
+    <icon
+        drawable="@drawable/themed_icon_distyle"
+        package="com.lilithgames.xgame.gp" />
+    <icon
+        drawable="@drawable/themed_icon_drm_info"
+        package="com.androidfung.drminfo" />
+    <icon
+        drawable="@drawable/themed_icon_dropbox"
+        package="com.dropbox.android" />
+    <icon
+        drawable="@drawable/themed_icon_eight_ball_pool"
+        package="com.miniclip.eightballpool" />
+    <icon
+        drawable="@drawable/themed_icon_eksi_sozluk"
+        package="com.eksiteknoloji.eksisozluk" />
+    <icon
+        drawable="@drawable/themed_icon_ella_the_game"
+        package="rocks.poopjournal.Ella" />
+    <icon
+        drawable="@drawable/themed_icon_remote_fingerprint"
+        package="ro.andreimircius.remotefingerauth" />
+    <icon
+        drawable="@drawable/themed_icon_flashy"
+        package="rocks.poopjournal.flashy" />
+    <icon
+        drawable="@drawable/themed_icon_flamingo"
+        package="com.samruston.twitter" />
+    <icon
+        drawable="@drawable/themed_icon_corona_tracing"
+        package="de.corona.tracing" />
+    <icon
+        drawable="@drawable/themed_icon_flightradar24"
+        package="com.flightradar24free" />
+    <icon
+        drawable="@drawable/themed_icon_flip_bank"
+        package="id.flip" />
+    <icon
+        drawable="@drawable/themed_icon_fox_mmm"
+        package="com.fox2code.mmm" />
+    <icon
+        drawable="@drawable/themed_icon_free_download_manager"
+        package="org.freedownloadmanager.fdm" />
+    <icon
+        drawable="@drawable/themed_icon_fritter"
+        package="com.jonjomckay.fritter" />
+    <icon
+        drawable="@drawable/themed_icon_fucks_given"
+        package="rocks.poopjournal.fucksgiven" />
+    <icon
+        drawable="@drawable/themed_icon_galaxy_store"
+        package="com.sec.android.app.samsungapps" />
+    <icon
+        drawable="@drawable/themed_icon_gojek"
+        package="com.gojek.app" />
+    <icon
+        drawable="@drawable/themed_icon_govee_home"
+        package="com.govee.home" />
+    <icon
+        drawable="@drawable/themed_icon_grab"
+        package="com.grabtaxi.driver2" />
+    <icon
+        drawable="@drawable/themed_icon_grab"
+        package="com.grabtaxi.passenger" />
+    <icon
+        drawable="@drawable/themed_icon_hago"
+        package="com.yy.hiyo" />
+    <icon
+        drawable="@drawable/themed_icon_hex_installer"
+        package="project.vivid.hex.bodhi" />
+    <icon
+        drawable="@drawable/themed_icon_1dm_browser"
+        package="idm.internet.download.manager" />
+    <icon
+        drawable="@drawable/themed_icon_1dm+_browser"
+        package="idm.internet.download.manager.plus" />
+    <icon
+        drawable="@drawable/themed_icon_inware"
+        package="com.evo.inware" />
+    <icon
+        drawable="@drawable/themed_icon_banco_itau"
+        package="com.itau" />
+    <icon
+        drawable="@drawable/themed_icon_jellyfin"
+        package="org.jellyfin.mobile" />
+    <icon
+        drawable="@drawable/themed_icon_jenius"
+        package="com.btpn.dc" />
+    <icon
+        drawable="@drawable/themed_icon_kde_connect"
+        package="org.kde.kdeconnect_tp" />
+    <icon
+        drawable="@drawable/themed_icon_knife_hit"
+        package="com.ketchapp.knifehit" />
+    <icon
+        drawable="@drawable/themed_icon_lastpass"
+        package="com.lastpass.lpandroid" />
+    <icon
+        drawable="@drawable/themed_icon_lbry"
+        package="io.lbry.browser" />
+    <icon
+        drawable="@drawable/themed_icon_libretube"
+        package="com.github.libretube" />
+    <icon
+        drawable="@drawable/themed_icon_lichess"
+        package="org.lichess.mobileapp" />
+    <icon
+        drawable="@drawable/themed_icon_life360"
+        package="com.life360.android.safetymapd" />
+    <icon
+        drawable="@drawable/themed_icon_material_catalog"
+        package="io.material.catalog" />
+    <icon
+        drawable="@drawable/themed_icon_mcdonalds"
+        package="com.mcdonalds.app" />
+    <icon
+        drawable="@drawable/themed_icon_mcdonalds"
+        package="com.mcdonalds.gma.hongkong" />
+    <icon
+        drawable="@drawable/themed_icon_mcdonalds"
+        package="com.mcdonalds.mobileapp" />
+    <icon
+        drawable="@drawable/themed_icon_mcdonalds"
+        package="il.co.inmanage.mcdonalds" />
+    <icon
+        drawable="@drawable/themed_icon_mcdonalds"
+        package="jp.co.mcdonalds.android" />
+    <icon
+        drawable="@drawable/themed_icon_metadata_remover"
+        package="rocks.poopjournal.metadataremover" />
+    <icon
+        drawable="@drawable/themed_icon_mi_files"
+        package="com.mi.android.globalFileexplorer" />
+    <icon
+        drawable="@drawable/themed_icon_mi_remote"
+        package="com.duokan.phone.remotecontroller" />
+    <icon
+        drawable="@drawable/themed_icon_microg_settings"
+        package="com.google.android.gms" />
+    <icon
+        drawable="@drawable/themed_icon_microsoft365_admin"
+        package="com.ms.office365admin" />
+    <icon
+        drawable="@drawable/themed_icon_microsoft_edge_canary"
+        package="com.microsoft.emmx.canary" />
+    <icon
+        drawable="@drawable/themed_icon_remote_desktop"
+        package="com.microsoft.rdc.androidx" />
+    <icon
+        drawable="@drawable/themed_icon_microsoft_solitaire"
+        package="com.microsoft.microsoftsolitairecollection" />
+    <icon
+        drawable="@drawable/themed_icon_midi_player"
+        package="net.volcanomobile.midiplayer" />
+    <icon
+        drawable="@drawable/themed_icon_minisweeper"
+        package="com.AntonBergaker.minisweeper" />
+    <icon
+        drawable="@drawable/themed_icon_mobiles_bezahlen"
+        package="com.s_payment.mobiles_bezahlen" />
+    <icon
+        drawable="@drawable/themed_icon_morse"
+        package="rocks.poopjournal.morse" />
+    <icon
+        drawable="@drawable/themed_icon_mvgo"
+        package="de.mvg.more" />
+    <icon
+        drawable="@drawable/themed_icon_mydealz"
+        package="com.tippingcanoe.mydealz" />
+    <icon
+        drawable="@drawable/themed_icon_myim3"
+        package="com.pure.indosat.care" />
+    <icon
+        drawable="@drawable/themed_icon_mysf"
+        package="com.smartfren" />
+    <icon
+        drawable="@drawable/themed_icon_mytelkomsel"
+        package="com.telkomsel.telkomselcm" />
+    <icon
+        drawable="@drawable/themed_icon_myxl"
+        package="com.apps.MyXL" />
+    <icon
+        drawable="@drawable/themed_icon_9292_travel"
+        package="nl.negentwee" />
+    <icon
+        drawable="@drawable/themed_icon_nextcloud"
+        package="com.nextcloud.client" />
+    <icon
+        drawable="@drawable/themed_icon_notenapp"
+        package="com.notenapp" />
+    <icon
+        drawable="@drawable/themed_icon_ns"
+        package="nl.ns.android.activity" />
+    <icon
+        drawable="@drawable/themed_icon_octoapp"
+        package="de.crysxd.octoapp" />
+    <icon
+        drawable="@drawable/themed_icon_odysee"
+        package="com.odysee.app" />
+    <icon
+        drawable="@drawable/themed_icon_oebb"
+        package="at.oebb.ts" />
+    <icon
+        drawable="@drawable/themed_icon_1password"
+        package="com.agilebits.onepassword" />
+    <icon
+        drawable="@drawable/themed_icon_orbot"
+        package="org.torproject.android" />
+    <icon
+        drawable="@drawable/themed_icon_organic_maps"
+        package="app.organicmaps" />
+    <icon
+        drawable="@drawable/themed_icon_ovinfo"
+        package="nl.skywave.ovinfo" />
+    <icon
+        drawable="@drawable/themed_icon_ovo"
+        package="ovo.id" />
+    <icon
+        drawable="@drawable/themed_icon_parsec"
+        package="tv.parsec.client" />
+    <icon
+        drawable="@drawable/themed_icon_pedulilindungi"
+        package="com.telkom.tracencare" />
+    <icon
+        drawable="@drawable/themed_icon_pixel_wallpapers"
+        package="dev.wacko1805.pixel.wallpapers" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut" 
+        package="bn.com.pizzahut.OSPHB" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.aggregator.pizzahutmongolia" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.devsence.pizzahut" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.expremio.pizzahutcipru" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.nanoequipment.pizzahut" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.jeddah" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.kh" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut" 
+        package="com.pizzahut.kuwait" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.malaysia" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.ng" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.oman" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.phd" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.qatar" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahut.rsa" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahutapp" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.pizzahutguyana.android" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.socialsnack.pizzahutcr" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="com.yum.pizzahut" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="eu.beeple.topbrandspizzahut.users" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="jp.pizzahut.aorder" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="net.bonee.pizzaHut" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="pra.hizzahut.com.sv" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="pt.wingman.pizzahut" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="se.leeroygroup.pizzahut" />
+    <icon
+        drawable="@drawable/themed_icon_pizza_hut"
+        package="tr.com.pizzahut" />
+    <icon
+        drawable="@drawable/themed_icon_privacy_dashboard"
+        package="rk.android.app.privacydashboard" />
+    <icon
+        drawable="@drawable/themed_icon_repainter"
+        package="dev.kdrag0n.dyntheme" />
+    <icon
+        drawable="@drawable/themed_icon_mega_man_x_dive"
+        package="tw.com.capcom.rxd" />
+    <icon
+        drawable="@drawable/themed_icon_roku_remote"
+        package="com.roku.remote" />
+    <icon
+        drawable="@drawable/themed_icon_spushtan"
+        package="com.starfinanz.mobile.android.pushtan" />
+    <icon
+        drawable="@drawable/themed_icon_samsung_notes"
+        package="com.samsung.android.app.notes" />
+    <icon
+        drawable="@drawable/themed_icon_schulmanager"
+        package="online.schulmanager.app" />
+    <icon
+        drawable="@drawable/themed_icon_senheiser_smart_control"
+        package="com.sennheiser.control" />
+    <icon
+        drawable="@drawable/themed_icon_senheiser_sensor_box"
+        package="imoblife.androidsensorbox" />
+    <icon
+        drawable="@drawable/themed_icon_sky_children_of_the_light"
+        package="com.tgc.sky.androids" />
+    <icon
+        drawable="@drawable/themed_icon_slide_for_reddit"
+        package="me.ccrama.redditslide" />
+    <icon
+        drawable="@drawable/themed_icon_solarweb"
+        package="com.fronius.solarweb" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.gameloft.android.ANMP.GloftICHM" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sonic1px" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sonic2.runner" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sonic4epi" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sonic4episode2" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sonicboomandroid" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.soniccd.classic" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sonicdash" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sega.sprint" />
+    <icon
+        drawable="@drawable/themed_icon_sonic_runners"
+        package="com.sonicjump.sonicjump" />
+    <icon
+        drawable="@drawable/themed_icon_sparkasse"
+        package="com.starfinanz.smob.android.sfinanzstatus" />
+    <icon
+        drawable="@drawable/themed_icon_stremio"
+        package="com.stremio.one" />
+    <icon
+        drawable="@drawable/themed_icon_tagesschau"
+        package="de.tagesschau" />
+    <icon
+        drawable="@drawable/themed_icon_economist"
+        package="com.economist.lamarr" />
+    <icon
+        drawable="@drawable/themed_icon_ticktick_todo"
+        package="com.ticktick.task" />
+    <icon
+        drawable="@drawable/themed_icon_to_dont"
+        package="rocks.poopjournal.todont" />
+    <icon
+        drawable="@drawable/themed_icon_todoist"
+        package="com.todoist" />
+    <icon
+        drawable="@drawable/themed_icon_tokopedia"
+        package="com.tokopedia.tkpd" />
+    <icon
+        drawable="@drawable/themed_icon_tokopedia"
+        package="ellipi.messenger" />
+    <icon
+        drawable="@drawable/themed_icon_tutanota_encrypted_email"
+        package="de.tutao.tutanota" />
+    <icon
+        drawable="@drawable/themed_icon_vacation_days"
+        package="rocks.poopjournal.vacationdays" />
+    <icon
+        drawable="@drawable/themed_icon_vimpay"
+        package="net.petafuel.mobile.vimpay" />
+    <icon
+        drawable="@drawable/themed_icon_waifupx"
+        package="dg.waifu.walls" />
+    <icon
+        drawable="@drawable/themed_icon_wayback_machine"
+        package="com.archive.waybackmachine" />
+    <icon
+        drawable="@drawable/themed_icon_galaxy_wearable"
+        package="com.samsung.android.app.watchmanager" />
+    <icon
+        drawable="@drawable/themed_icon_weather_and_radar"
+        package="de.wetteronline.wetterapp" />
+    <icon
+        drawable="@drawable/themed_icon_weather_and_radar"
+        package="de.wetteronline.wetterapppro" />
+    <icon
+        drawable="@drawable/themed_icon_xbox"
+        package="com.microsoft.xboxone.smartglass" />
+    <icon
+        drawable="@drawable/themed_icon_yasnac"
+        package="rikka.safetynetchecker" />
+    <icon
+        drawable="@drawable/themed_icon_youtube_studio"
+        package="com.google.android.apps.youtube.creator" />
 </icons>
