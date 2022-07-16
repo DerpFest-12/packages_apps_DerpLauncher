@@ -101,7 +101,7 @@
     <string name="trust_apps_manager_name">التطبيقات المزاياالمخفية</string>
     <string name="trust_apps_auth_manager">فك القفل لإدارة التطبيقات المزاياالمخفية</string>
     <string name="trust_apps_loading">تحميل\u2026</string>
-    <string name="trust_apps_no_lock_error">الرجاء إنشاء شاشة قفل آمنة للحد من الوصول للتطبيقات/string>
+    <string name="trust_apps_no_lock_error">الرجاء إنشاء شاشة قفل آمنة للحد من الوصول للتطبيقات</string>
     <string name="trust_apps_help">المساعدة</string>
     <string name="trust_apps_info_hidden">التطبيقات المخفية و تطبيقاتهم المخفية مخفيين من درج التطبيقات</string>
 
