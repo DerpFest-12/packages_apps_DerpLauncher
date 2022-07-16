@@ -37,10 +37,10 @@
     <!-- Settings -->
 
     <!-- Edit workspace -->
-    <string name="settings_lock_layout_title">تثبيت مخطط التوزيع</string>ة
+    <string name="settings_lock_layout_title">تثبيت مخطط التوزيع</string>
     <string name="settings_lock_layout_summary_on">لا يمكن اضافات أو حذف أو تحريك الأيقونات و التطبيقات المصغرة على الشاشة الرئيسية</string>
     <string name="settings_lock_layout_summary_off">يمكن اضافات أو حذف أو تحريك الأيقونات و التطبيقات المصغرة على الشاشة الرئيسية</string>
-    <string name="settings_edit_widgets_error">لا يمكن إضافة تطبيقات مصغرة إلى الشاشة الرئيسيةn</string>
+    <string name="settings_edit_widgets_error">لا يمكن إضافة تطبيقات مصغرة إلى الشاشة الرئيسية</string>
 
     <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
     <string name="title_show_google_app">اسحب للوصول إلى تطبيق جوجل</string>
@@ -54,7 +54,7 @@
 
     <!-- Hide labels -->
     <string name="title_desktop_labels">اسماء التطبيقات سطح المكتب</string>
-    <string name="summary_desktop_labels">اظهر أسماء الأيقونات على الشاشة الرئيسيةn</string>
+    <string name="summary_desktop_labels">اظهر أسماء الأيقونات على الشاشة الرئيسية</string>
     <string name="title_drawer_labels">اسماء التطبيقات في درج التطبيقات</string>
     <string name="summary_drawer_labels">اظهر أسماء الأيقونات في درج التطبيقات</string>
 
