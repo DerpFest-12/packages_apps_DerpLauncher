@@ -16,172 +16,164 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Application name -->
-    <string name="derp_app_name" translatable="false">DerpLauncher</string>
-
     <!-- General -->
-    <string name="settings_title">Settings</string>
+    <string name="settings_title">Impostazioni</string>
 
     <!-- Categories -->
-    <string name="home_category_title">Home screen</string>
-    <string name="home_category_summary">Set Google now panel and more</string>
-    <string name="icons_category_title">Icons</string>
-    <string name="icons_category_summary">Set icon size and more</string>
-    <string name="app_drawer_category_title">App drawer</string>
-    <string name="app_drawer_category_summary">Customize your app drawer</string>
-    <string name="misc_category_title">Miscellaneous</string>
-    <string name="misc_category_summary">Other options</string>
-    <string name="dev_options_title">Developer options</string>
-    <string name="dev_options_desc">Enable some hidden features at your own risk</string>
-    <string name="general_category_title">General</string>
-    <string name="interface_category_title">Interface</string>
-    <string name="search_bar_category_title">Search bar</string>
+    <string name="home_category_title">Schermata iniziale</string>
+    <string name="home_category_summary">Impostazioni Google Feed e altro</string>
+    <string name="icons_category_title">Icone</string>
+    <string name="icons_category_summary">Imposta dimenisioni icone e altro</string>
+    <string name="app_drawer_category_title">Cassetto delle app</string>
+    <string name="app_drawer_category_summary">Personalizza il tuo cassetto delle app</string>
+    <string name="misc_category_title">Varie</string>
+    <string name="misc_category_summary">Altre impostazioni</string>
+    <string name="dev_options_title">Opzioni da sviluppatore</string>
+    <string name="dev_options_desc">Abilita alcune impostazioni nascoste a tuo rischio</string>
+    <string name="general_category_title">Generale</string>
+    <string name="interface_category_title">Interfaccia</string>
+    <string name="search_bar_category_title">Barra di ricerca</string>
 
     <!-- Settings -->
 
     <!-- Edit workspace -->
-    <string name="settings_lock_layout_title">Lock layout</string>
-    <string name="settings_lock_layout_summary_on">Icons and widgets can\'t be added, removed and moved on the homescreen</string>
-    <string name="settings_lock_layout_summary_off">Icons and widgets can be added, removed and moved on the homescreen</string>
-    <string name="settings_edit_widgets_error">It\'s not possible to add widgets to the home screen</string>
+    <string name="settings_lock_layout_title">Blocca layout</string>
+    <string name="settings_lock_layout_summary_on">Icone e widgets non possono essere aggiunte, rimosse e spostate nella schermata iniziale</string>
+    <string name="settings_lock_layout_summary_off">Icone e widgets possono essere aggiunte, rimosse e spostate nella schermata iniziale</string>
+    <string name="settings_edit_widgets_error">Non è possibile aggiungere widget alla schermata iniziale</string>
 
     <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
-    <string name="title_show_google_app">Swipe to access Google app</string>
+    <string name="title_show_google_app">Scorri per accedere all\'app Google</string>
     <!-- Settings message explaining when the -1 screen is available on an LTR device. [CHAR LIMIT=100] -->
-    <string name="msg_minus_one_on_left">From Home screen, swipe left to open Google app</string>
+    <string name="msg_minus_one_on_left">Dalla schermata iniziale, scorri a sinistra per accedere all\'app Google</string>
     <!-- Settings message explaining when the -1 screen is available on an RTL device. [CHAR LIMIT=100] -->
-    <string name="msg_minus_one_on_right">From Home screen, swipe right to open Google app</string>
-
-    <!-- Folder titles -->
-    <string name="google_folder_title" translatable="false">Google</string>
+    <string name="msg_minus_one_on_right">Dalla schermata iniziale, scorri a destra per accedere all\'app Google</string>
 
     <!-- Hide labels -->
-    <string name="title_desktop_labels">Desktop labels</string>
-    <string name="summary_desktop_labels">Show icon labels on Home screen</string>
-    <string name="title_drawer_labels">Drawer labels</string>
-    <string name="summary_drawer_labels">Show icon labels in drawer</string>
+    <string name="title_desktop_labels">Etichette schermata iniziale</string>
+    <string name="summary_desktop_labels">Mostra le etichette delle icone nella schermata iniziale</string>
+    <string name="title_drawer_labels">Etichette cassetto app</string>
+    <string name="summary_drawer_labels">Mostra le etichette delle icone nel cassetto app</string>
 
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">Default</string>
-    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
-    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+    <string name="custom_seekbar_value">Valore: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">Predefinito</string>
+    <string name="custom_seekbar_default_value_to_set">Valore predefinito: <xliff:g id="v">%s</xliff:g>\nimposta con pressione prolungata</string>
+    <string name="custom_seekbar_default_value_is_set">Impostato il valore predefinito</string>
 
     <!-- Icon size -->
-    <string name="icon_size_title">Icon size</string>
+    <string name="icon_size_title">Grandezza icone</string>
 
     <!-- Font size -->
-    <string name="font_size_title">Font size</string>
+    <string name="font_size_title">Grandezza carattere</string>
 
     <!-- App label - max lines -->
-    <string name="icon_max_lines_title">Max lines for app label</string>
+    <string name="icon_max_lines_title">Numero massimo di righe per le etichette delle app</string>
 
     <!-- Hotseat searchbar -->
-    <string name="label_search">Search</string>
+    <string name="label_search">Ricerca</string>
     <string name="label_lens">Google Lens</string>
-    <string name="label_voice_search">Voice search</string>
-    <string name="dock_search_title">Google search bar</string>
-    <string name="dock_search_summary">Show search bar in the bottom dock</string>
-    <string name="dock_theme_title">Themed icons</string>
-    <string name="dock_theme_summary">Use themed icons for search bar</string>
-    <string name="search_radius_title">Corner radius</string>
+    <string name="label_voice_search">Ricerca vovale</string>
+    <string name="dock_search_title">Barra di ricerca Google</string>
+    <string name="dock_search_summary">Mostra la barra di ricerca Google</string>
+    <string name="dock_theme_title">Icone a tema</string>
+    <string name="dock_theme_summary">Usa icone a tema per la barra di ricerca</string>
+    <string name="search_radius_title">Raggio dell\'angolo</string>
 
     <!-- Recents -->
     <string name="action_lens">Lens</string>
 
     <!-- Homescreen Statusbar -->
-    <string name="show_statusbar_title">Show Statusbar</string>
+    <string name="show_statusbar_title">Mostra barra di stato</string>
 
     <!-- Suggestions -->
-    <string name="suggestion_pref_screen_title">Suggestions</string>
-    <string name="suggestion_pref_screen_desc">For All Apps and Home screen suggestions</string>
+    <string name="suggestion_pref_screen_title">Suggerimenti</string>
+    <string name="suggestion_pref_screen_desc">Suggerimenti per tutte le app nella schermata iniziale</string>
 
     <!-- Trust apps -->
-    <string name="trust_apps_manager_name">Hidden apps</string>
-    <string name="trust_apps_auth_manager">Unlock to manage the hidden apps</string>
-    <string name="trust_apps_loading">Loading\u2026</string>
-    <string name="trust_apps_no_lock_error">Please set up a secure lock screen to restrict app access</string>
-    <string name="trust_apps_help">Help</string>
-    <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
+    <string name="trust_apps_manager_name">App nascoste</string>
+    <string name="trust_apps_auth_manager">Sblocca per gestire le app nascoste</string>
+    <string name="trust_apps_loading">Caricamento\u2026</string>
+    <string name="trust_apps_no_lock_error">Imposta una schermata di blocco sicura per limitare l\'accesso all\'app</string>
+    <string name="trust_apps_help">Aiuto</string>
+    <string name="trust_apps_info_hidden">Le app nascoste e i relativi widget sono nascosti nel cassetto</string>
 
     <!-- Force stop shortcut -->
-    <string name="recent_task_force_stop_app">Force stop</string>
-    <string name="recents_app_force_stopped">App force stopped</string>
+    <string name="recent_task_force_stop_app">Arresto forzato</string>
+    <string name="recents_app_force_stopped">App arrestata</string>
 
     <!-- About info -->
-    <string name="about_derp_title" translatable="false">@string/derp_app_name</string>
-    <string name="about_thanks_cat">Special thanks to</string>
-    <string name="about">About</string>
-    <string name="about_summary">Info about the DerpLauncher</string>
-    <string name="about_app_version">Version 1.0</string>
+    <string name="about_thanks_cat">Ringraziamenti speciali a</string>
+    <string name="about">Informazioni</string>
+    <string name="about_summary">Informazioni su DerpLauncher</string>
+    <string name="about_app_version">Versione 1.0</string>
 
     <!-- Drawer themed icons -->
-    <string name="pref_themed_icons_title">Drawer themed icons</string>
-    <string name="pref_themed_icons_summary">Apply themed icons in drawer</string>
+    <string name="pref_themed_icons_title">Icone a tema nel cassetto</string>
+    <string name="pref_themed_icons_summary">Applica icone a tema nel cassetto</string>
 
     <!-- Icon pack -->
-    <string name="icon_pack_title">Icon pack</string>
+    <string name="icon_pack_title">Pacchetto icone</string>
     <string name="icon_pack_default_label">Default</string>
-    <string name="icon_pack_add">Install more</string>
-    <string name="icon_pack_no_market">There\'s no available app store</string>
+    <string name="icon_pack_add">Installa altri pacchetti</string>
+    <string name="icon_pack_no_market">Non ci sono app store disponibili</string>
 
     <!-- AppInfo -->
-    <string name="app_info_subtext">Swipe down to close app info</string>
-    <string name="app_info_version_value" translatable="false">%1$s (%2$d)</string>
-    <string name="app_info_source">Source</string>
-    <string name="app_info_source_system">System</string>
-    <string name="app_info_last_update">Last update</string>
-    <string name="app_info_version">Version</string>
-    <string name="app_info_more">More</string>
+    <string name="app_info_subtext">Scorri verso il basso per chiudere le informazioni sull\'app</string>
+    <string name="app_info_source">Fonte</string>
+    <string name="app_info_source_system">Sistema</string>
+    <string name="app_info_last_update">Ultimo aggiornamento</string>
+    <string name="app_info_version">Versione</string>
+    <string name="app_info_more">Dettagli</string>
 
     <!-- Taskbar -->
-    <string name="pref_allow_phone_taskbar">Use taskbar</string>
-    <string name="pref_allow_phone_taskbar_desc">For opening and switching apps anywhere</string>
+    <string name="pref_allow_phone_taskbar">Usa la taskbar</string>
+    <string name="pref_allow_phone_taskbar_desc">Per aprire e cambiare app ovunque</string>
 
     <!-- Recent Grid -->
-    <string name="pref_allow_phone_overview_grid">Show grid of recent apps</string>
-    <string name="pref_allow_phone_overview_grid_desc">More recent apps in overview</string>
+    <string name="pref_allow_phone_overview_grid">Mostra la griglia nelle app recenti</string>
+    <string name="pref_allow_phone_overview_grid_desc">Visualizza le app recenti in griglia</string>
 
     <!-- Show top shadow -->
-    <string name="show_top_shadow_title">Top shadow</string>
-    <string name="show_top_shadow_summary">Show shadow on the top of Home screen</string>
+    <string name="show_top_shadow_title">Ombra superiore</string>
+    <string name="show_top_shadow_summary">Mostra l\'ombra nella parte superiore della schermata iniziale</string>
 
     <!-- Scroll Vibration -->
-    <string name="pref_scroll_vibration_title">Scroll Vibration</string>
-    <string name="pref_scroll_vibration_summary">Haptic feedback while scrolling through recent apps, if supported</string>
+    <string name="pref_scroll_vibration_title">Vibrazione allo scorrimento</string>
+    <string name="pref_scroll_vibration_summary">Feedback aptico durante lo scorrimento delle app recenti, se supportato</string>
 
     <!-- Dark Status Bar -->
-    <string name="perf_dark_status_bar_title">Dark status bar</string>
-    <string name="perf_dark_status_bar_summary">Use dark status bar on Home screen</string>
+    <string name="perf_dark_status_bar_title">Barra di stato scura</string>
+    <string name="perf_dark_status_bar_summary">Usa la barra di stato scura sulla schermata iniziale</string>
     
     <!-- Hotseat Background -->
-    <string name="hotseat_bg_title">Show hotseat background</string>
-    <string name="hotseat_bg_summary">Adds a translucent background to the app dock</string>
-
-    <!-- Row Height -->
-    <string name="row_height_title">Row height</string>
-    <string name="row_height_summary">Change height of rows in app drawer</string>
+    <string name="hotseat_bg_title">Mostra sfondo della dock</string>
+    <string name="hotseat_bg_summary">Aggiunge uno sfondo traslucido al dock dell\'app</string>
+     
+     <!-- Row Height -->
+    <string name="row_height_title">Altezza della riga</string>
+    <string name="row_height_summary">Modifica l\'altezza delle righe nel cassetto delle app</string>
 
     <!-- Wallpaper scrolling -->
-    <string name="allow_wallpaper_scrolling">Wallpaper scrolling</string>
-    <string name="allow_wallpaper_scrolling_desc">Wallpaper scrolling effect for multiple screens</string>
+    <string name="allow_wallpaper_scrolling">Scorrimento dello sfondo</string>
+    <string name="allow_wallpaper_scrolling_desc">Effetto di scorrimento dello sfondo per più schermate</string>
 
     <!-- Wallpaper zooming -->
-    <string name="allow_wallpaper_zooming">Wallpaper zooming</string>
-    <string name="allow_wallpaper_zooming_desc">Zoom in or out the wallpaper when using drawer or recent apps</string>
+    <string name="allow_wallpaper_zooming">Zoom dello sfondo</string>
+    <string name="allow_wallpaper_zooming_desc">Zoom dentro o fuori lo sfondo quando si utilizza il cassetto o le app recenti</string>
 
     <!-- Gestures -->
-    <string name="pref_homescreen_dt_gestures_title">Double-tap on screen action</string>
-    <string name="pref_homescreen_gestures_none">None</string>
-    <string name="pref_homescreen_gestures_sleep">Screen off</string>
-    <string name="pref_homescreen_gestures_torch">Flashlight</string>
-    <string name="pref_homescreen_gestures_volume_panel">Volume panel</string>
-    <string name="pref_homescreen_gestures_clear_notifications">Clear notifications</string>
+    <string name="pref_homescreen_dt_gestures_title">Azione doppio tocco sullo schermo</string>
+    <string name="pref_homescreen_gestures_none">Nessuna</string>
+    <string name="pref_homescreen_gestures_sleep">Schermo disattivato</string>
+    <string name="pref_homescreen_gestures_torch">Torcia</string>
+    <string name="pref_homescreen_gestures_volume_panel">Pannello volume</string>
+    <string name="pref_homescreen_gestures_clear_notifications">Cancella notifiche</string>
     <string name="pref_homescreen_gestures_screenshot">Screenshot</string>
-    <string name="pref_homescreen_gestures_notifications">Notifications</string>
-    <string name="pref_homescreen_gestures_qspanel">QS panel</string>
+    <string name="pref_homescreen_gestures_notifications">Notifiche</string>
+    <string name="pref_homescreen_gestures_qspanel">Pannello impostazioni rapide</string>
     
     <!-- Memory info -->
-    <string name="meminfo_text">%1$s Available | %2$s Total</string>
-    <string name="recents_meminfo_title">Memory info</string>
-</resources>
+    <string name="meminfo_text">%1$s Disponibile | %2$s Totale</string>
+    <string name="recents_meminfo_title">Informazioni memoria</string>
+</resources>     
